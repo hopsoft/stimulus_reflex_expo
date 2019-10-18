@@ -26,4 +26,15 @@ import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf'
 import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff'
 import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2'
 import 'stylesheets/application.scss'
+
+import hljs from 'highlight.js'
+import 'bootstrap'
 import 'controllers'
+
+hljs.initHighlightingOnLoad()
+
+document.addEventListener('turbolinks:render', () => {
+  document.querySelectorAll('pre code').forEach(block => {
+    hljs.highlightBlock(block)
+  })
+})

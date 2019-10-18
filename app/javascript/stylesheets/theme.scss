@@ -1,0 +1,15 @@
+pre code.hljs {
+  padding: 20px;
+}
+
+.navbar {
+  .navbar-brand {
+    padding-top: 0;
+  }
+}
+
+.nav {
+  a.nav-link {
+    color: theme-color("muted");
+  }
+}

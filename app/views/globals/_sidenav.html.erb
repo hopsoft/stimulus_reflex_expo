@@ -1,3 +1,5 @@
-<a href="" class="block pt-4 pb-4 whitespace-no-wrap"><i class="fa-fw fas fa-check opacity-25"></i> Reverse Text</a>
-<a href="" class="block pb-4 whitespace-no-wrap"><i class="fa-fw fas fa-check opacity-25"></i> Auto Complete</a>
-<a href="" class="block pb-4 whitespace-no-wrap"><i class="fa-fw fas fa-check opacity-25"></i> Live Search</a>
+<nav class="nav flex-column">
+  <% Dir[Rails.root.join("app/views/demos/showcase/*.html.erb")].each do |pathname| %>
+    <%= render "/globals/sidenav_item", name: pathname.split("/").last[1..-10] %>
+  <% end %>
+</nav>

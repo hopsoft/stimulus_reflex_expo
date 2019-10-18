@@ -1,3 +1,4 @@
+import hljs from 'highlight.js'
 import { Controller } from 'stimulus'
 import StimulusReflex from 'stimulus_reflex'
 
@@ -44,6 +45,10 @@ export default class extends Controller {
   }
 
   afterReflex (element, reflex) {
+    document.querySelectorAll('pre code').forEach(block => {
+      hljs.highlightBlock(block)
+    })
+
     const focusElement = this.element.querySelector('[autofocus]')
     if (focusElement) {
       focusElement.focus()
