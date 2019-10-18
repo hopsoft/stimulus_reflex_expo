@@ -1,4 +1,5 @@
 <nav class="nav flex-column">
+  <h6 class="text-muted text-uppercase opacity-60">Examples</h6>
   <% Dir[Rails.root.join("app/views/demos/showcase/*.html.erb")].each do |pathname| %>
     <%= render "/globals/sidenav_item", name: pathname.split("/").last[1..-10] %>
   <% end %>

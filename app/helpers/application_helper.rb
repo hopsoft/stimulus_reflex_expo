@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def css(default = "", conditionals = {})
     additions = conditionals.each_with_object([]) { |(k, v), memo| memo << k if v }
