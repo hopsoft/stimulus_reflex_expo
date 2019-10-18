@@ -14,11 +14,18 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-2 pt-4 bg-light border-right">
+        <div class="col-2 py-4 bg-light border-right">
           <%= render "/globals/sidenav" %>
         </div>
-        <div class="col pt-4 pl-4">
+        <div class="col py-4 pl-4">
           <%= yield %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <footer class="border-top p-3">
+            <small class="float-right text-muted">&copy; 2019 Nathan Hopkins, All Rights Reserved</small>
+          </footer>
         </div>
       </div>
     </div>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DemosController < ApplicationController
   before_action :verify, only: [:show]
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DemosHelper
   def gist_title(language)
     language = language.to_s
