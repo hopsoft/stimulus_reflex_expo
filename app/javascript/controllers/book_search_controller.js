@@ -20,6 +20,4 @@ export default class extends ApplicationController {
   _perform () {
     this.stimulate('BookSearchReflex#perform', this.queryTarget.value)
   }
-
-  afterPerform (element, reflex) {}
 }
