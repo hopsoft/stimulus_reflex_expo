@@ -1,0 +1,28 @@
+<input class="form-control d-inline-block col-4" type="text" placeholder="Search for a book..."
+  data-reflex="keyup->BookSearchReflex#perform" data-reflex-root="#count,#list">
+<span id="count" class="ml-3"><%= number_with_delimiter @books&.dig("num_found").to_i %> books found</span>
+
+<table id="list" class="table mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Subject</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Publish Date</th>
+      <th scope="col">ISBN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @books.present? %>
+      <% @books["docs"][0,12].each do |book| %>
+        <tr>
+          <td><%= truncate book["subject"]&.join(", "), length: 30 %></th>
+          <td><%= truncate book["title"], length: 30 %></th>
+          <td><%= book["author_name"]&.join ", " %></td>
+          <td><%= book["first_publish_year"] %></td>
+          <td><%= book["isbn"]&.first %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

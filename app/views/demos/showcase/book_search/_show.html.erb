@@ -1,0 +1,24 @@
+<h1 class="text-4xl">Reverse Text</h1>
+
+<%= render_demo :book_search, "Searches the Open Library API for matching books" do %>
+  <p>
+    <a href="https://openlibrary.org/developers/api">https://openlibrary.org/developers/api</a>
+  </p>
+<% end %>
+
+<%= render_explanation do %>
+  <p>
+    <strong>No JavaScript was written for this demo.</strong>
+    It uses <code>data</code> attributes to produce the behavior.
+  </p>
+<% end %>
+
+<%= render_gists do %>
+  <%= render_gist language: "erb" do %>
+    <%= lines_to_gist File.open(Rails.root.join("app/views/demos/showcase/book_search/_demo.html.erb")).readlines %>
+  <% end %>
+
+  <%= render_gist language: "ruby" do %>
+    <%= lines_to_gist File.open(Rails.root.join("app/reflexes/book_search_reflex.rb")).readlines %>
+  <% end %>
+<% end %>

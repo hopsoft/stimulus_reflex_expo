@@ -1,0 +1,20 @@
+<h1 class="text-4xl">Reverse Text</h1>
+
+<%= render_demo :reverse_text, "Prints whatever you type in reverse order" %>
+
+<%= render_explanation do %>
+  <p>
+    <strong>No JavaScript was written for this demo.</strong>
+    It uses the <code>data-reflex</code> and <code>data-reflex-root</code> attributes to produce the behavior.
+  </p>
+<% end %>
+
+<%= render_gists do %>
+  <%= render_gist language: "html" do %>
+    <%= lines_to_gist File.open(Rails.root.join("app/views/demos/showcase/reverse_text/_demo.html.erb")).readlines %>
+  <% end %>
+
+  <%= render_gist language: "ruby" do %>
+    <%= lines_to_gist File.open(Rails.root.join("app/reflexes/reverse_text_reflex.rb")).readlines %>
+  <% end %>
+<% end %>

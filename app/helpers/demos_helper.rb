@@ -5,13 +5,16 @@ module DemosHelper
     language = language.to_s
     case language
     when "html" then "HTML"
+    when "erb" then "ERB"
     when "javascript" then "JavaScript"
     else language.titleize
     end
   end
 
-  def render_demo(title, &block)
-    render "/demos/demo", title: title, &block
+  def render_demo(name, title)
+    prefix = yield if block_given?
+    demo = render("/demos/showcase/#{name}/demo")
+    render("/demos/demo", title: title) { "#{prefix} #{demo}".html_safe }
   end
 
   def render_explanation(&block)
