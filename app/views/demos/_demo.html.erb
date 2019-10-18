@@ -4,7 +4,8 @@
     Stimulus<strong>Reflex</strong> <span class="text-muted">Demo</span>
   </div>
   <div class="card-body">
-    <h5 class="card-title"><%= title %></h5>
+    <h5 class="card-title"><%= content_for :demo_title %></h5>
+    <%= content_for :demo_summary %>
     <%= yield %>
   </div>
 </div>

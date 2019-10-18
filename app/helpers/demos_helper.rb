@@ -11,10 +11,12 @@ module DemosHelper
     end
   end
 
-  def render_demo(name, title)
-    prefix = yield if block_given?
-    demo = render("/demos/showcase/#{name}/demo")
-    render("/demos/demo", title: title) { "#{prefix} #{demo}".html_safe }
+  def lines_to_gist(lines = [])
+    lines.reject { |line| line.to_s.strip =~ /\A(#|\/|\*|\<--)/ }.join
+  end
+
+  def render_demo(name)
+    render("/demos/demo") { render "/demos/showcase/#{name}/demo" }
   end
 
   def render_explanation(&block)
@@ -25,7 +27,9 @@ module DemosHelper
     render "/demos/gists", &block
   end
 
-  def render_gist(language, &block)
-    render "/demos/gist", language, &block
+  def render_gist(language, path)
+    render "/demos/gist", language: language, path: path do
+      lines_to_gist File.open(Rails.root.join(path)).readlines
+    end
   end
 end

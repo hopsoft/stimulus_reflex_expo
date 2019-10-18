@@ -1,3 +1,7 @@
-<input class="form-control d-inline-block col-4" type="text" placeholder="Type something..."
-  data-controller="application" data-reflex="keyup->ReverseTextReflex#perform" data-reflex-root="#output">
+<input type="text"
+       placeholder="Type something..."
+       class="form-control d-inline-block col-4"
+       data-reflex="keyup->ReverseTextReflex#perform"
+       data-reflex-root="#output">
+
 <span id="output" class="ml-3"><%= @value %></span>

@@ -9,10 +9,4 @@ module ApplicationHelper
   def active?(name)
     name.to_s == params[:id]
   end
-
-  def lines_to_gist(lines = [])
-    lines.shift while lines.first.to_s.strip.blank?
-    lines.shift while lines.first.to_s =~ /\A(#|\/\/|\<--)/
-    lines.join
-  end
 end

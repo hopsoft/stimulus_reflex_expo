@@ -1,6 +1,7 @@
-<h1 class="text-4xl">Reverse Text</h1>
+<h1>Reverse Text</h1>
 
-<%= render_demo :reverse_text, "Prints whatever you type in reverse order" %>
+<%= content_for :demo_title, "Prints whatever you type in reverse order" %>
+<%= render_demo :reverse_text %>
 
 <%= render_explanation do %>
   <p>
@@ -10,11 +11,6 @@
 <% end %>
 
 <%= render_gists do %>
-  <%= render_gist language: "html" do %>
-    <%= lines_to_gist File.open(Rails.root.join("app/views/demos/showcase/reverse_text/_demo.html.erb")).readlines %>
-  <% end %>
-
-  <%= render_gist language: "ruby" do %>
-    <%= lines_to_gist File.open(Rails.root.join("app/reflexes/reverse_text_reflex.rb")).readlines %>
-  <% end %>
+  <%= render_gist :html, "app/views/demos/showcase/reverse_text/_demo.html.erb" %>
+  <%= render_gist :ruby, "app/reflexes/reverse_text_reflex.rb" %>
 <% end %>
