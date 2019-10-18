@@ -9,7 +9,7 @@ export default class extends ApplicationController {
 
   connect () {
     super.connect()
-    this.perform = debounce(this._perform, 250).bind(this)
+    this.perform = debounce(this._perform, 350).bind(this)
   }
 
   beforePerform (element, reflex) {
