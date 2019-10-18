@@ -209,8 +209,6 @@ GEM
     standard (0.1.4)
       rubocop (~> 0.72.0)
       rubocop-performance (~> 1.4.0)
-    standardrb (1.0.0)
-      standard
     stimulus_reflex (2.1.3)
       cable_ready (>= 4.0.7)
       nokogiri
@@ -263,7 +261,7 @@ DEPENDENCIES
   sidekiq (~> 6.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  standardrb
+  standard
   stimulus_reflex (~> 2.1)
   tzinfo-data
   web-console (>= 3.3.0)

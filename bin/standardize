@@ -1,4 +1,4 @@
 #!/bin/bash
 
-bundle exec standardrb --fix
+bundle exec standardrb --fix --format progress
 yarn run prettier-standard app/javascript/**/*.js
