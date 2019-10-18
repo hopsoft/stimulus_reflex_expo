@@ -1,0 +1,43 @@
+<div data-controller="book-search">
+  <input type="text"
+         placeholder="Search for a book..."
+         class="form-control d-inline-block col-4"
+         data-target="book-search.query"
+         data-action="keyup->book-search#perform"
+         data-reflex-root="#morph">
+
+  <div id="morph" class="mt-4">
+    <span data-target="book-search.activity" class="text-danger" hidden>
+      <i class="fas fa-spinner fa-spin"></i>
+      Searching for books...
+    </span>
+    <span data-target="book-search.count" class="text-success">
+      <strong><%= number_with_delimiter @books&.dig("num_found").to_i %></strong> books found
+    </span>
+
+    <table data-target="book-search.list" class="table mt-2" <%= "hidden" unless @books&.dig("docs").present? %>>
+      <thead>
+        <tr>
+          <th scope="col">Subject</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Publish Date</th>
+          <th scope="col">ISBN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @books&.dig("docs").present? %>
+          <% @books["docs"][0,12].each do |book| %>
+            <tr>
+              <td><%= truncate book["subject"]&.join(", "), length: 30 %></th>
+              <td><%= truncate book["title"], length: 30 %></th>
+              <td><%= book["author_name"]&.join ", " %></td>
+              <td><%= book["first_publish_year"] %></td>
+              <td><%= book["isbn"]&.first %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

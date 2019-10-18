@@ -6,7 +6,7 @@ class DemosController < ApplicationController
   private
 
   def verify
-    filepath = Rails.root.join("app/views/demos/showcase/_#{params[:id]}.html.erb")
+    filepath = Rails.root.join("app/views/demos/showcase/#{params[:id]}/_show.html.erb")
     render text: "NOT FOUND", status: :not_found unless File.exist?(filepath)
   end
 end

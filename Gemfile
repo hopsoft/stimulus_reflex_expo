@@ -40,3 +40,5 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "active_link_to", "~> 1.0"
+
+gem "http", "~> 4.1"
