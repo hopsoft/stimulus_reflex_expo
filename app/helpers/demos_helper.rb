@@ -29,6 +29,7 @@ module DemosHelper
 
   def render_gist(language, path)
     lines = gist_lines(File.open(Rails.root.join(path)).readlines)
-    render("/demos/gist", language: language, path: path, loc: lines.size) { lines.join }
+    code = lines.select(&:present?)
+    render("/demos/gist", language: language, path: path, loc: code.size) { lines.join }
   end
 end
