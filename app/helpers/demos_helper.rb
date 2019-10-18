@@ -11,8 +11,8 @@ module DemosHelper
     end
   end
 
-  def lines_to_gist(lines = [])
-    lines.reject { |line| line.to_s.strip =~ /\A(#|\/|\*|\<--)/ }.join
+  def gist_lines(lines = [])
+    lines.reject { |line| line.to_s.strip =~ /\A(#|\/|\*|\<--)/ }
   end
 
   def render_demo(name)
@@ -28,8 +28,7 @@ module DemosHelper
   end
 
   def render_gist(language, path)
-    render "/demos/gist", language: language, path: path do
-      lines_to_gist File.open(Rails.root.join(path)).readlines
-    end
+    lines = gist_lines(File.open(Rails.root.join(path)).readlines)
+    render("/demos/gist", language: language, path: path, loc: lines.size) { lines.join }
   end
 end

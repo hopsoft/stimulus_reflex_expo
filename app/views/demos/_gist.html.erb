@@ -1,9 +1,10 @@
 <details>
   <summary>
-    <%= gist_title language %>
+    <span class="d-inline-block" style="min-width:80px"><%= gist_title language %></span>
     <code class="text-muted ml-2">
       <i class="far fa-file-code opacity-60"></i>
       <%= path %>
+      <code>(<%= loc %> LOC)</code>
     </code>
   </summary>
   <%= render "/demos/code", language: language do %>
