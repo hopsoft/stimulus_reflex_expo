@@ -220,7 +220,7 @@ GEM
     standard (0.1.5)
       rubocop (~> 0.75.0)
       rubocop-performance (~> 1.5.0)
-    stimulus_reflex (2.1.3)
+    stimulus_reflex (2.1.4)
       cable_ready (>= 4.0.7)
       nokogiri
       rack
