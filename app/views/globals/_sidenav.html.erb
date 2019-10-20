@@ -1,6 +1,6 @@
 <nav class="nav flex-column">
   <h6 class="text-muted text-uppercase opacity-60">Examples</h6>
-  <% Dir[Rails.root.join("app/views/demos/showcase/*")].each do |pathname| %>
+  <% Dir[Rails.root.join("app/views/demos/showcase/*")].sort.each do |pathname| %>
     <%= render "/globals/sidenav_item", name: pathname.split("/").last %>
   <% end %>
 </nav>
