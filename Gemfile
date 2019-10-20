@@ -6,6 +6,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.4"
 
 gem "bootsnap", ">= 1.4.2", require: false
+gem "countries", "~> 3.0"
+gem "http", "~> 4.1"
 gem "jbuilder", "~> 2.7"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 3.11"
@@ -38,7 +40,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "active_link_to", "~> 1.0"
-
-gem "http", "~> 4.1"

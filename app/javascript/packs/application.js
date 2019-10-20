@@ -33,8 +33,11 @@ import 'controllers'
 
 hljs.initHighlightingOnLoad()
 
-document.addEventListener('turbolinks:render', () => {
+const applySyntaxHighlights = () => {
   document.querySelectorAll('pre code').forEach(block => {
     hljs.highlightBlock(block)
   })
-})
+}
+
+document.addEventListener('turbolinks:render', applySyntaxHighlights)
+document.addEventListener('cable-ready:after-morph', applySyntaxHighlights)

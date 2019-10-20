@@ -32,4 +32,19 @@ module DemosHelper
     code = lines.select(&:present?)
     render("/demos/gist", language: language, path: path, loc: code.size) { lines.join }
   end
+
+  def regions
+    countries = ISO3166::Country.all
+    countries.map(&:region).uniq.sort.select(&:present?)
+  end
+
+  def subregions(region)
+    countries = ISO3166::Country.all.select { |c| c.region == region }
+    countries.map(&:subregion).uniq.sort.select(&:present?)
+  end
+
+  def countries(region, subregion)
+    countries = ISO3166::Country.all.select { |c| c.region == region && c.subregion == subregion }
+    countries.uniq.sort.select(&:present?).map(&:name)
+  end
 end

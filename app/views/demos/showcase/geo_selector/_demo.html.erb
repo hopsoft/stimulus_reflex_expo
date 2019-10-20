@@ -1,0 +1,37 @@
+<form class="m-4" style="max-width:600px">
+  <div class="form-group">
+    <%= select_tag :region,
+      options_for_select(regions.prepend("Select a region..."), @region),
+      placeholder: "Select a region...",
+      class: "form-control",
+      data: { reflex: "change->GeoSelectorReflex#select_region" } %>
+  </div>
+
+  <% if @region %>
+    <div class="form-group">
+      <%= select_tag :subregion,
+        options_for_select(subregions(@region).prepend("Select a sub-region..."), @subregion),
+        placeholder: "Select a sub-region...",
+        class: "form-control",
+        data: { reflex: "change->GeoSelectorReflex#select_subregion" } %>
+    </div>
+
+    <% if @subregion %>
+      <div class="form-group">
+        <%= select_tag :country,
+          options_for_select(countries(@region, @subregion).prepend("Select a country..."), @country),
+          placeholder: "Select a country...",
+          class: "form-control",
+          data: { reflex: "change->GeoSelectorReflex#select_country" } %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if @country %>
+    <h3>
+      <%= @country_instance&.emoji_flag %>
+      <%= @country %>
+    </h3>
+    <%= link_to "Learn about this country", "https://en.wikipedia.org/wiki/#{@country}", target: "_blank" %>
+  <% end %>
+</form>

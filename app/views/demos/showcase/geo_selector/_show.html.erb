@@ -1,0 +1,16 @@
+<h1>Geo Selector</h1>
+
+<%= content_for :demo_title, "Refines GEO options based on user selections" %>
+<%= render_demo :geo_selector %>
+
+<%= render_explanation do %>
+  <p>
+    <strong>No JavaScript was written for this demo.</strong>
+    It uses the <code>data-reflex</code> attribute to produce the behavior.
+  </p>
+<% end %>
+
+<%= render_gists do %>
+  <%= render_gist :erb, "app/views/demos/showcase/geo_selector/_demo.html.erb" %>
+  <%= render_gist :ruby, "app/reflexes/geo_selector_reflex.rb" %>
+<% end %>
