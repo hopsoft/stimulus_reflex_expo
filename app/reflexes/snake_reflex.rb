@@ -15,7 +15,7 @@ class SnakeReflex < StimulusReflex::Reflex
     session[:clock] = session[:clock] ? !session[:clock] : true
     wait_for_it(:tick) do
       hatch if session[:snake].empty?
-      sprout unless session[:food]
+      sprout if session[:food].empty?
       []
     end
   end
@@ -27,9 +27,7 @@ class SnakeReflex < StimulusReflex::Reflex
         eat
         travel
         eat
-        if die?
-          session[:clock] = session[:alive] = false
-        end
+        session[:clock] = session[:alive] = survive?
         []
       end
     end
@@ -71,11 +69,11 @@ class SnakeReflex < StimulusReflex::Reflex
     session[:snake] << [x, y]
   end
 
-  def die?
+  def survive?
     x, y = session[:snake].last
-    return true if x < 0 || y < 0 || x > session[:grid_x] * 10 - 10 || y > session[:grid_y] * 10 - 10
-    return true if session[:snake][0..-3].include? [x, y]
-    false
+    return false if x < 0 || y < 0 || x > session[:grid_x] * 10 - 10 || y > session[:grid_y] * 10 - 10
+    return false if session[:snake][0..-3].include? [x, y]
+    true
   end
 
   private

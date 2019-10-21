@@ -17,7 +17,7 @@ class DemosController < ApplicationController
         session[:snake] = []
         session[:start_x] = 50
         session[:start_y] = 50
-        session[:food] = nil
+        session[:food] = []
         session[:alive] = true
       end
       @grid_x = session[:grid_x] * 10 + 1
