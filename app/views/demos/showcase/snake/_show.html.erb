@@ -1,0 +1,23 @@
+<h1>Snake</h1>
+
+<%= content_for :demo_title, "Snakes need to eat, too!" %>
+<%= content_for :demo_summary do %>
+  
+<% end %>
+<%= render_demo :snake %>
+
+<%= render_explanation do %>
+  <p>
+    However impractical it might seem, we wanted to demonstrate that StimulusReflex can
+    emit updates fast enough to manage 60fps on a local connection. While you probably
+    shouldn't port Doom, please consider yourself dared.
+  </p>
+<% end %>
+
+<%= render_gists do %>
+  <%= render_gist :erb, "app/views/demos/showcase/snake/_demo.html.erb" %>
+  <%= render_gist :javascript, "app/javascript/controllers/snake_controller.js" %>
+  <%= render_gist :ruby, "app/reflexes/snake_reflex.rb" %>
+  <%= render_gist :ruby, "app/controllers/snake_controller.rb" %>
+  <%= render_gist :scss, "app/javascript/stylesheets/snake.scss" %>
+<% end %>

@@ -1,0 +1,24 @@
+<div data-controller="snake" data-action="<% if session[:alive] %>keydown@window->snake#move<% end %> beforeunload@window->snake#busy" data-busy="<%= session[:clock] %>">
+  <svg width="<%= @grid_x %>" height="<%= @grid_y %>">
+    <defs>
+      <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="gray" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <polygon points="<%= "0,0 0,#{@grid_y} #{@grid_x},#{@grid_y} #{@grid_x},0" %>" fill="none" stroke="black" />
+    <rect width="100%" height="100%" style="fill:url(#grid)" />
+    <% if session[:food].present? %>
+      <rect class="food" x="<%= session[:food][0] %>" y="<%= session[:food][1] %>" />
+    <% end %>
+    <% session[:snake].each do |s| %>
+      <rect class="segment <%= "head" if s == session[:snake].last %>" x="<%= s[0] %>" y="<%= s[1] %>" />
+    <% end %>
+  </svg>
+  <br>
+  <% if session[:alive] %>
+    <button data-reflex="click->SnakeReflex#start_stop"><%= session[:clock] ? "Pause" : "Start" %></button>
+  <% else %>
+    <h1>DEATH</h1>
+    <a href="<%= request.path_info %>" data-turbolinks="false">Try again?</a>
+  <% end %>
+</div>

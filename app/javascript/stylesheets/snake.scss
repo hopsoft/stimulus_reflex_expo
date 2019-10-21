@@ -1,0 +1,13 @@
+rect.segment {
+  width: 10px;
+  height: 10px;
+  fill: black;
+  &.head {
+    fill: red;
+  }
+}
+rect.food {
+  width: 10px;
+  height: 10px;
+  fill: green;
+}
