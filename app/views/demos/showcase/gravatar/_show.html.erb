@@ -1,0 +1,16 @@
+<h1>Gravatar</h1>
+
+<%= content_for :demo_title, "Displays Gravatar image for any email address" %>
+<%= render_demo :gravatar %>
+
+<%= render_explanation do %>
+  <p>
+    <strong>No JavaScript was written for this demo.</strong>
+    It uses the <code>data-reflex</code> attribute to produce the behavior.
+  </p>
+<% end %>
+
+<%= render_gists do %>
+  <%= render_gist :erb, "app/views/demos/showcase/gravatar/_demo.html.erb" %>
+  <%= render_gist :ruby, "app/reflexes/gravatar_reflex.rb" %>
+<% end %>
