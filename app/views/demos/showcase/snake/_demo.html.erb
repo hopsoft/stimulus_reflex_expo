@@ -14,6 +14,7 @@
       <rect class="segment <%= "head" if s == session[:snake].last %>" x="<%= s[0] %>" y="<%= s[1] %>" />
     <% end %>
   </svg>
+<<<<<<< HEAD
 
   <div>
     <% if session[:alive] %>
@@ -25,4 +26,13 @@
       <a href="<%= request.path_info %>" data-turbolinks="false">Try again?</a>
     <% end %>
   </div>
+=======
+  <br>
+  <% if session[:alive] %>
+    <button data-reflex="click->SnakeReflex#start_stop"><%= session[:clock] ? "Pause" : "Start" %></button>
+  <% else %>
+    <h1>DEATH</h1>
+    <a href="<%= request.path_info %>" data-turbolinks="false">Try again?</a>
+  <% end %>
+>>>>>>> snakes on a plane
 </div>
