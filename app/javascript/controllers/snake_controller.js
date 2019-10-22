@@ -13,8 +13,8 @@ export default class extends Controller {
     this.stimulate('SnakeReflex#move', event.which)
     event.preventDefault()
   }
-  busy () {
-    if (this.element.dataset.busy) this.stimulate('SnakeReflex#stop')
+  stop () {
+    this.stimulate('SnakeReflex#stop')
   }
   enableStart () {
     this.connectingTarget.hidden = true

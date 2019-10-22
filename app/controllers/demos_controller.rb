@@ -25,7 +25,7 @@ class DemosController < ApplicationController
     unless @stimulus_reflex
       session[:direction] = "right"
       session[:clock] = false
-      session[:speed] = 0.1
+      session[:speed] = 0.2
       session[:grid_x] = 30
       session[:grid_y] = 30
       session[:length] = 4

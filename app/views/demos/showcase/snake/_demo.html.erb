@@ -1,4 +1,4 @@
-<div data-controller="snake" data-action="<% if session[:clock] && session[:alive] %>keydown@window->snake#move<% end %> beforeunload@window->snake#busy" data-busy="<%= session[:clock] %>">
+<div data-controller="snake" data-action="<% if session[:clock] && session[:alive] %>keydown@window->snake#move<% end %> beforeunload@window->snake#stop">
   <svg width="<%= @grid_x %>" height="<%= @grid_y %>">
     <defs>
       <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
