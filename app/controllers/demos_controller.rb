@@ -17,7 +17,7 @@ class DemosController < ApplicationController
   end
 
   def setup_chat
-    session[:chat_room] ||= "red"
+    session[:chat_color] ||= "red"
     @chats ||= Rails.cache.read(:chats) || []
   end
 end

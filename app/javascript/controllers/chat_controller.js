@@ -21,7 +21,7 @@ export default class extends ApplicationController {
     lastMessageId = Math.random()
     this.stimulate(
       'ChatReflex#post',
-      this.element.dataset.room,
+      this.element.dataset.color,
       this.inputTarget.value,
       lastMessageId
     )

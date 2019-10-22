@@ -1,16 +1,16 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a data-toggle="tab" data-reflex="click->ChatReflex#set_room" href="#red" class="nav-link <%= "active" if active_chat_room?(:red) %>">Red Room</a>
+    <a data-toggle="tab" data-reflex="click->ChatReflex#set_color" href="#red" class="nav-link <%= "active" if active_chat?(:red) %>">Red Chat</a>
   </li>
   <li class="nav-item">
-    <a data-toggle="tab" data-reflex="click->ChatReflex#set_room" href="#yellow" class="nav-link <%= "active" if active_chat_room?(:yellow) %>">Yellow Room</a>
+    <a data-toggle="tab" data-reflex="click->ChatReflex#set_color" href="#yellow" class="nav-link <%= "active" if active_chat?(:yellow) %>">Yellow Chat</a>
   </li>
   <li class="nav-item">
-    <a data-toggle="tab" data-reflex="click->ChatReflex#set_room" href="#blue" class="nav-link <%= "active" if active_chat_room?(:blue) %>">Blue Room</a>
+    <a data-toggle="tab" data-reflex="click->ChatReflex#set_color" href="#blue" class="nav-link <%= "active" if active_chat?(:blue) %>">Blue Chat</a>
   </li>
 </ul>
 <div class="tab-content">
-  <%= render "/demos/showcase/chat/chat_tab", room: "red" %>
-  <%= render "/demos/showcase/chat/chat_tab", room: "yellow" %>
-  <%= render "/demos/showcase/chat/chat_tab", room: "blue" %>
+  <%= render "/demos/showcase/chat/chat_tab", color: "red" %>
+  <%= render "/demos/showcase/chat/chat_tab", color: "yellow" %>
+  <%= render "/demos/showcase/chat/chat_tab", color: "blue" %>
 </div>
