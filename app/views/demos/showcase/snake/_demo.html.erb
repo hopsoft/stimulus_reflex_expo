@@ -1,4 +1,4 @@
-<div data-controller="snake" data-action="<% if session[:alive] %>keydown@window->snake#move<% end %> beforeunload@window->snake#busy" data-busy="<%= session[:clock] %>">
+<div data-controller="snake" data-action="<% if session[:clock] && session[:alive] %>keydown@window->snake#move<% end %> beforeunload@window->snake#busy" data-busy="<%= session[:clock] %>">
   <svg width="<%= @grid_x %>" height="<%= @grid_y %>">
     <defs>
       <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -16,13 +16,20 @@
   </svg>
 
   <div>
-    <% if session[:alive] %>
-      <button data-reflex="click->SnakeReflex#start_stop" class="btn btn-primary mt-3">
-        <%= session[:clock] ? "Pause" : "Start" %>
-      </button>
+    <% if @stimulus_reflex %>
+      <% if session[:alive] %>
+        <button data-reflex="click->SnakeReflex#start_stop" class="btn btn-primary mt-3">
+          <%= session[:clock] ? "Pause" : "Start" %>
+        </button>
+      <% else %>
+        <h1 class="mt-3 text-danger">DEATH</h1>
+        <a href="<%= request.path_info %>" data-turbolinks="false">Try again?</a>
+      <% end %>
     <% else %>
-      <h1 class="mt-3 text-danger">DEATH</h1>
-      <a href="<%= request.path_info %>" data-turbolinks="false">Try again?</a>
+      <h3 class="mt-3 text-info" data-target="snake.connecting">Connecting...</h3>
+      <button data-reflex="click->SnakeReflex#start_stop" data-target="snake.start" class="btn btn-primary mt-3" hidden>
+        Start
+      </button>
     <% end %>
   </div>
 </div>

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class SnakeReflex < StimulusReflex::Reflex
   DIRECTIONS = {37 => "left", 38 => "up", 39 => "right", 40 => "down"}
 
@@ -7,9 +5,7 @@ class SnakeReflex < StimulusReflex::Reflex
     if DIRECTIONS.key?(code)
       if (["left", "right"].include?(session[:direction]) && ["up", "down"].include?(DIRECTIONS[code])) || (["up", "down"].include?(session[:direction]) && ["left", "right"].include?(DIRECTIONS[code]))
         session[:direction] = DIRECTIONS[code]
-        travel
       end
-      start_stop unless session[:clock]
     end
   end
 
@@ -23,16 +19,22 @@ class SnakeReflex < StimulusReflex::Reflex
   end
 
   def tick
-    if session[:clock]
+    if session[:clock] && session[:alive]
       wait_for_it(:tick) do
         sleep session[:speed]
         eat
         travel
         eat
-        session[:clock] = session[:alive] = survive?
+        session[:alive] = survive?
         []
       end
+    else
+      session[:clock] = false
     end
+  end
+
+  def stop
+    session[:clock] = false
   end
 
   def sprout
