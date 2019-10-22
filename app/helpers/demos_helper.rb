@@ -47,4 +47,28 @@ module DemosHelper
     countries = ISO3166::Country.all.select { |c| c.region == region && c.subregion == subregion }
     countries.uniq.sort.select(&:present?).map(&:name)
   end
+
+  def active_chat?(color)
+    session[:chat_color] == color.to_s
+  end
+
+  def chat_css(color)
+    case color.to_sym
+    when :red then "bg-danger-light border-danger-light text-danger"
+    when :yellow then "bg-warning-light border-warning-light text-warning-dark"
+    when :blue then "bg-primary-light border-primary-light text-primary"
+    end
+  end
+
+  def chat_border_css(color)
+    case color.to_sym
+    when :red then "border-danger-light"
+    when :yellow then "border-warning-light"
+    when :blue then "border-primary-light"
+    end
+  end
+
+  def chat_author?(chat)
+    chat[:author] == request.remote_ip
+  end
 end

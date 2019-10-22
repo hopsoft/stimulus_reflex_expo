@@ -1553,7 +1553,7 @@ bytes@3.1.0:
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
   integrity sha512-zauLjrfCG+xvoyaqLoV8bLVXXNGC4JqlxFCutSDWA6fJrTo2ZuvLYTqZ7aHBLZSMOopbzwv8f+wZcVzfVTI2Dg==
 
-"cable_ready@>= 4.0.7":
+"cable_ready@>= 4.0.7", cable_ready@^4.0.7:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-4.0.7.tgz#f4e55d8316c978e9cf3e6dda14ce37529418e4d7"
   integrity sha512-oRGsTBQQz++v60wbaUoeKc9RXPqkX3EtdPE9nrEeh7s9Zgz8L2rlmhsovs7i2gitvGlCu7I50wYoOHiaaVjtLw==

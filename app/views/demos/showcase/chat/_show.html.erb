@@ -1,0 +1,17 @@
+<h1>Chat</h1>
+
+<%= content_for :demo_title, "Allows current site visitors to chat with each other" %>
+<%= content_for :demo_summary do %>
+<% end %>
+<%= render_demo :chat %>
+
+<%= render_explanation do %>
+<% end %>
+
+<%= render_gists do %>
+  <%= render_gist :erb, "app/views/demos/showcase/chat/_demo.html.erb" %>
+  <%= render_gist :erb, "app/views/demos/showcase/chat/_color.html.erb" %>
+  <%= render_gist :javascript, "app/javascript/controllers/chat_controller.js" %>
+  <%= render_gist :javascript, "app/javascript/channels/chat_channel.js" %>
+  <%= render_gist :ruby, "app/reflexes/chat_reflex.rb" %>
+<% end %>

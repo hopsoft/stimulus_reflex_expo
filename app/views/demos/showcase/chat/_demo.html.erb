@@ -1,0 +1,16 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a data-toggle="tab" data-reflex="click->ChatReflex#set_color" href="#red" class="nav-link <%= "active" if active_chat?(:red) %>">Red Chat</a>
+  </li>
+  <li class="nav-item">
+    <a data-toggle="tab" data-reflex="click->ChatReflex#set_color" href="#yellow" class="nav-link <%= "active" if active_chat?(:yellow) %>">Yellow Chat</a>
+  </li>
+  <li class="nav-item">
+    <a data-toggle="tab" data-reflex="click->ChatReflex#set_color" href="#blue" class="nav-link <%= "active" if active_chat?(:blue) %>">Blue Chat</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <%= render "/demos/showcase/chat/color", color: "red" %>
+  <%= render "/demos/showcase/chat/color", color: "yellow" %>
+  <%= render "/demos/showcase/chat/color", color: "blue" %>
+</div>

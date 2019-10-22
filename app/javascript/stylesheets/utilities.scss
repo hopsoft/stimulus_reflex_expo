@@ -31,3 +31,17 @@
 .opacity-100 {
   opacity: 1 !important;
 }
+
+@each $color, $value in $theme-colors {
+  .bg-#{$color}-light {
+    background-color: lighten($value, 40%) !important;
+  }
+
+  .border-#{$color}-light {
+    border-color: lighten($value, 20%) !important;
+  }
+
+  .text-#{$color}-dark {
+    color: darken($value, 20%) !important;
+  }
+}

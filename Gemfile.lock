@@ -85,6 +85,7 @@ GEM
     crass (1.0.5)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.5)
     erubi (1.9.0)
     ffi (1.11.1)
     globalid (0.4.2)
@@ -264,8 +265,10 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
+  cable_ready (~> 4.0)
   capybara (>= 2.15)
   countries (~> 3.0)
+  dotenv
   http (~> 4.1)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)

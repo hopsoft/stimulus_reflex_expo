@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SnakeController < ApplicationController
   def index
     unless @stimulus_reflex
