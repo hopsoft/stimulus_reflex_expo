@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 # frozen_string_literal: true
 
-=======
->>>>>>> snakes on a plane
 class SnakeReflex < StimulusReflex::Reflex
   DIRECTIONS = {37 => "left", 38 => "up", 39 => "right", 40 => "down"}
 
@@ -20,11 +17,7 @@ class SnakeReflex < StimulusReflex::Reflex
     session[:clock] = session[:clock] ? !session[:clock] : true
     wait_for_it(:tick) do
       hatch if session[:snake].empty?
-<<<<<<< HEAD
-      sprout if session[:food].empty?
-=======
       sprout unless session[:food]
->>>>>>> snakes on a plane
       []
     end
   end
@@ -36,13 +29,9 @@ class SnakeReflex < StimulusReflex::Reflex
         eat
         travel
         eat
-<<<<<<< HEAD
-        session[:clock] = session[:alive] = survive?
-=======
         if die?
           session[:clock] = session[:alive] = false
         end
->>>>>>> snakes on a plane
         []
       end
     end
@@ -84,19 +73,18 @@ class SnakeReflex < StimulusReflex::Reflex
     session[:snake] << [x, y]
   end
 
-<<<<<<< HEAD
   def survive?
     x, y = session[:snake].last
     return false if x < 0 || y < 0 || x > session[:grid_x] * 10 - 10 || y > session[:grid_y] * 10 - 10
     return false if session[:snake][0..-3].include? [x, y]
     true
-=======
+  end
+
   def die?
     x, y = session[:snake].last
     return true if x < 0 || y < 0 || x > session[:grid_x] * 10 - 10 || y > session[:grid_y] * 10 - 10
     return true if session[:snake][0..-3].include? [x, y]
     false
->>>>>>> snakes on a plane
   end
 
   private
