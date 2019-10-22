@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.4"
 
 gem "bootsnap", ">= 1.4.2", require: false
+gem "cable_ready", "~> 4.0"
 gem "countries", "~> 3.0"
 gem "http", "~> 4.1"
 gem "jbuilder", "~> 2.7"
@@ -20,6 +21,7 @@ gem "webpacker", "~> 4.0"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "dotenv"
   gem "pry-nav"
   gem "pry-rails"
 end
