@@ -10,7 +10,7 @@
       <% else %>
         <div class="bg-light rounded-lg border my-2 p-1 px-2 text-left w-75 float-left">
           <%= chat[:message] %>
-          <small class="opacity-30 d-block">~<%= session.id %> <%= distance_of_time_in_words_to_now Time.parse(chat[:created_at]) %> ago</small>
+          <small class="opacity-30 d-block">~<%= chat[:author] %> <%= distance_of_time_in_words_to_now Time.parse(chat[:created_at]) %> ago</small>
         </div>
       <% end %>
     <% end %>
