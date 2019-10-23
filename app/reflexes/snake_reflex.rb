@@ -73,7 +73,6 @@ class SnakeReflex < StimulusReflex::Reflex
     session[:snake] << [x, y]
   end
 
-<<<<<<< HEAD
   def survive?
     x, y = session[:snake].last
     return false if x < 0 || y < 0 || x > session[:grid_x] * 10 - 10 || y > session[:grid_y] * 10 - 10
@@ -81,8 +80,6 @@ class SnakeReflex < StimulusReflex::Reflex
     true
   end
 
-=======
->>>>>>> snakes on a plane
   def die?
     x, y = session[:snake].last
     return true if x < 0 || y < 0 || x > session[:grid_x] * 10 - 10 || y > session[:grid_y] * 10 - 10
