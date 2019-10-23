@@ -45,3 +45,12 @@
     color: darken($value, 20%) !important;
   }
 }
+
+.main {
+  height: calc(100% - 52px);
+  padding-top: 60px;
+}
+
+.sidenav-height {
+  min-height: calc(100vh - 60px);
+}
