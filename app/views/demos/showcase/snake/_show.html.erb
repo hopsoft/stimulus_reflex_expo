@@ -11,7 +11,15 @@
     emit updates fast enough to manage 60fps on a local connection. While you probably
     shouldn't port Doom, please consider yourself dared.
   </p>
+  <p>
+    At this time, this is a <strong>desktop-only</strong> demo as it relies on the arrow keys to steer.
+  </p>
 <% end %>
 
 <%= render_gists do %>
+  <%= render_gist :erb, "app/views/demos/showcase/snake/_demo.html.erb" %>
+  <%= render_gist :javascript, "app/javascript/controllers/snake_controller.js" %>
+  <%= render_gist :ruby, "app/reflexes/snake_reflex.rb" %>
+  <%= render_gist :ruby, "app/controllers/snake_controller.rb" %>
+  <%= render_gist :scss, "app/javascript/stylesheets/snake.scss" %>
 <% end %>
