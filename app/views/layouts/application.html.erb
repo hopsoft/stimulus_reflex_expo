@@ -9,26 +9,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="min-vh-100 d-flex flex-column">
     <%= render "/globals/navbar" %>
-
-    <div class="container-fluid">
+    <main role="main" class="container-fluid main">
       <div class="row">
-        <div class="col-3 col-md-2 py-4 bg-light border-right">
+        <div class="col-3 col-md-2 py-4 bg-light border-right sidenav-height">
           <%= render "/globals/sidenav" %>
         </div>
         <div class="col-9 col-md-10 py-4 pl-4">
           <%= yield %>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <footer class="border-top p-3 mb-5">
-            <small class="float-right text-muted opacity-50 ml-3">Session ID: <%= session.id %></small>
-            <small class="float-right text-muted">&copy; 2019 Nathan Hopkins, All Rights Reserved</small>
-          </footer>
-        </div>
-      </div>
-    </div>
+    </main>
+    <%= render "/globals/footer" %>
   </body>
 </html>
