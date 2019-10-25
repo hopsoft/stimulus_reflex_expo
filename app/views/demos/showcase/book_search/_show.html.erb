@@ -17,8 +17,8 @@
   </p>
 <% end %>
 
-<%= render_gists do %>
-  <%= render_gist :erb, "app/views/demos/showcase/book_search/_demo.html.erb" %>
-  <%= render_gist :javascript, "app/javascript/controllers/book_search_controller.js" %>
-  <%= render_gist :ruby, "app/reflexes/book_search_reflex.rb" %>
-<% end %>
+<%= render_gists(
+  "app/views/demos/showcase/book_search/_demo.html.erb",
+  "app/javascript/controllers/book_search_controller.js",
+  "app/reflexes/book_search_reflex.rb"
+) %>

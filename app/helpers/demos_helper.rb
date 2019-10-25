@@ -1,20 +1,6 @@
 # frozen_string_literal: true
 
 module DemosHelper
-  def gist_title(language)
-    language = language.to_s
-    case language
-    when "html" then "HTML"
-    when "erb" then "ERB"
-    when "javascript" then "JavaScript"
-    else language.titleize
-    end
-  end
-
-  def gist_lines(lines = [])
-    lines.reject { |line| line.to_s.strip =~ /\A(#|\/|\*|\<--)/ }
-  end
-
   def render_demo(name)
     render("/demos/demo") { render "/demos/showcase/#{name}/demo" }
   end
@@ -23,14 +9,31 @@ module DemosHelper
     render "/demos/explanation", &block
   end
 
-  def render_gists(&block)
-    render "/demos/gists", &block
+  def render_gists(*filepaths)
+    render "/demos/gists", grouped_filepaths: filepaths.group_by { |filepath| language filepath }
   end
 
-  def render_gist(language, path)
-    lines = gist_lines(File.open(Rails.root.join(path)).readlines)
-    code = lines.select(&:present?)
-    render("/demos/gist", language: language, path: path, loc: code.size) { lines.join }
+  def file_lines(filepath)
+    lines = File.open(Rails.root.join(filepath)).readlines
+    lines.reject { |line| line.to_s.strip =~ /\A(#|\/|\*|\<--)/ }
+  end
+
+  def language(filepath)
+    case File.extname(filepath)
+    when ".html" then "html"
+    when ".erb" then "erb"
+    when ".js" then "javascript"
+    when ".rb" then "ruby"
+    end
+  end
+
+  def language_title(language)
+    case language
+    when "html" then "HTML"
+    when "erb" then "ERB"
+    when "javascript" then "JavaScript"
+    when "ruby" then "Ruby"
+    end
   end
 
   def regions

@@ -16,10 +16,10 @@
   </p>
 <% end %>
 
-<%= render_gists do %>
-  <%= render_gist :erb, "app/views/demos/showcase/snake/_demo.html.erb" %>
-  <%= render_gist :javascript, "app/javascript/controllers/snake_controller.js" %>
-  <%= render_gist :ruby, "app/reflexes/snake_reflex.rb" %>
-  <%= render_gist :ruby, "app/controllers/concerns/snake_demo.rb" %>
-  <%= render_gist :scss, "app/javascript/stylesheets/snake.scss" %>
-<% end %>
+<%= render_gists(
+  "app/views/demos/showcase/snake/_demo.html.erb",
+  "app/javascript/controllers/snake_controller.js",
+  "app/reflexes/snake_reflex.rb",
+  "app/controllers/concerns/snake_demo.rb",
+  "app/javascript/stylesheets/snake.scss"
+) %>

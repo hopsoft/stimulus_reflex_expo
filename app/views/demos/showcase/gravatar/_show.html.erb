@@ -10,7 +10,7 @@
   </p>
 <% end %>
 
-<%= render_gists do %>
-  <%= render_gist :erb, "app/views/demos/showcase/gravatar/_demo.html.erb" %>
-  <%= render_gist :ruby, "app/reflexes/gravatar_reflex.rb" %>
-<% end %>
+<%= render_gists(
+  "app/views/demos/showcase/gravatar/_demo.html.erb",
+  "app/reflexes/gravatar_reflex.rb"
+) %>

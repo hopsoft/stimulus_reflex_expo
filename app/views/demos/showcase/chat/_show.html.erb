@@ -5,14 +5,11 @@
 <% end %>
 <%= render_demo :chat %>
 
-<%= render_explanation do %>
-<% end %>
-
-<%= render_gists do %>
-  <%= render_gist :erb, "app/views/demos/showcase/chat/_demo.html.erb" %>
-  <%= render_gist :erb, "app/views/demos/showcase/chat/_color.html.erb" %>
-  <%= render_gist :javascript, "app/javascript/controllers/chat_controller.js" %>
-  <%= render_gist :javascript, "app/javascript/channels/chat_channel.js" %>
-  <%= render_gist :ruby, "app/controllers/concerns/chat_demo.rb" %>
-  <%= render_gist :ruby, "app/reflexes/chat_reflex.rb" %>
-<% end %>
+<%= render_gists(
+  "app/views/demos/showcase/chat/_demo.html.erb",
+  "app/views/demos/showcase/chat/_color.html.erb",
+  "app/javascript/controllers/chat_controller.js",
+  "app/javascript/channels/chat_channel.js",
+  "app/controllers/concerns/chat_demo.rb",
+  "app/reflexes/chat_reflex.rb"
+) %>

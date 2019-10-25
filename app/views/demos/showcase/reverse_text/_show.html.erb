@@ -10,7 +10,7 @@
   </p>
 <% end %>
 
-<%= render_gists do %>
-  <%= render_gist :html, "app/views/demos/showcase/reverse_text/_demo.html.erb" %>
-  <%= render_gist :ruby, "app/reflexes/reverse_text_reflex.rb" %>
-<% end %>
+<%= render_gists(
+  "app/views/demos/showcase/reverse_text/_demo.html.erb",
+  "app/reflexes/reverse_text_reflex.rb"
+) %>

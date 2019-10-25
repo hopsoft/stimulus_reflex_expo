@@ -10,7 +10,7 @@
   </p>
 <% end %>
 
-<%= render_gists do %>
-  <%= render_gist :erb, "app/views/demos/showcase/geo_selector/_demo.html.erb" %>
-  <%= render_gist :ruby, "app/reflexes/geo_selector_reflex.rb" %>
-<% end %>
+<%= render_gists(
+  "app/views/demos/showcase/geo_selector/_demo.html.erb",
+  "app/reflexes/geo_selector_reflex.rb"
+) %>
