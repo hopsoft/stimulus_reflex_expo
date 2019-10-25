@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
-module ChatDemo
-  def setup_chat_demo
+class ChatsController < ApplicationController
+  def show
     session[:chat_color] ||= "red"
     @chats ||= Rails.cache.read(:chats) || []
   end

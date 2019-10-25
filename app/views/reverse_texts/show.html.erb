@@ -1,7 +1,7 @@
 <h1>Reverse Text</h1>
 
 <%= content_for :demo_title, "Prints whatever you type in reverse order" %>
-<%= render_demo :reverse_text %>
+<%= render_demo "/reverse_texts/demo" %>
 
 <%= render_explanation do %>
   <p>
@@ -11,6 +11,6 @@
 <% end %>
 
 <%= render_gists(
-  "app/views/demos/showcase/reverse_text/_demo.html.erb",
+  "app/views/reverse_texts/_demo.html.erb",
   "app/reflexes/reverse_text_reflex.rb"
 ) %>

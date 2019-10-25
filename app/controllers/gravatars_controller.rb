@@ -1,0 +1,2 @@
+class GravatarsController < ApplicationController
+end

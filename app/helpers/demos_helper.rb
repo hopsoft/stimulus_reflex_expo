@@ -1,8 +1,19 @@
 # frozen_string_literal: true
 
 module DemosHelper
-  def render_demo(name)
-    render("/demos/demo") { render "/demos/showcase/#{name}/demo" }
+  def demos
+    %w[
+      book_search
+      chat
+      geo_selector
+      gravatar
+      reverse_text
+      snake
+    ]
+  end
+
+  def render_demo(demo)
+    render("/demos/demo") { render demo }
   end
 
   def render_explanation(&block)
@@ -20,6 +31,7 @@ module DemosHelper
 
   def language(filepath)
     case File.extname(filepath)
+    when ".scss" then "scss"
     when ".html" then "html"
     when ".erb" then "erb"
     when ".js" then "javascript"
@@ -29,6 +41,7 @@ module DemosHelper
 
   def language_title(language)
     case language
+    when "scss" then "CSS"
     when "html" then "HTML"
     when "erb" then "ERB"
     when "javascript" then "JavaScript"

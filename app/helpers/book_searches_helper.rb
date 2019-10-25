@@ -1,0 +1,2 @@
+module BookSearchesHelper
+end

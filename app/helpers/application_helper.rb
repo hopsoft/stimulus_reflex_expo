@@ -7,6 +7,6 @@ module ApplicationHelper
   end
 
   def active?(name)
-    name.to_s == params[:id]
+    controller_name.include? name
   end
 end

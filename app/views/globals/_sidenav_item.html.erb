@@ -1,4 +1,4 @@
-<%= link_to demo_path(name), class: css("nav-link text-nowrap pl-0", "text-primary": active?(name), "text-dark font-weight-light opacity-60": !active?(name)) do %>
+<%= link_to send("#{name}_path"), class: css("nav-link text-nowrap pl-0", "text-primary": active?(name), "text-dark font-weight-light opacity-60": !active?(name)) do %>
   <%= tag.i class: css("fa-fw fas opacity-50", "fa-angle-double-right": active?(name), "fa-angle-right": !active?(name)) %>
   <%= name.to_s.titleize %>
 <% end %>

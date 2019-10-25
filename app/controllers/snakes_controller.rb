@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
-module SnakeDemo
-  def setup_snake_demo
+class SnakesController < ApplicationController
+  def show
     unless @stimulus_reflex
       session[:direction] = "right"
       session[:clock] = false

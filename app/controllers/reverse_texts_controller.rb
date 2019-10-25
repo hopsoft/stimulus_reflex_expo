@@ -1,0 +1,2 @@
+class ReverseTextsController < ApplicationController
+end

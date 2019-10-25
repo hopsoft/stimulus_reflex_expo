@@ -1,7 +1,7 @@
 <h1>Gravatar</h1>
 
 <%= content_for :demo_title, "Displays Gravatar image for any email address" %>
-<%= render_demo :gravatar %>
+<%= render_demo "/gravatars/demo" %>
 
 <%= render_explanation do %>
   <p>
@@ -11,6 +11,6 @@
 <% end %>
 
 <%= render_gists(
-  "app/views/demos/showcase/gravatar/_demo.html.erb",
+  "app/views/gravatars/_demo.html.erb",
   "app/reflexes/gravatar_reflex.rb"
 ) %>

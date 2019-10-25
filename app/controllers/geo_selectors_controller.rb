@@ -1,0 +1,2 @@
+class GeoSelectorsController < ApplicationController
+end

@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :demos, only: [:index, :show]
+  scope :demos do
+    resource :book_search, only: [:show]
+    resource :chat, only: [:show]
+    resource :geo_selector, only: [:show]
+    resource :gravatar, only: [:show]
+    resource :reverse_text, only: [:show]
+    resource :snake, only: [:show]
+  end
+
+  resources :demos, only: [:index]
   root "demos#index"
 end
