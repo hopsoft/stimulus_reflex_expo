@@ -1,0 +1,24 @@
+<%= form_with model: @user, data: { controller: "validations", action: "keyup->validations#perform" } do |f| %>
+  <div class="form-row">
+    <div class="col">
+      <div class="form-group <%= validation_css @user, :first_name %>">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name,
+          class: "form-control #{validation_css @user, :first_name}",
+          data: { target: "validations.firstName" } %>
+      </div>
+      <div class="form-group <%= validation_css @user, :last_name%>">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name,
+          class: "form-control #{validation_css @user, :last_name}",
+          data: { target: "validations.lastName" } %>
+      </div>
+      <div class="form-group <%= validation_css @user, :email %>">
+        <%= f.label :email %>
+        <%= f.email_field :email,
+          class: "form-control #{validation_css @user, :email}",
+          data: { target: "validations.email" } %>
+      </div>
+    </div>
+  </div>
+<% end %>

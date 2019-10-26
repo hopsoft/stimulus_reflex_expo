@@ -1,0 +1,17 @@
+.valid {
+  label, input {
+    color: theme-color("success");
+  }
+  input {
+    border-color: theme-color("success");
+  }
+}
+
+.invalid {
+  label, input {
+    color: theme-color("danger");
+  }
+  input {
+    border-color: theme-color("danger");
+  }
+}

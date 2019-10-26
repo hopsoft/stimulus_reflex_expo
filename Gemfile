@@ -8,6 +8,7 @@ ruby "2.6.5"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "cable_ready", "~> 4.0"
 gem "countries", "~> 3.0"
+gem "email_validator", "~> 2.0"
 gem "http", "~> 4.1"
 gem "jbuilder", "~> 2.7"
 gem "pg", ">= 0.18", "< 2.0"
@@ -27,9 +28,11 @@ group :development, :test do
 end
 
 group :development do
+  gem "annotate"
   gem "listen", ">= 3.0.5", "< 3.2"
-  gem "spring-watcher-listen", "~> 2.0.0"
+  gem "model_probe"
   gem "spring"
+  gem "spring-watcher-listen", "~> 2.0.0"
   gem "standard"
   gem "web-console", ">= 3.3.0"
 end

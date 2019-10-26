@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     resource :gravatar, only: [:show]
     resource :reverse_text, only: [:show]
     resource :snake, only: [:show]
+    resource :validation, only: [:show]
   end
 
+  resources :users
   resources :demos, only: [:index]
   root "demos#index"
 end

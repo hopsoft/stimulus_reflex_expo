@@ -1,0 +1,36 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :bigint           not null, primary key
+#  first_name :string           not null
+#  last_name  :string           not null
+#  email      :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+class User < ApplicationRecord
+  # extends ...................................................................
+  # includes ..................................................................
+  # relationships .............................................................
+
+  # validations ...............................................................
+  validates :first_name, length: {minimum: 3, maximum: 20}
+  validates :last_name, length: {minimum: 3, maximum: 20}
+  validates :email, email: true
+
+  # callbacks .................................................................
+  # scopes ....................................................................
+  # additional config (i.e. accepts_nested_attribute_for etc...) ..............
+
+  # class methods .............................................................
+  class << self
+  end
+
+  # public instance methods ...................................................
+
+  # protected instance methods ................................................
+
+  # private instance methods ..................................................
+end
