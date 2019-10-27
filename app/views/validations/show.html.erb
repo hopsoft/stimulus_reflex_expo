@@ -4,11 +4,18 @@
 <%= render_demo "/validations/demo" %>
 
 <%= render_explanation do %>
+  <p>
+    Validates user input on each <code>keypress</code>.
+    <em>This demo could be simplified by changing it to only validate on <code>blur</code>.</em>
+  </p>
 <% end %>
 
 <%= render_gists(
   "app/javascript/stylesheets/validation.scss",
+  "app/javascript/controllers/validations_controller.js",
   "app/views/validations/_demo.html.erb",
+  "app/views/validations/_message.html.erb",
+
   "app/models/user.rb",
   "app/controllers/validations_controller.rb",
   "app/reflexes/validations_reflex.rb",

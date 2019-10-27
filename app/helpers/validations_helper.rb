@@ -1,7 +1,6 @@
 module ValidationsHelper
-  def validation_css(model, field)
-    return nil unless @stimulus_reflex
-    return "invalid" if model.errors[field.to_s].present?
-    "valid"
+  def validation_status(user, attr)
+    return :ignore unless user.attributes[attr.to_s].present?
+    user.errors[attr].present? ? :invalid : :valid
   end
 end
