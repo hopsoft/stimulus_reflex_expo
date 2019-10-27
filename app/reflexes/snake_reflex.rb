@@ -3,7 +3,7 @@
 class SnakeReflex < StimulusReflex::Reflex
   DIRECTIONS = {37 => "left", 38 => "up", 39 => "right", 40 => "down"}
 
-  def move(code)
+  def turn(code)
     if DIRECTIONS.key?(code)
       if (["left", "right"].include?(session[:direction]) && ["up", "down"].include?(DIRECTIONS[code])) || (["up", "down"].include?(session[:direction]) && ["left", "right"].include?(DIRECTIONS[code]))
         session[:direction] = DIRECTIONS[code]
@@ -25,7 +25,7 @@ class SnakeReflex < StimulusReflex::Reflex
       wait_for_it(:tick) do
         sleep session[:speed]
         eat
-        travel
+        move
         eat
         session[:alive] = survive?
         []
@@ -59,7 +59,7 @@ class SnakeReflex < StimulusReflex::Reflex
     end
   end
 
-  def travel
+  def move
     x, y = session[:snake].last
     case session[:direction]
     when "left"
