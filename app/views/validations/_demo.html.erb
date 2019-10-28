@@ -1,4 +1,4 @@
-<%= form_with model: @user, class: "mt-4", data: { controller: "validations", action: "validations#submit" } do |f| %>
+<%= form_with model: @user, class: "mt-4", data: { controller: "validations", action: "ajax:success->validations#reload" } do |f| %>
   <div class="col-6 form-group <%= validation_status @user, :first_name %>">
     <%= f.label :first_name, "First Name" %>
     <%= f.text_field :first_name, class: "form-control",

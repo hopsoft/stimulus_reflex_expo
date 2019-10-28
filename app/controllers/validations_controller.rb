@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ValidationsController < ApplicationController
   before_action :assign_params
 

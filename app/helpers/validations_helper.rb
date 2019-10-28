@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ValidationsHelper
   def validation_status(user, attr)
     return :ignore unless user.attributes[attr.to_s].present?

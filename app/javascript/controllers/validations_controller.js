@@ -1,3 +1,4 @@
+import Turbolinks from 'turbolinks'
 import debounce from 'lodash.debounce'
 import ApplicationController from './application_controller'
 
@@ -12,6 +13,10 @@ export default class extends ApplicationController {
 
   _perform (event) {
     this.stimulate('ValidationsReflex#perform', this.userParams)
+  }
+
+  reload () {
+    Turbolinks.visit(location.href)
   }
 
   validate (event) {
