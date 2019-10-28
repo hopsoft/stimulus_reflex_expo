@@ -2,6 +2,8 @@ import hljs from 'highlight.js'
 import { Controller } from 'stimulus'
 import StimulusReflex from 'stimulus_reflex'
 
+let lastFocusedElement
+
 /* This is your application's ApplicationController.
  * All StimulusReflex controllers should inherit from this class.
  *
@@ -16,6 +18,29 @@ import StimulusReflex from 'stimulus_reflex'
 export default class extends Controller {
   connect () {
     StimulusReflex.register(this)
+    document.addEventListener('focusin', this.focused)
+  }
+
+  disconnect () {
+    document.removeEventListener('focusin', this.focused)
+  }
+
+  focused (event) {
+    const focusTags = ['INPUT', 'TEXTAREA', 'SELECT']
+    if (!focusTags.includes(event.target.tagName)) return
+    lastFocusedElement = event.target
+  }
+
+  setFocus () {
+    if (!lastFocusedElement) return
+    if (lastFocusedElement === document.activeElement) return
+
+    lastFocusedElement.focus()
+
+    // shenanigans to ensure that the cursor is placed at the end of the existing value
+    const value = lastFocusedElement.value
+    lastFocusedElement.value = ''
+    lastFocusedElement.value = value
   }
 
   /* Application wide lifecycle methods.
@@ -45,19 +70,11 @@ export default class extends Controller {
   }
 
   afterReflex (element, reflex) {
+    this.setFocus()
+
     document.querySelectorAll('pre code').forEach(block => {
       hljs.highlightBlock(block)
     })
-
-    const focusElement = this.element.querySelector('[autofocus]')
-    if (focusElement) {
-      focusElement.focus()
-
-      // shenanigans to ensure that the cursor is placed at the end of the existing value
-      const value = focusElement.value
-      focusElement.value = ''
-      focusElement.value = value
-    }
 
     console.debug(
       reflex,

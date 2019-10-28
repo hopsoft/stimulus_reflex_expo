@@ -1,5 +1,4 @@
-<input type="text" placeholder="Enter an email address..."
-  class="form-control d-inline-block col-4"
-  data-reflex="keyup->GravatarReflex#perform" data-reflex-permanent>
+<input type="text" placeholder="Enter an email address..." class="form-control d-inline-block col-4"
+  data-reflex="input->GravatarReflex#perform" data-reflex-permanent>
 
 <span class="ml-3"><%= image_tag @gravatar_image_url || "" %></span>
