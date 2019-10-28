@@ -2,25 +2,26 @@
   <div class="col-6 form-group <%= validation_status @user, :first_name %>">
     <%= f.label :first_name, "First Name" %>
     <%= f.text_field :first_name, class: "form-control",
-      data: { target: "validations.firstName", action: "keyup->validations#validate", reflex_permanent: true } %>
-    <%= render "/validations/message", attr: :first_name %>
+      data: { target: "validations.firstName", action: "input->validations#validate", reflex_permanent: true } %>
+    <%= validation_message @user, :first_name %>
   </div>
 
   <div class="col-6 form-group <%= validation_status @user, :last_name%>">
     <%= f.label :last_name, "Last Name" %>
     <%= f.text_field :last_name, class: "form-control",
-      data: { target: "validations.lastName", action: "keyup->validations#validate", reflex_permanent: true } %>
-    <%= render "/validations/message", attr: :last_name %>
+      data: { target: "validations.lastName", action: "input->validations#validate", reflex_permanent: true } %>
+    <%= validation_message @user, :last_name %>
   </div>
 
   <div class="col-6 form-group <%= validation_status @user, :email %>">
     <%= f.label :email %>
     <%= f.email_field :email, class: "form-control",
-      data: { target: "validations.email", action: "keyup->validations#validate", reflex_permanent: true } %>
-    <%= render "/validations/message", attr: :email %>
+      data: { target: "validations.email", action: "input->validations#validate", reflex_permanent: true } %>
+    <%= validation_message @user, :email %>
   </div>
 
   <div class="col-6 form-group mt-4">
-    <%= f.submit "Submit", class: "btn btn-primary", disabled: @user.invalid?, data: { target: "validations.submit" } %>
+    <%= f.submit "Submit", class: "btn btn-primary", disabled: @user.invalid?,
+      data: { target: "validations.submit", disable_with: "Great Job! Form will reset shortly..." } %>
   </div>
 <% end %>
