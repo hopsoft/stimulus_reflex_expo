@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+Restaurant.destroy_all
 100.times do
   Restaurant.create(
     name: Faker::Restaurant.name,

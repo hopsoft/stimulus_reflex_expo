@@ -1,17 +1,21 @@
 <div class="card bg-light border-primary mt-4 shadow">
   <div class="card-header border-primary bg-primary-light">
-    <div class="row justify-content-between">
+    <div class="row">
       <div class="col-8">
         <h3 class="card-title"><%= content_for :demo_title %></h3>
         <%= content_for :demo_summary %>
-      </div>
-      <div class="col-4">
-        <%= image_tag "stimulus-reflex-logo.svg", style: "height:24px" %>
-        a Stimulus<strong>Reflex</strong> <span class="text-muted">Demo</span>
       </div>
     </div>
   </div>
   <div class="card-body">
     <%= yield %>
+  </div>
+    <div class="card-footer border-primary bg-primary-light">
+    <div class="row justify-content-end">
+      <div class="col-5">
+        <%= image_tag "stimulus-reflex-logo.svg", style: "height:24px" %>
+        a Stimulus<strong>Reflex</strong> <span class="text-muted">Demo</span>
+      </div>
+    </div>
   </div>
 </div>
