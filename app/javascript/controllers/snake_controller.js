@@ -12,8 +12,8 @@ export default class extends Controller {
     )
   }
 
-  move (event) {
-    this.stimulate('SnakeReflex#move', event.which)
+  turn (event) {
+    this.stimulate('SnakeReflex#turn', event.which)
     event.preventDefault()
   }
 
