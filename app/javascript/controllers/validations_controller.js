@@ -8,7 +8,6 @@ export default class extends ApplicationController {
   connect () {
     super.connect()
     this.perform = debounce(this._perform, 250)
-    this.firstNameTarget.focus()
   }
 
   _perform (event) {

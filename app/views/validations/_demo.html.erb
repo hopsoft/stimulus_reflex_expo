@@ -1,7 +1,7 @@
 <%= form_with model: @user, class: "mt-4", data: { controller: "validations", action: "ajax:success->validations#reload" } do |f| %>
   <div class="col-6 form-group <%= validation_status @user, :first_name %>">
     <%= f.label :first_name, "First Name" %>
-    <%= f.text_field :first_name, class: "form-control",
+    <%= f.text_field :first_name, class: "form-control", autofocus: true,
       data: { target: "validations.firstName", action: "input->validations#validate", reflex_permanent: true } %>
     <%= validation_message @user, :first_name %>
   </div>
