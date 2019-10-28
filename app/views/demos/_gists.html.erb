@@ -1,31 +1,33 @@
-<% all_lines = [] %>
-<% content_for :code do %>
-  <% grouped_filepaths.each do |language, filepaths| %>
-    <details class="mb-2">
-      <% language_lines = [] %>
-      <% content_for language do %>
-        <div class="mt-3">
-          <% filepaths.each do |filepath| %>
-            <% lines = file_lines(filepath) %>
-            <% language_lines.concat lines %>
-            <% all_lines.concat lines %>
-            <h6 class="mt-2"><%= filepath %> <code>(<%= lines.select(&:present?).size %> LOC)</code></h6>
-            <%= render "/demos/code", language: language, code: lines.join.strip %>
-          <% end %>
-        </div>
-      <% end %>
-      <summary>
-        <span class="d-inline-block" style="min-width:75px"><%= language_title language %> <code>(<%= language_lines.select(&:present?).size %> LOC)</code></span>
-      </summary>
-      <%= content_for language %>
-    </details>
+<% cache gists_cache_key(*filepaths) do %>
+  <% all_lines = [] %>
+  <% content_for :code do %>
+    <% grouped_filepaths.each do |language, filepaths| %>
+      <details class="mb-2">
+        <% language_lines = [] %>
+        <% content_for language do %>
+          <div class="mt-3">
+            <% filepaths.each do |filepath| %>
+              <% lines = file_lines(filepath) %>
+              <% language_lines.concat lines %>
+              <% all_lines.concat lines %>
+              <h6 class="mt-2"><%= filepath %> <code>(<%= lines.select(&:present?).size %> LOC)</code></h6>
+              <%= render "/demos/code", language: language, code: lines.join.strip %>
+            <% end %>
+          </div>
+        <% end %>
+        <summary>
+          <span class="d-inline-block" style="min-width:75px"><%= language_title language %> <code>(<%= language_lines.select(&:present?).size %> LOC)</code></span>
+        </summary>
+        <%= content_for language %>
+      </details>
+    <% end %>
   <% end %>
-<% end %>
 
-<h4 class="my-4">
-  <i class="fa-fw fas fa-code text-primary opacity-60"></i> Code
-  <small><code>(<%= all_lines.select(&:present?).size %> LOC)</code></small>
-</h4>
-<div style="margin-bottom:100px">
-  <%= content_for :code %>
-</div>
+  <h4 class="my-4">
+    <i class="fa-fw fas fa-code text-primary opacity-60"></i> Code
+    <small><code>(<%= all_lines.select(&:present?).size %> LOC)</code></small>
+  </h4>
+  <div style="margin-bottom:100px">
+    <%= content_for :code %>
+  </div>
+<% end %>

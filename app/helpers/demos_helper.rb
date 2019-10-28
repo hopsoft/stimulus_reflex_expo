@@ -23,7 +23,11 @@ module DemosHelper
   end
 
   def render_gists(*filepaths)
-    render "/demos/gists", grouped_filepaths: filepaths.group_by { |filepath| language filepath }
+    render "/demos/gists", filepaths: filepaths, grouped_filepaths: filepaths.group_by { |filepath| language filepath }
+  end
+
+  def gists_cache_key(*filepaths)
+    filepaths.map { |filepath| "#{filepath}/#{File.mtime(Rails.root.join(filepath)).iso8601}" }
   end
 
   def file_lines(filepath)

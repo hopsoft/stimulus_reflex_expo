@@ -18,6 +18,10 @@ export default class extends ApplicationController {
     Turbolinks.visit(location.href)
   }
 
+  reset (event) {
+    this.element.reset()
+  }
+
   validate (event) {
     this.focusElement = event.target
     this.perform()

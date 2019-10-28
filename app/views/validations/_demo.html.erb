@@ -2,26 +2,28 @@
   <div class="col-6 form-group <%= validation_status @user, :first_name %>">
     <%= f.label :first_name, "First Name" %>
     <%= f.text_field :first_name, class: "form-control", autofocus: true,
-      data: { target: "validations.firstName", action: "input->validations#validate" } %>
+      data: { target: "validations.firstName", action: "input->validations#validate", reflex_permanent: true } %>
     <%= validation_message @user, :first_name %>
   </div>
 
   <div class="col-6 form-group <%= validation_status @user, :last_name%>">
     <%= f.label :last_name, "Last Name" %>
     <%= f.text_field :last_name, class: "form-control",
-      data: { target: "validations.lastName", action: "input->validations#validate" } %>
+      data: { target: "validations.lastName", action: "input->validations#validate", reflex_permanent: true } %>
     <%= validation_message @user, :last_name %>
   </div>
 
   <div class="col-6 form-group <%= validation_status @user, :email %>">
     <%= f.label :email %>
     <%= f.email_field :email, class: "form-control",
-      data: { target: "validations.email", action: "input->validations#validate" } %>
+      data: { target: "validations.email", action: "input->validations#validate", reflex_permanent: true } %>
     <%= validation_message @user, :email %>
   </div>
 
   <div class="col-6 form-group mt-4">
-    <%= f.submit "Submit", class: "btn btn-primary", disabled: @user.invalid?,
+    <%= f.submit @user.valid? ? "Submit" : "Awaiting valid input...",
+      class: css("btn", "btn-primary": @user.valid?, "btn-secondary": @user.invalid?), disabled: @user.invalid?,
       data: { target: "validations.submit", disable_with: "Great Job! Form will reset shortly..." } %>
+    <a href="#" class="btn btn-default" data-action="validations#reset">Reset</a>
   </div>
 <% end %>
