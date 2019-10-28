@@ -1,11 +1,5 @@
-<h1>Book Search</h1>
-
-<%= content_for :demo_title, "Searches the Open Library API for matching books" %>
-<%= content_for :demo_summary do %>
-  <p>
-    <a href="https://openlibrary.org/developers/api">https://openlibrary.org/developers/api</a>
-  </p>
-<% end %>
+<%= content_for :demo_title, "Book Search" %>
+<%= content_for :demo_summary, "<a href='https://openlibrary.org/developers/api'>https://openlibrary.org/developers/api</a>".html_safe %>
 <%= render_demo "/book_searches/demo" %>
 
 <%= render_explanation do %>

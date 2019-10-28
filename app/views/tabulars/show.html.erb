@@ -1,6 +1,6 @@
-<%= content_for :demo_title, "Snake" %>
-<%= content_for :demo_summary, "Snakes need to eat, too!" %>
-<%= render_demo "/snakes/demo" %>
+<%= content_for :demo_title, "Tabular Data" %>
+<%= content_for :demo_summary, "With sorting, filtering and pagination" %>
+<%= render_demo "/tabulars/demo" %>
 
 <%= render_explanation do %>
   <p>
@@ -14,9 +14,7 @@
 <% end %>
 
 <%= render_gists(
-  "app/javascript/stylesheets/snake.scss",
-  "app/views/snakes/_demo.html.erb",
-  "app/javascript/controllers/snake_controller.js",
-  "app/controllers/snakes_controller.rb",
-  "app/reflexes/snake_reflex.rb"
+  "app/views/tabulars/_demo.html.erb",
+  "app/controllers/tabulars_controller.rb",
+  "app/reflexes/tabular_reflex.rb"
 ) %>

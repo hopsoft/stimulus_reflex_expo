@@ -19,6 +19,8 @@ gem "sidekiq", "~> 6.0"
 gem "stimulus_reflex", "~> 2.1"
 gem "valid_email", "~> 0.1"
 gem "webpacker", "~> 4.0"
+gem "kaminari", "~> 1.1.1"
+gem "faker", "~> 2.6.0"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

@@ -9,6 +9,7 @@ module DemosHelper
       gravatar
       reverse_text
       snake
+      tabular
       validation
     ]
   end
