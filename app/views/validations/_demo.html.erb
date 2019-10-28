@@ -2,21 +2,21 @@
   <div class="col-6 form-group <%= validation_status @user, :first_name %>">
     <%= f.label :first_name, "First Name" %>
     <%= f.text_field :first_name, class: "form-control", autofocus: true,
-      data: { target: "validations.firstName", action: "input->validations#validate" } %>
+      data: { target: "validations.firstName", action: "input->validations#validate", reflex_permanent: true } %>
     <%= validation_message @user, :first_name %>
   </div>
 
   <div class="col-6 form-group <%= validation_status @user, :last_name%>">
     <%= f.label :last_name, "Last Name" %>
     <%= f.text_field :last_name, class: "form-control",
-      data: { target: "validations.lastName", action: "input->validations#validate" } %>
+      data: { target: "validations.lastName", action: "input->validations#validate", reflex_permanent: true } %>
     <%= validation_message @user, :last_name %>
   </div>
 
   <div class="col-6 form-group <%= validation_status @user, :email %>">
     <%= f.label :email %>
     <%= f.email_field :email, class: "form-control",
-      data: { target: "validations.email", action: "input->validations#validate" } %>
+      data: { target: "validations.email", action: "input->validations#validate", reflex_permanent: true } %>
     <%= validation_message @user, :email %>
   </div>
 
