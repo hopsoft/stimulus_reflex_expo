@@ -1,4 +1,5 @@
-const focusTags = ['INPUT', 'TEXTAREA', 'SELECT']
+const textTags = ['INPUT', 'TEXTAREA']
+const focusTags = textTags.concat(['SELECT'])
 let lastFocusedElement
 
 const onfocus = event => {
@@ -13,7 +14,7 @@ export const setFocus = () => {
   lastFocusedElement.focus()
 
   // shenanigans to ensure that the cursor is placed at the end of the existing value
-  if (['INPUT', 'TEXTAREA'].includes(lastFocusedElement.tagName)) {
+  if (textTags.includes(lastFocusedElement.tagName)) {
     const value = lastFocusedElement.value
     lastFocusedElement.value = ''
     lastFocusedElement.value = value
