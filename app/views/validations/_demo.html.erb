@@ -21,7 +21,9 @@
   </div>
 
   <div class="col-6 form-group mt-4">
-    <%= f.submit "Submit", class: "btn btn-primary", disabled: @user.invalid?,
+    <%= f.submit @user.valid? ? "Submit" : "Awaiting valid input...",
+      class: css("btn", "btn-primary": @user.valid?, "btn-secondary": @user.invalid?), disabled: @user.invalid?,
       data: { target: "validations.submit", disable_with: "Great Job! Form will reset shortly..." } %>
+    <a href="#" class="btn btn-default" data-action="validations#reset">Reset</a>
   </div>
 <% end %>
