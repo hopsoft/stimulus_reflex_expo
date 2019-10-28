@@ -17,15 +17,15 @@ export default class extends Controller {
   }
 
   afterReflex (element, reflex) {
+    console.debug(
+      reflex,
+      `${(performance.now() - this.benchmark).toFixed(0)}ms`
+    )
+
     setFocus()
 
     document.querySelectorAll('pre code').forEach(block => {
       hljs.highlightBlock(block)
     })
-
-    console.debug(
-      reflex,
-      `${(performance.now() - this.benchmark).toFixed(0)}ms`
-    )
   }
 }
