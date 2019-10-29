@@ -22,7 +22,7 @@ export default class extends Controller {
       `${(performance.now() - this.benchmark).toFixed(0)}ms`
     )
 
-    setFocus()
+    setTimeout(setFocus, 5000)
 
     document.querySelectorAll('pre code').forEach(block => {
       hljs.highlightBlock(block)

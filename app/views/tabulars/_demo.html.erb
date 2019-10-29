@@ -1,35 +1,42 @@
 <div class="form-row mb-4">
   <div class="col-6">
-    <input type="text" data-reflex="input->TabularReflex#filter" data-reflex-permanent placeholder="Filter..." class="form-control">
+    <input type="text" placeholder="Search..." class="form-control" value="<%= @query %>" autofocus
+      data-controller="application" data-reflex="input->TabularReflex#search" data-reflex-permanent>
   </div>
 </div>
 
-<div class="row">
-  <table class="table table-striped table-bordered" data-controller="tabular">
-    <thead class="thead-light">
+<table class="table table-striped table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th style="width:25%">
+        <%= link_to "Name #{arrow :name}", "#", class: column_css(:name),
+          data: { reflex: "click->TabularReflex#order", column_name: :name } %>
+      </th>
+      <th style="width:25%">
+        <%= link_to "Stars #{arrow :stars}", "#", class: column_css(:stars),
+          data: { reflex: "click->TabularReflex#order", column_name: :stars } %>
+      </th>
+      <th style="width:25%">
+        <%= link_to "Price #{arrow :price}", "#", class: column_css(:price),
+          data: { reflex: "click->TabularReflex#order", column_name: :price } %>
+      </th>
+      <th style="width:25%">
+        <%= link_to "Category #{arrow :category}", "#", class: column_css(:category),
+          data: { reflex: "click->TabularReflex#order", column_name: :category } %>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
       <tr>
-        <% Restaurant::FILTERS.each_with_index do |sort, i| %>
-          <th scope="col" style="width: <%= i > 0 ? "22" : "34" %>%">
-            <%= link_to sort.capitalize, "#", class: sort_css(sort), data: { reflex: "click->TabularReflex#sort", sort: sort } %>
-            <%= arrow(sort, session[:sort], session[:sort_order]) %>
-          </th>
-        <% end %>
+        <td class=""><%= restaurant.name %></td>
+        <td class=""><%= "★" * restaurant.stars %></td>
+        <td class=""><%= "$" * restaurant.price %></td>
+        <td class=""><%= restaurant.category %></td>
       </tr>
-    </thead>
+    <% end %>
+  </tbody>
+</table>
 
-    <tbody>
-      <% @restaurants.each do |restaurant| %>
-        <tr>
-          <td><%= restaurant.name %></td>
-          <td><%= stars_to_symbol(restaurant.stars) %></td>
-          <td><%= price_to_dollar_signs(restaurant.price) %></td>
-          <td><%= restaurant.category %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
-<div class="row justify-content-center">
-  <%= render partial: 'pagy', locals: {pagy: @pagy} %>
-</div>
+<%== pagy_bootstrap_nav @pagy %>
