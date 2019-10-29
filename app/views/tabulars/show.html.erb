@@ -1,0 +1,20 @@
+<%= content_for :demo_title, "Tabular Data" %>
+<%= content_for :demo_summary, "With sorting, filtering and pagination" %>
+<%= render_demo "/tabulars/demo" %>
+
+<%= render_explanation do %>
+  <p>
+    We used the Rails session object, model scopes, Bootstrap and the Pagy gem to display lightning fast row-based data without design complexity. <a href="https://docs.stimulusreflex.com/quickstart#look-mom-no-javascript">100% declarative StimulusReflex attributes</a> means <strong>no custom JavaScript was written for this demo.</strong>
+  </p>
+  <p>
+    If you open a second browser tab to this page, your filtering value will not be over-written by you or other users, courtesy of the <code>data-reflex-permanent</code> attribute.
+  </p>
+<% end %>
+
+<%= render_gists(
+  "app/views/tabulars/_demo.html.erb",
+  "app/controllers/tabulars_controller.rb",
+  "app/helpers/tabulars_helper.rb",
+  "app/models/restaurant.rb",
+  "app/reflexes/tabular_reflex.rb"
+) %>

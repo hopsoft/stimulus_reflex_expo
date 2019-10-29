@@ -90,6 +90,8 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.5)
     erubi (1.9.0)
+    faker (2.6.0)
+      i18n (>= 1.6, < 1.8)
     ffi (1.11.1)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -133,6 +135,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
+    pagy (3.6.0)
     parallel (1.18.0)
     parser (2.6.5.0)
       ast (~> 2.4.0)
@@ -281,10 +284,12 @@ DEPENDENCIES
   capybara (>= 2.15)
   countries (~> 3.0)
   dotenv
+  faker (~> 2.6.0)
   http (~> 4.1)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   model_probe
+  pagy (~> 3.6.0)
   pg (>= 0.18, < 2.0)
   pry-nav
   pry-rails

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resource :gravatar, only: [:show]
     resource :reverse_text, only: [:show]
     resource :snake, only: [:show]
+    resource :tabular, only: [:show]
     resource :validation, only: [:show]
   end
 
