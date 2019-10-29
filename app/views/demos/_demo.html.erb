@@ -12,9 +12,11 @@
   </div>
     <div class="card-footer border bg-muted">
     <div class="row">
-      <div class="col opacity-60 d-flex justify-content-end">
-        <%= image_tag "stimulus-reflex-logo.svg", style: "height:18px" %>
-        <small class="ml-2">a Stimulus<strong>Reflex</strong> <span class="text-muted">Demo</span></small>
+      <div class="col opacity-80 d-flex justify-content-end">
+        <%= link_to "https://github.com/hopsoft/stimulus_reflex", target: "_blank" do %>
+          <%= image_tag "stimulus-reflex-logo.svg", class: "mr-1", style: "height:18px" %>
+          <small>a Stimulus<strong>Reflex</strong> Demo</small>
+        <% end %>
       </div>
     </div>
   </div>
