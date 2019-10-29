@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     resource :validation, only: [:show]
   end
 
-  resources :users, only: [:create]
   resources :demos, only: [:index]
   root "demos#index"
 end

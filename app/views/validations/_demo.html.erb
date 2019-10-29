@@ -1,4 +1,4 @@
-<%= form_with model: @user, class: "mt-4", data: { controller: "validations", action: "ajax:success->validations#reload" } do |f| %>
+<%= form_with model: @user, url: "#", class: "mt-4", data: { controller: "validations", action: "submit->validations#reset" } do |f| %>
   <div class="col-6 form-group <%= validation_status @user, :first_name %>">
     <%= f.label :first_name, "First Name" %>
     <%= f.text_field :first_name, class: "form-control", autofocus: true,
@@ -24,6 +24,6 @@
     <%= f.submit @user.valid? ? "Submit" : "Awaiting valid input...",
       class: css("btn", "btn-primary": @user.valid?, "btn-secondary": @user.invalid?), disabled: @user.invalid?,
       data: { target: "validations.submit", disable_with: "Great Job! Form will reset shortly..." } %>
-    <a href="#" class="btn btn-default" data-action="validations#reset">Reset</a>
+    <a href="#" class="btn btn-default" data-action="click->validations#reset">Reset</a>
   </div>
 <% end %>

@@ -14,12 +14,9 @@ export default class extends ApplicationController {
     this.stimulate('ValidationsReflex#perform', this.userParams)
   }
 
-  reload () {
-    Turbolinks.visit(location.href)
-  }
-
   reset (event) {
-    this.element.reset()
+    event.preventDefault()
+    Turbolinks.visit(location.href)
   }
 
   validate (event) {
