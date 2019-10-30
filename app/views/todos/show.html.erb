@@ -1,0 +1,19 @@
+<%= content_for :demo_title, "Todos" %>
+<%= render_demo "/todos/demo" %>
+
+<%= render_explanation do %>
+  <p>
+    What revolution in software development would be complete without a tiny, highly-performant implementation of <a href="http://todomvc.com/">TodoMVC</a>?
+  </p>
+<% end %>
+
+<%= render_gists(
+  "app/javascript/controllers/todos_controller.js",
+  "app/views/todos/_demo.html.erb",
+  "app/views/todos/_filters.html.erb",
+  "app/views/todos/_todo.html.erb",
+  "app/controllers/todos_controller.rb",
+  "app/helpers/todos_helper.rb",
+  "app/models/todo.rb",
+  "app/reflexes/todos_reflex.rb"
+) %>

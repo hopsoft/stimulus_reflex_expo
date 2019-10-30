@@ -10,6 +10,7 @@ module DemosHelper
       reverse_text
       snake
       tabular
+      todo
       validation
     ]
   end

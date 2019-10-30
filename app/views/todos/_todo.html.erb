@@ -1,0 +1,20 @@
+<% if todo.id == @edit_id %>
+  <li class="editing">
+    <input autofocus type="text" class="edit" value="<%= todo.title %>"
+      data-action="keyup->todos#cancelEdit blur->todos#cancelEdit"
+      data-reflex="change->TodosReflex#update" data-id="<%= todo.id %>" data-room="<%= session.id %>">
+  </li>
+<% else %>
+  <li class="<%= "completed" if todo.completed? %>"
+      data-reflex="click->TodosReflex#edit"
+      data-id="<%= todo.id %>"
+      data-room="<%= session.id %>">
+    <div class="view">
+      <input <%= "checked" if todo.completed? %> type="checkbox" class="toggle" data-reflex="change->TodosReflex#toggle" data-id="<%= todo.id %>" data-room="<%= session.id %>">
+      <label>
+        <%= todo.title %>
+      </label>
+      <button name="button" type="button" class="destroy" data-reflex="click->TodosReflex#destroy" data-id="<%= todo.id %>" data-room="<%= session.id %>"/>
+    </div>
+  </li>
+<% end %>
