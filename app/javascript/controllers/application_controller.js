@@ -1,4 +1,3 @@
-import hljs from 'highlight.js'
 import { setFocus } from '../lib/focus'
 import { Controller } from 'stimulus'
 import StimulusReflex from 'stimulus_reflex'
@@ -22,10 +21,6 @@ export default class extends Controller {
       `${(performance.now() - this.benchmark).toFixed(0)}ms`
     )
 
-    setTimeout(setFocus, 5000)
-
-    document.querySelectorAll('pre code').forEach(block => {
-      hljs.highlightBlock(block)
-    })
+    setFocus()
   }
 }

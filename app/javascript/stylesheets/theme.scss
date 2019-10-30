@@ -2,12 +2,22 @@ html, body {
   height: 100%;
 }
 
-pre code.hljs {
-  padding: 20px;
+pre {
+  margin: 0;
+  padding: 0;
 }
 
 .nav {
   a.nav-link {
     color: theme-color("muted");
   }
+}
+
+.highlight {
+  border: $border-width solid $border-color;
+  border-radius: 0.25rem;
+  background-color: theme-color("light");
+  padding: 10px;
+  margin-left: 12px;
+  margin-bottom: 30px;
 }

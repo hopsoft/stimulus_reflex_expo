@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.5"
 
+gem "rouge"
 gem "bootsnap", ">= 1.4", require: false
 gem "cable_ready", "~> 4.0"
 gem "countries", "~> 3.0"

@@ -1,5 +1,5 @@
 import Rails from '@rails/ujs'
-import debounce from 'lodash.debounce'
+import { debounce } from 'lodash'
 import ApplicationController from './application_controller'
 
 let lastMessageId

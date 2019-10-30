@@ -3,7 +3,7 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/brands';
-@import 'highlight.js/styles/atom-one-light';
+@import "pygments-rouge-css/github";
 @import 'bootstrap/scss/bootstrap';
 @import 'utilities';
 @import 'theme';
