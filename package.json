@@ -9,7 +9,7 @@
     "@rails/webpacker": "^4.0.7",
     "bootstrap": "^4.3.1",
     "cable_ready": "^4.0.7",
-    "lodash": "^4.17.15",
+    "lodash-es": "^4.17.15",
     "popper.js": "^1.16.0",
     "pygments-rouge-css": "^0.1.0",
     "stimulus": "^1.1.1",
@@ -19,6 +19,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "prettier-standard": "^15.0.1",
+    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-dev-server": "^3.8.2"
   }
 }
