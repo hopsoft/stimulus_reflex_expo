@@ -17,7 +17,8 @@ export default class extends ApplicationController {
     this.countTarget.hidden = true
   }
 
-  _perform () {
+  _perform (event) {
+    event.preventDefault()
     this.stimulate('BookSearchReflex#perform', this.queryTarget.value)
   }
 }

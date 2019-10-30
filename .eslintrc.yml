@@ -1,4 +1,5 @@
 globals:
+  MutationObserver: readonly
   alert: readonly
   location: readonly
   performance: readonly

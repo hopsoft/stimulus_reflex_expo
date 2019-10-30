@@ -1,4 +1,3 @@
-import { setFocus } from '../lib/focus'
 import { Controller } from 'stimulus'
 import StimulusReflex from 'stimulus_reflex'
 
@@ -20,7 +19,5 @@ export default class extends Controller {
       reflex,
       `${(performance.now() - this.benchmark).toFixed(0)}ms`
     )
-
-    setFocus()
   }
 }
