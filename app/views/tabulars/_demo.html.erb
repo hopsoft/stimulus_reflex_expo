@@ -1,6 +1,6 @@
 <div class="form-row mb-4">
-  <div class="col-6">
-    <input type="text" placeholder="Search..." class="form-control" value="<%= @query %>" autofocus
+  <div class="col-6" data-reflex-permanent>
+    <input id="nate" type="text" placeholder="Search..." class="form-control" value="<%= @query %>"
       data-controller="application" data-reflex="input->TabularReflex#search" data-reflex-permanent>
   </div>
 </div>
