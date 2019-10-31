@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_102010) do
+ActiveRecord::Schema.define(version: 2019_10_31_091338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "missions", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.string "title", null: false
+    t.boolean "completed", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["completed"], name: "index_missions_on_completed"
+    t.index ["session_id"], name: "index_missions_on_session_id"
+  end
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false

@@ -1,0 +1,20 @@
+<% if mission.id == @edit_id %>
+  <li class="editing">
+    <input autofocus type="text" class="edit" value="<%= mission.title %>"
+      data-action="keyup->missions#cancelEdit blur->missions#cancelEdit"
+      data-reflex="change->MissionsReflex#update" data-id="<%= mission.id %>" data-room="<%= session.id %>">
+  </li>
+<% else %>
+  <li class="<%= "completed" if mission.completed? %>"
+      data-reflex="click->MissionsReflex#edit"
+      data-id="<%= mission.id %>"
+      data-room="<%= session.id %>">
+    <div class="view">
+      <input <%= "checked" if mission.completed? %> type="checkbox" class="toggle" data-reflex="change->MissionsReflex#toggle" data-id="<%= mission.id %>" data-room="<%= session.id %>">
+      <label>
+        <%= mission.title %>
+      </label>
+      <button name="button" type="button" class="destroy" data-reflex="click->MissionsReflex#destroy" data-id="<%= mission.id %>" data-room="<%= session.id %>"/>
+    </div>
+  </li>
+<% end %>

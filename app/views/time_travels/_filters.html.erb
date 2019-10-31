@@ -1,0 +1,23 @@
+<section class="footer">
+  <span class="todo-count">
+    <strong><%= @all_missions.active.count %></strong> <%= "item".pluralize @all_missions.active.count %> left
+  </span>
+
+  <ul class="filters">
+    <li>
+      <%= link_to "All", "#", class: filter_css(:all), data: { reflex: "click->MissionsReflex#filter", room: session.id, filter: "all" } %>
+    </li>
+    <li>
+      <%= link_to "Active", "#", class: filter_css(:active), data: { reflex: "click->MissionsReflex#filter", room: session.id, filter: "active" } %>
+    </li>
+    <li>
+      <%= link_to "Completed", "#", class: filter_css(:completed), data: { reflex: "click->MissionsReflex#filter", room: session.id, filter: "completed" } %>
+    </li>
+  </ul>
+
+  <% if @all_missions.completed.any? %>
+    <button class="clear-completed" data-reflex="click->MissionsReflex#destroy_completed" data-room="<%= session.id %>">
+      Clear completed
+    </button>
+  <% end %>
+</section>
