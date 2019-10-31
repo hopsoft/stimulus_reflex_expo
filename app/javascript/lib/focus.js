@@ -7,7 +7,7 @@ const onfocus = event => {
   lastFocusedElement = event.target
 }
 
-export const setFocus = event => {
+const setFocus = () => {
   if (!lastFocusedElement) return
   if (lastFocusedElement === document.activeElement) return
 
@@ -23,4 +23,6 @@ export const setFocus = event => {
 
 document.removeEventListener('focusin', onfocus, true)
 document.addEventListener('focusin', onfocus, true)
+
+document.removeEventListener('cable-ready:after-morph', setFocus)
 document.addEventListener('cable-ready:after-morph', setFocus)
