@@ -1,5 +1,5 @@
 module TodosHelper
   def filter_css(filter)
-    "selected" if session[:filter] == filter.to_s
+    "selected" if session[:todo_filter] == filter.to_s
   end
 end

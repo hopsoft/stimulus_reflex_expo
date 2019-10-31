@@ -33,6 +33,6 @@ class TodosReflex < StimulusReflex::Reflex
   end
 
   def filter
-    session[:filter] = element.dataset[:filter]
+    session[:todo_filter] = element.dataset[:filter]
   end
 end
