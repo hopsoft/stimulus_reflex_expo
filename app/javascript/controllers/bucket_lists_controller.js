@@ -2,12 +2,16 @@ import hljs from 'highlight.js'
 import { Controller } from 'stimulus'
 import StimulusReflex from 'stimulus_reflex'
 import Velocity from 'velocity-animate'
+import hotkeys from 'hotkeys-js'
 
 export default class extends Controller {
   static targets = ['list']
 
   connect () {
     StimulusReflex.register(this)
+    hotkeys('ctrl+z, command+z', () => {
+      this.stimulate('BucketListsReflex#revert')
+    })
   }
 
   afterReflex () {

@@ -30,7 +30,20 @@ class BucketListsReflex < StimulusReflex::Reflex
     Mission.find_by(session_id: session.id, id: element.dataset[:id])&.destroy
   end
 
+  def revert
+    if version = versions.first
+      PaperTrail.request(enabled: false) do
+        version.reify ? version.reify.save! : Mission.where(id: version.item_id).destroy_all
+        version.destroy
+      end
+    end
+  end
+
   def filter
     session[:missions_filter] = element.dataset[:filter]
+  end
+
+  def versions
+    PaperTrail::Version.where(whodunnit: session.id).order("versions.created_at DESC")
   end
 end

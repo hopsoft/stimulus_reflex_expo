@@ -6,6 +6,7 @@
         <li><%= link_to "Add 5", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 5 } %></li>
         <li><%= link_to "Add 10", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 10 } %></li>
       </ul>
+          <button data-reflex="click->BucketListsReflex#revert">Revert</button>
     </header>
     <% if @all_missions.any? %>
       <section class="main">
