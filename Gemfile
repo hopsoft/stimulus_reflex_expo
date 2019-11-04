@@ -5,23 +5,23 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.5"
 
-gem "rouge"
 gem "bootsnap", ">= 1.4", require: false
 gem "cable_ready", "~> 4.0"
 gem "countries", "~> 3.0"
+gem "faker", "~> 2.6.0"
 gem "http", "~> 4.1"
 gem "jbuilder", "~> 2.7"
+gem "pagy", "~> 3.6.0"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "rails", "~> 6.0"
 gem "redis", "~> 4.0"
+gem "rouge", "~> 3.12.0"
 gem "sass-rails", "~> 6"
 gem "sidekiq", "~> 6.0"
 gem "stimulus_reflex", "~> 2.1"
 gem "valid_email", "~> 0.1"
 gem "webpacker", "~> 4.0"
-gem "pagy", "~> 3.6.0"
-gem "faker", "~> 2.6.0"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
