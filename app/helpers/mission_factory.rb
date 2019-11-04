@@ -28,12 +28,14 @@ module MissionFactory
 
   def intent
     [
-      Faker::Verb.base.capitalize,
-      ["with", "for", "about", "at"].sample,
+      ["call up", "find", "run into", "summon"].sample.capitalize,
       Faker::FunnyName.two_word_name,
-      "and",
-      ["bring them", "share a", "remember fondly", "look forward to", "dangle the promise of"].sample,
+      ["and", "so that you can", "because you might as well"].sample,
+      ["bring them", "share some", "hog all of the", "look forward to some", "dangle the promise of"].sample,
       [Faker::Food.dish, Faker::Beer.style].sample,
+      ["and", "or", "then"].sample,
+      ["talk about", "argue about", "discuss", "criticize"].sample,
+      Faker::Artist.name,
     ].join(" ")
   end
 

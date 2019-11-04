@@ -4,13 +4,13 @@ module DemosHelper
   def demos
     %w[
       book_search
+      bucket_list
       chat
       geo_selector
       gravatar
       reverse_text
       snake
       tabular
-      bucket_list
       todo
       validation
     ]
