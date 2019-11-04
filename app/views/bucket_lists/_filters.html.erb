@@ -1,0 +1,17 @@
+<section class="footer">
+  <span class="todo-count">
+    <strong><%= @all_missions.active.count %></strong> <%= "item".pluralize @all_missions.active.count %> left
+  </span>
+
+  <ul class="filters">
+    <li>
+      <%= link_to "All", "#", class: filter_missions(:all), data: { reflex: "click->BucketListsReflex#filter", room: session.id, filter: "all" } %>
+    </li>
+    <li>
+      <%= link_to "Active", "#", class: filter_missions(:active), data: { reflex: "click->BucketListsReflex#filter", room: session.id, filter: "active" } %>
+    </li>
+    <li>
+      <%= link_to "Completed", "#", class: filter_missions(:completed), data: { reflex: "click->BucketListsReflex#filter", room: session.id, filter: "completed" } %>
+    </li>
+  </ul>
+</section>

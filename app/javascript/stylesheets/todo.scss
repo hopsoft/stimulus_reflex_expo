@@ -61,6 +61,16 @@
 	text-rendering: optimizeLegibility;
 }
 
+.todoapp .header {
+  font-size: 15px;
+  text-align: center;
+  padding: 10px 15px;
+}
+
+.todoapp .header ul.filters {
+  position: static;
+}
+
 .todoapp .new-todo,
 .todoapp .edit {
 	position: relative;
@@ -123,6 +133,12 @@
 
 .todoapp .toggle-all:checked + label:before {
 	color: #737373;
+}
+
+.todoapp ul.capped {
+  max-height: 320px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .todoapp .todo-list {
@@ -190,7 +206,7 @@
 }
 
 .todoapp .todo-list li label {
-	word-break: break-all;
+	// word-break: break-all;
 	padding: 15px 15px 15px 60px;
 	display: block;
 	line-height: 1.2;
@@ -337,4 +353,9 @@ html .clear-completed:active {
 	.todoapp .filters {
 		bottom: 10px;
 	}
+}
+
+.rainbow-text {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   -webkit-background-clip: text;
+  color: transparent;
 }

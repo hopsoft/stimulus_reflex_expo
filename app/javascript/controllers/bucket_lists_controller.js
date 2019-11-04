@@ -28,11 +28,13 @@ export default class extends Controller {
 
   cancelEdit (event) {
     if (event.type === 'keyup' && !['Escape', 'Esc'].includes(event.key)) return
-    this.stimulate('MissionsReflex#cancel_edit')
+    this.stimulate('BucketListsReflex#cancel_edit')
   }
 
   afterCreate () {
-    this.highlight(this.lastListItem)
+    ;[...this.listItems].forEach(element => {
+      if (element.classList.contains('new')) this.highlight(element)
+    })
   }
 
   afterToggle (checkbox) {
@@ -41,10 +43,6 @@ export default class extends Controller {
 
   afterUpdate (element) {
     this.highlight(this.listItem(element.dataset.id))
-  }
-
-  afterToggleAll () {
-    this.listItems.forEach(li => this.highlight(li))
   }
 
   highlight (element) {
@@ -59,9 +57,5 @@ export default class extends Controller {
 
   get listItems () {
     return this.listTarget.querySelectorAll('li')
-  }
-
-  get lastListItem () {
-    return this.listItems[this.listItems.length - 1]
   }
 }

@@ -1,6 +1,10 @@
-class MissionsReflex < StimulusReflex::Reflex
+class BucketListsReflex < StimulusReflex::Reflex
   def create
-    Mission.create session_id: session.id, title: element[:value]
+    PaperTrail.request.whodunnit = session.id
+    @created_ids = []
+    element.dataset[:step].to_i.times do
+      @created_ids << Mission.create(session_id: session.id).id
+    end
   end
 
   def edit
@@ -12,24 +16,18 @@ class MissionsReflex < StimulusReflex::Reflex
   end
 
   def update
+    PaperTrail.request.whodunnit = session.id
     Mission.find_by(session_id: session.id, id: element.dataset[:id])&.update title: element[:value]
   end
 
   def toggle
+    PaperTrail.request.whodunnit = session.id
     Mission.find_by(session_id: session.id, id: element.dataset[:id])&.toggle! :completed
   end
 
   def destroy
+    PaperTrail.request.whodunnit = session.id
     Mission.find_by(session_id: session.id, id: element.dataset[:id])&.destroy
-  end
-
-  def toggle_all
-    todos = Mission.where(session_id: session.id)
-    todos.update_all completed: todos.active.exists?
-  end
-
-  def destroy_completed
-    Mission.where(session_id: session.id, completed: true).destroy_all
   end
 
   def filter

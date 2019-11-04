@@ -32,7 +32,7 @@ export default class extends Controller {
   }
 
   afterCreate () {
-    this.highlight(this.lastListItem)
+    this.highlight([...this.listItems].slice(-1))
   }
 
   afterToggle (checkbox) {
@@ -59,9 +59,5 @@ export default class extends Controller {
 
   get listItems () {
     return this.listTarget.querySelectorAll('li')
-  }
-
-  get lastListItem () {
-    return this.listItems[this.listItems.length - 1]
   }
 }

@@ -1,0 +1,19 @@
+<div class="col-lg-10 col-xl-9">
+  <section class="todoapp" data-controller="bucket-lists" data-reflex-root=".todoapp">
+    <header class="header">
+      <ul class="filters">
+        <li><%= link_to "Add 1", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 1 } %></li>
+        <li><%= link_to "Add 5", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 5 } %></li>
+        <li><%= link_to "Add 10", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 10 } %></li>
+      </ul>
+    </header>
+    <% if @all_missions.any? %>
+      <section class="main">
+        <ul class="todo-list capped" data-target="bucket-lists.list">
+          <%= render partial: "mission", collection: @filtered_missions %>
+        </ul>
+      </section>
+    <% end %>
+    <%= render "/bucket_lists/filters" if @all_missions.any? %>
+  </section>
+</div>

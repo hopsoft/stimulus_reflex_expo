@@ -1,0 +1,17 @@
+<%= content_for :demo_title, "Bucket List" %>
+<%= render_demo "/bucket_lists/demo" %>
+
+<%= render_explanation do %>
+  <p></p>
+<% end %>
+
+<%= render_gists(
+  "app/javascript/controllers/bucket_lists_controller.js",
+  "app/views/bucket_lists/_demo.html.erb",
+  "app/views/bucket_lists/_filters.html.erb",
+  "app/views/bucket_lists/_mission.html.erb",
+  "app/controllers/bucket_lists_controller.rb",
+  "app/helpers/bucket_lists_helper.rb",
+  "app/models/mission.rb",
+  "app/reflexes/bucket_lists_reflex.rb"
+) %>
