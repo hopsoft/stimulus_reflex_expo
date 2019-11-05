@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
-class TabularReflex < StimulusReflex::Reflex
+class TabularReflex < ApplicationReflex
   def search
-    session[:query] = element[:value].strip
-    session[:page] = 1
+    @query = session[:query] = element[:value].strip
+    @order_by = session[:order_by]
+    @direction = session[:direction]
   end
 
   def order
-    session[:order_by] = element.dataset["column-name"]
-    session[:direction] = session[:direction] == "asc" ? "desc" : "asc"
+    @query = session[:query]
+    @order_by = session[:order_by] = element.dataset["column-name"]
+    @direction = session[:direction] = element.dataset["direction"]
   end
 end

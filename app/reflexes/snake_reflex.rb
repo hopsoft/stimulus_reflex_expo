@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SnakeReflex < StimulusReflex::Reflex
+class SnakeReflex < ApplicationReflex
   DIRECTIONS = {37 => "left", 38 => "up", 39 => "right", 40 => "down"}
 
   def turn(code)

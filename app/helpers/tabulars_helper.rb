@@ -11,4 +11,12 @@ module TabularsHelper
     return if column_name.to_s != @order_by
     @direction == "desc" ? "↑" : "↓"
   end
+
+  def direction
+    @direction == "asc" ? "desc" : "asc"
+  end
+
+  def pagy_get_params(params)
+    params.merge query: @query, order_by: @order_by, direction: @direction
+  end
 end
