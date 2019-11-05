@@ -9,10 +9,9 @@
     "@rails/webpacker": "^4.0.7",
     "bootstrap": "^4.3.1",
     "cable_ready": "^4.0.7",
-    "highlight.js": "^9.15.10",
-    "jquery": "^3.4.1",
-    "lodash.debounce": "^4.0.8",
+    "lodash-es": "^4.17.15",
     "popper.js": "^1.16.0",
+    "pygments-rouge-css": "^0.1.0",
     "stimulus": "^1.1.1",
     "stimulus_reflex": "^2.1.3",
     "turbolinks": "^5.2.0"
@@ -20,6 +19,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "prettier-standard": "^15.0.1",
+    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-dev-server": "^3.8.2"
   }
 }
