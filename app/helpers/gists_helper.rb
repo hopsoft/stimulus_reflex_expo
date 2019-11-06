@@ -1,5 +1,5 @@
 module GistsHelper
-  FORMATTER = Rouge::Formatters::HTMLPygments.new(Rouge::Formatters::HTML.new)
+  FORMATTER = Rouge::Formatters::HTMLPygments.new(Rouge::Formatters::HTMLLinewise.new(Rouge::Formatters::HTML.new))
 
   LEXERS = {
     erb: Rouge::Lexers::ERB.new,

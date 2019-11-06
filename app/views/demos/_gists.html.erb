@@ -9,7 +9,9 @@
             <% lines = file_lines(filepath) %>
             <% language_lines.concat lines %>
             <% all_lines.concat lines %>
-            <h6 class="mt-2"><%= filepath %> <code>(<%= lines.select(&:present?).size %> LOC)</code></h6>
+            <h6 class="mt-2 p-3 d-inline-block font-weight-light bg-light border border-bottom-0 rounded-top text-muted">
+              <%= filepath %> <code>(<%= lines.select(&:present?).size %> LOC)</code>
+            </h6>
             <%== render_gist language, lines.join %>
           <% end %>
         </div>

@@ -2,14 +2,15 @@
 
 class TabularReflex < ApplicationReflex
   def search
-    @query = session[:query] = element[:value].strip
-    @order_by = session[:order_by]
-    @direction = session[:direction]
+    session[:query] = element[:value].strip
   end
 
   def order
-    @query = session[:query]
-    @order_by = session[:order_by] = element.dataset["column-name"]
-    @direction = session[:direction] = element.dataset["direction"]
+    session[:order_by] = element.dataset["column-name"]
+    session[:direction] = element.dataset["direction"]
+  end
+
+  def paginate
+    session[:page] = element.dataset[:page].to_i
   end
 end
