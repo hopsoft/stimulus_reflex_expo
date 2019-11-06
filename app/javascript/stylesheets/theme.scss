@@ -11,6 +11,12 @@ input, textarea, select, option {
   font-size: 16px;
 }
 
+details {
+  h6 {
+    margin-bottom: -3px !important;
+  }
+}
+
 .nav {
   a.nav-link {
     color: theme-color("muted");
@@ -22,6 +28,5 @@ input, textarea, select, option {
   border-radius: 0.25rem;
   background-color: theme-color("light");
   padding: 10px;
-  margin-left: 12px;
   margin-bottom: 30px;
 }

@@ -7,6 +7,10 @@ const onfocus = event => {
   lastFocusedElement = event.target
 }
 
+const onblur = event => {
+  if (event.target === lastFocusedElement) lastFocusedElement = null
+}
+
 const setFocus = () => {
   if (!lastFocusedElement) return
   if (lastFocusedElement === document.activeElement) return
@@ -23,6 +27,9 @@ const setFocus = () => {
 
 document.removeEventListener('focusin', onfocus, true)
 document.addEventListener('focusin', onfocus, true)
+
+document.removeEventListener('focusout', onblur, true)
+document.addEventListener('focusout', onblur, true)
 
 document.removeEventListener('cable-ready:after-morph', setFocus)
 document.addEventListener('cable-ready:after-morph', setFocus)
