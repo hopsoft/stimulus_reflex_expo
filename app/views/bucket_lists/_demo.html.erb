@@ -1,20 +1,47 @@
-<div class="col-lg-10 col-xl-9">
-  <section class="todoapp" data-controller="bucket-lists" data-reflex-root=".todoapp">
-    <header class="header">
-      <ul class="filters">
-        <li><%= link_to "Add 1", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 1 } %></li>
-        <li><%= link_to "Add 5", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 5 } %></li>
-        <li><%= link_to "Add 10", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 10 } %></li>
-      </ul>
-          <button data-reflex="click->BucketListsReflex#revert">Revert</button>
-    </header>
-    <% if @all_missions.any? %>
-      <section class="main">
-        <ul class="todo-list capped" data-target="bucket-lists.list">
-          <%= render partial: "mission", collection: @filtered_missions %>
+<div class="row" data-controller="bucket-lists">
+  <div class="col-lg-10 col-xl-8">
+    <section class="todoapp">
+      <header class="header">
+        <ul class="filters">
+          <li><%= link_to "Add 1", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 1 } %></li>
+          <li><%= link_to "Add 5", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 5 } %></li>
+          <li><%= link_to "Add 10", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 10 } %></li>
         </ul>
-      </section>
-    <% end %>
-    <%= render "/bucket_lists/filters" if @all_missions.any? %>
-  </section>
+      </header>
+      <% if @all_missions.any? %>
+        <section class="main">
+          <ul class="todo-list scrollable fixed">
+            <%= render partial: "mission", collection: @filtered_missions %>
+          </ul>
+        </section>
+      <% end %>
+      <%= render "/bucket_lists/filters" if @all_missions.any? %>
+    </section>
+  </div>
+
+  <div class="col-xl-4 history">
+    <ul class="list-group <%= "scrollable fixed" if @versions.any? %>">
+      <% if @versions.any? %>
+        <% @versions.each do | version | %>
+          <% if version.reified? %>
+            <button type="button" data-target="bucket-lists.version" data-room="<%= session.id %>" class="list-group-item small list-group-item-action list-group-item-light"><%= local_time(version.created_at, "%I:%M:%S%P") %> <i><%= reified_event(version) %></i></button>
+          <% else %>
+            <% if version == @current %>
+              <button type="button" data-target="bucket-lists.version bucket-lists.current" data-room="<%= session.id %>" class="list-group-item small list-group-item-action current"><%= local_time(version.created_at, "%I:%M:%S%P") %> <b><%= nonreified_event(version) %></b></button>
+            <% else %>
+              <button type="button" data-target="bucket-lists.version" data-room="<%= session.id %>" class="list-group-item small list-group-item-action"><%= local_time(version.created_at, "%I:%M:%S%P") %> <%= nonreified_event(version) %></button>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <li class="list-group-item small no-bottom-radius text-center">Let's make history.</li>
+      <% end %>
+    </ul>
+    <ul class="list-group <%= "panel" if @versions.any? %>">
+      <li class="list-group-item d-flex w-100 justify-content-between no-top-radius small">
+        <button data-reflex="click->BucketListsReflex#undo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= @current.present? ? "dark" : "secondary" %>" <%= "disabled" unless @current.present? %>>Undo</button>
+        <button data-reflex="click->BucketListsReflex#redo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= (@versions&.last != @current) ? "dark" : "secondary" %>" <%= "disabled" if @versions&.last == @current %>>Redo</button>
+      </li>
+    </ul>
+  </div>
 </div>

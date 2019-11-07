@@ -1,16 +1,30 @@
-import hljs from 'highlight.js'
 import { Controller } from 'stimulus'
 import StimulusReflex from 'stimulus_reflex'
-import Velocity from 'velocity-animate'
 import hotkeys from 'hotkeys-js'
+import Velocity from 'velocity-animate'
+import LocalTime from 'local-time'
 
 export default class extends Controller {
-  static targets = ['list']
+  static targets = ['list', 'current', 'version']
 
   connect () {
     StimulusReflex.register(this)
+
     hotkeys('ctrl+z, command+z', () => {
-      this.stimulate('BucketListsReflex#revert')
+      this.stimulate('HistoryReflex#undo')
+    })
+    hotkeys('ctrl+y, command+y', () => {
+      this.stimulate('HistoryReflex#redo')
+    })
+
+    LocalTime.run()
+
+    if (this.hasCurrentTarget) this.currentTarget.scrollIntoViewIfNeeded()
+  }
+
+  beforeReflex () {
+    this.versionTargets.forEach(version => {
+      version.firstChild.removeAttribute('data-localized')
     })
   }
 
@@ -25,9 +39,16 @@ export default class extends Controller {
       focusElement.value = value
     }
 
-    document.querySelectorAll('pre code').forEach(block => {
-      hljs.highlightBlock(block)
+    if (this.hasCurrentTarget) this.currentTarget.scrollIntoViewIfNeeded()
+
+    this.listTargets.reverse().forEach(element => {
+      if (element.classList.contains('highlight')) {
+        element.scrollIntoViewIfNeeded()
+        this.highlight(element)
+      }
     })
+
+    LocalTime.run()
   }
 
   cancelEdit (event) {
@@ -35,31 +56,9 @@ export default class extends Controller {
     this.stimulate('BucketListsReflex#cancel_edit')
   }
 
-  afterCreate () {
-    ;[...this.listItems].forEach(element => {
-      if (element.classList.contains('new')) this.highlight(element)
-    })
-  }
-
-  afterToggle (checkbox) {
-    this.highlight(checkbox.closest('li'))
-  }
-
-  afterUpdate (element) {
-    this.highlight(this.listItem(element.dataset.id))
-  }
-
   highlight (element) {
     Velocity(element, { scale: 1.01, backgroundColor: '#ff9' }, 200).then(
       Velocity(element, { scale: 1, backgroundColor: '#fff' }, 600)
     )
-  }
-
-  listItem (id) {
-    return this.listTarget.querySelector(`li[data-id="${id}"]`)
-  }
-
-  get listItems () {
-    return this.listTarget.querySelectorAll('li')
   }
 }

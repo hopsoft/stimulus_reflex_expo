@@ -135,12 +135,6 @@
 	color: #737373;
 }
 
-.todoapp ul.capped {
-  max-height: 400px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
 .todoapp .todo-list {
 	margin: 0;
 	padding: 0;
@@ -358,4 +352,44 @@ html .clear-completed:active {
 .rainbow-text {
   background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   -webkit-background-clip: text;
   color: transparent;
+}
+
+ul.scrollable {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.history .fixed {
+  height: 280px;
+  border-left-style: inset;
+  border-top-left-radius: 6px;
+}
+
+.history .panel {
+  border-left-style: inset;
+  border-bottom-style: ridge;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.history .list-group {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.todoapp .fixed {
+  height: 450px;
+}
+
+.no-bottom-radius {
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+.no-top-radius {
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+
+.history .small {
+  padding: 5px 10px;
 }

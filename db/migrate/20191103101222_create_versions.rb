@@ -5,6 +5,7 @@ class CreateVersions < ActiveRecord::Migration[6.0]
       t.integer :item_id, null: false, limit: 8
       t.string :event, null: false
       t.string :whodunnit
+      t.boolean :reified, default: false
       t.jsonb :object
       t.datetime :created_at
     end

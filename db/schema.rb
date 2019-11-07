@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_11_03_101222) do
     t.bigint "item_id", null: false
     t.string "event", null: false
     t.string "whodunnit"
+    t.boolean "reified", default: false
     t.jsonb "object"
     t.datetime "created_at"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"

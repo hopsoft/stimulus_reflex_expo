@@ -12,6 +12,7 @@
     "highlight.js": "^9.15.10",
     "hotkeys-js": "^3.7.2",
     "jquery": "^3.4.1",
+    "local-time": "^2.1.0",
     "lodash.debounce": "^4.0.8",
     "popper.js": "^1.16.0",
     "stimulus": "^1.1.1",
