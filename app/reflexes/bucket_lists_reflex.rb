@@ -45,6 +45,7 @@ class BucketListsReflex < StimulusReflex::Reflex
   end
 
   def undo
+    PaperTrail.request.whodunnit = session.id
     if version = versions(false).first
       version.reify ? version.reify.save! : Mission.where(id: version.item_id).destroy_all
       version.destroy

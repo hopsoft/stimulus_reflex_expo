@@ -11,10 +11,10 @@ export default class extends Controller {
     StimulusReflex.register(this)
 
     hotkeys('ctrl+z, command+z', () => {
-      this.stimulate('HistoryReflex#undo')
+      this.stimulate('BucketListsReflex#undo')
     })
     hotkeys('ctrl+y, command+y', () => {
-      this.stimulate('HistoryReflex#redo')
+      this.stimulate('BucketListsReflex#redo')
     })
 
     LocalTime.run()
