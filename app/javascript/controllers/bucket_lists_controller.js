@@ -11,10 +11,10 @@ export default class extends Controller {
     StimulusReflex.register(this)
 
     hotkeys('ctrl+z, command+z', () => {
-      this.stimulate('BucketListsReflex#undo')
+      this.stimulate('BucketListsReflex#restore', false)
     })
     hotkeys('ctrl+y, command+y', () => {
-      this.stimulate('BucketListsReflex#redo')
+      this.stimulate('BucketListsReflex#restore', true)
     })
 
     LocalTime.run()
@@ -24,6 +24,7 @@ export default class extends Controller {
 
   beforeReflex () {
     this.versionTargets.forEach(version => {
+      version.disabled = false
       version.firstChild.removeAttribute('data-localized')
     })
   }

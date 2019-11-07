@@ -24,12 +24,12 @@
       <% if @versions.any? %>
         <% @versions.each do | version | %>
           <% if version.reified? %>
-            <button type="button" data-target="bucket-lists.version" data-room="<%= session.id %>" class="list-group-item small list-group-item-action list-group-item-light"><%= local_time(version.created_at, "%I:%M:%S%P") %> <i><%= reified_event(version) %></i></button>
+            <button ass type="button" data-reflex="click->BucketListsReflex#restore" data-command="redo" data-target="bucket-lists.version" data-room="<%= session.id %>" data-id="<%= version.id %>" class="list-group-item small list-group-item-action list-group-item-light"><%= local_time(version.created_at, "%I:%M:%S%P") %> <i><%= reified_event(version) %></i></button>
           <% else %>
             <% if version == @current %>
-              <button type="button" data-target="bucket-lists.version bucket-lists.current" data-room="<%= session.id %>" class="list-group-item small list-group-item-action current"><%= local_time(version.created_at, "%I:%M:%S%P") %> <b><%= nonreified_event(version) %></b></button>
+              <button bitch type="button" data-target="bucket-lists.version bucket-lists.current" class="list-group-item small list-group-item-action current" disabled><%= local_time(version.created_at, "%I:%M:%S%P") %> <b><%= nonreified_event(version) %></b></button>
             <% else %>
-              <button type="button" data-target="bucket-lists.version" data-room="<%= session.id %>" class="list-group-item small list-group-item-action"><%= local_time(version.created_at, "%I:%M:%S%P") %> <%= nonreified_event(version) %></button>
+              <button cunt type="button" data-reflex="click->BucketListsReflex#restore" data-command="undo" data-target="bucket-lists.version" data-room="<%= session.id %>" data-id="<%= version.id %>" class="list-group-item small list-group-item-action"><%= local_time(version.created_at, "%I:%M:%S%P") %> <%= nonreified_event(version) %></button>
             <% end %>
           <% end %>
         <% end %>
@@ -39,8 +39,8 @@
     </ul>
     <ul class="list-group <%= "panel" if @versions.any? %>">
       <li class="list-group-item d-flex w-100 justify-content-between no-top-radius small">
-        <button data-reflex="click->BucketListsReflex#undo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= @current.present? ? "dark" : "secondary" %>" <%= "disabled" unless @current.present? %>>Undo</button>
-        <button data-reflex="click->BucketListsReflex#redo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= (@versions&.last != @current) ? "dark" : "secondary" %>" <%= "disabled" if @versions&.last == @current %>>Redo</button>
+        <button data-reflex="click->BucketListsReflex#restore" data-command="undo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= @current.present? ? "dark" : "secondary" %>" <%= "disabled" unless @current.present? %>>Undo</button>
+        <button data-reflex="click->BucketListsReflex#restore" data-command="redo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= (@versions&.last != @current) ? "dark" : "secondary" %>" <%= "disabled" if @versions&.last == @current %>>Redo</button>
       </li>
     </ul>
   </div>

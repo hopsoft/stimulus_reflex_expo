@@ -44,26 +44,17 @@ class BucketListsReflex < StimulusReflex::Reflex
     session[:missions_filter] = element.dataset[:filter]
   end
 
-  def undo
+  def restore(command = nil)
     PaperTrail.request.whodunnit = session.id
-    if version = versions(false).first
+    reified = command || element.dataset[:command] == "redo"
+    @highlight_ids = []
+    if version = versions(reified).first
       version.reify ? version.reify.save! : Mission.where(id: version.item_id).destroy_all
       version.destroy
-      new_version = versions(false).first
-      new_version.update_attribute :reified, true
-      new_version.update_attribute :created_at, version.created_at
-      @highlight_ids = [version.item_id]
-    end
-  end
-
-  def redo
-    PaperTrail.request.whodunnit = session.id
-    if version = versions(true).first
-      version.reify ? version.reify.save! : Mission.where(id: version.item_id).destroy_all
-      version.destroy
-      new_version = versions(true).first
+      new_version = versions(reified).first
+      new_version.update_attribute(:reified, true) unless reified
       new_version&.update_attribute :created_at, version.created_at
-      @highlight_ids = [version.item_id]
+      @highlight_ids << version.item_id
     end
   end
 
