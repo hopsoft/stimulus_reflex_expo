@@ -49,15 +49,15 @@ class BucketListsReflex < StimulusReflex::Reflex
     reified = command || element.dataset[:command] == "redo"
     @highlight_ids = []
     loop do
-      if version = versions(reified).first
+      if version = versions(reified).send(reified ? :last : :first)
+        break if element.dataset[:id].to_i == version.id && reified == false
         version.reify ? version.reify.save! : Mission.where(id: version.item_id).destroy_all
         version.destroy
-        new_version = versions(reified).first
+        new_version = versions(reified).send(reified ? :last : :first)
         new_version.update_attribute(:reified, true) unless reified
         new_version&.update_attribute :created_at, version.created_at
         @highlight_ids << version.item_id
       end
-      puts version.id
       break if element.dataset[:id].nil? || element.dataset[:id].to_i == version.id
     end
   end
