@@ -1,5 +1,5 @@
-<div class="row" data-controller="bucket-lists">
-  <div class="col-lg-10 col-xl-8">
+<div id="bucket-lists" class="row" data-controller="bucket-lists" data-reflex-root>
+  <div class="col-lg-7 col-xl-8">
     <section class="todoapp">
       <header class="header">
         <ul class="filters">
@@ -19,7 +19,7 @@
     </section>
   </div>
 
-  <div class="col-xl-4 history">
+  <div class="col-md-6 col-lg-5 col-xl-4 history">
     <ul class="list-group <%= "scrollable fixed" if @versions.any? %>">
       <% if @versions.any? %>
         <% @versions.each do | version | %>
@@ -43,5 +43,13 @@
         <button data-reflex="click->BucketListsReflex#restore" data-command="redo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= (@versions&.last != @current) ? "dark" : "secondary" %>" <%= "disabled" if @versions&.last == @current %>>Redo</button>
       </li>
     </ul>
+    <div class="mx-auto knobber d-none d-lg-block" data-reflex-permanent>
+      <img class="knob" src="<%= asset_path "knob.png" %>" data-target="bucket-lists.knob">
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-5 col-xl-4 history d-lg-none">
+    <div class="mx-auto knobber" data-reflex-permanent>
+      <img class="knob" src="<%= asset_path "knob.png" %>" data-target="bucket-lists.knob">
+    </div>
   </div>
 </div>

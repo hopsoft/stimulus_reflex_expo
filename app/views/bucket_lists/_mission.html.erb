@@ -5,7 +5,7 @@
       data-reflex="change->BucketListsReflex#update" data-id="<%= mission.id %>" data-room="<%= session.id %>">
   </li>
 <% else %>
-  <li class="<%= "completed" if mission.completed? %> <%= "highlight" if @highlight_ids&.include?(mission.id) %>"
+  <li class="<%= "completed" if mission.completed? %> <%= "hilite" if @highlight_ids&.include?(mission.id) %>"
       data-reflex="click->BucketListsReflex#edit"
       data-id="<%= mission.id %>"
       data-target="bucket-lists.list"

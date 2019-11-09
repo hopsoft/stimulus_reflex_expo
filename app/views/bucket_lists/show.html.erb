@@ -1,8 +1,12 @@
 <%= content_for :demo_title, "Bucket List" %>
+<%= content_for :demo_summary, "Unlimited undo+redo with time travelling" %>
 <%= render_demo "/bucket_lists/demo" %>
 
 <%= render_explanation do %>
-  <p></p>
+  <p>One area where native desktop applications still have a major advantage is support for multiple levels of undo and redo, especially when what you want to undo could be more complex than accidentally pasting the wrong text. Browser incompatibilities colluded with the brutal complexity of maintaining client state to ensure that web app were second-class citizens behind 90's-era desktop programs. Frankly, people stopped dreaming of what could be possible even though it's a huge UX win for users.</p>
+  <p>The high water mark for undo remains Adobe Photoshop's History navigator, which was a masterful application of the command pattern. Even the reactive SPA frameworks don't approach the speed or flexibility required to pull this off. In a StimulusReflex world, we can implement full "time-travelling" undo/redo without a Redux reducer in sight.</p>
+  <p>First, add some bucket list items and make some changes; you can cross items off your list, edit the text or delete them entirely. Every action you take is captured in the history explorer. You can use standard hotkeys (Ctrl-Z/Command-Z to Undo, Ctrl-T/Command-T to Redo), click the Undo and Redo buttons, select any moment in history to return to by clicking on it, or use the time-travel knob to fly through your changes in real-time. Your history will persist across page refreshes, too.</p>
+  <p>Even with all of this functionality, the whole application comes in at ~250 LOC including templates, Ruby and Javascript. Note that while we used the professional version of GreenSock Animation Platform, you can remove the InertiaPlugin references and it will work just fine with the OSS version.</p>
 <% end %>
 
 <%= render_gists(

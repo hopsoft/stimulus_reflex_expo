@@ -1,11 +1,15 @@
 import { Controller } from 'stimulus'
 import StimulusReflex from 'stimulus_reflex'
 import hotkeys from 'hotkeys-js'
-import Velocity from 'velocity-animate'
 import LocalTime from 'local-time'
+import { gsap } from 'gsap'
+import { Draggable } from 'gsap/Draggable'
+import { CSSPlugin } from 'gsap/CSSPlugin'
+import { InertiaPlugin } from 'gsap/InertiaPlugin'
+gsap.registerPlugin(CSSPlugin, Draggable, InertiaPlugin)
 
 export default class extends Controller {
-  static targets = ['list', 'current', 'version']
+  static targets = ['list', 'current', 'version', 'knob']
 
   connect () {
     StimulusReflex.register(this)
@@ -19,7 +23,11 @@ export default class extends Controller {
 
     LocalTime.run()
 
-    if (this.hasCurrentTarget) this.currentTarget.scrollIntoViewIfNeeded()
+    setTimeout(() => {
+      if (this.hasCurrentTarget) this.currentTarget.scrollIntoViewIfNeeded()
+    }, 50)
+
+    this.knobTargets.forEach(knob => this.knobber(knob))
   }
 
   beforeReflex () {
@@ -43,7 +51,7 @@ export default class extends Controller {
     if (this.hasCurrentTarget) this.currentTarget.scrollIntoViewIfNeeded()
 
     this.listTargets.reverse().forEach(element => {
-      if (element.classList.contains('highlight')) {
+      if (element.classList.contains('hilite')) {
         element.scrollIntoViewIfNeeded()
         this.highlight(element)
       }
@@ -58,8 +66,33 @@ export default class extends Controller {
   }
 
   highlight (element) {
-    Velocity(element, { scale: 1.01, backgroundColor: '#ff9' }, 200).then(
-      Velocity(element, { scale: 1, backgroundColor: '#fff' }, 600)
-    )
+    gsap.to(element, {
+      keyframes: [
+        { duration: 0.2, scale: 1.01, backgroundColor: '#ff9' },
+        { duration: 0.6, scale: 1, backgroundColor: '#fff' }
+      ]
+    })
+  }
+
+  knobber (element) {
+    const timeline = gsap.timeline({
+      repeat: -1,
+      onRepeat: () => {
+        const r = ~~draggable.rotation
+        timeline.repeatDelay(gsap.utils.mapRange(0, 180, 1.0, 0.1, Math.abs(r)))
+        this.stimulate('BucketListsReflex#restore', r > 0)
+      }
+    })
+    timeline.pause()
+    timeline.to({}, { duration: 0.1 })
+    const draggable = Draggable.create(element, {
+      type: 'rotation',
+      inertia: true,
+      onDragStart: () => timeline.play(),
+      onDragEnd: () => timeline.pause(),
+      snap: () => {
+        return 0
+      }
+    })[0].applyBounds({ minRotation: -180, maxRotation: 180 })
   }
 }

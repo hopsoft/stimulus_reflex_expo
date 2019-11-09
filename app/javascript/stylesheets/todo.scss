@@ -225,7 +225,6 @@
 	margin: auto 0;
 	font-size: 30px;
 	color: #cc9a9a;
-	margin-bottom: 11px;
 	transition: color 0.2s ease-out;
 }
 
@@ -381,7 +380,12 @@ ul.scrollable {
 }
 
 .todoapp .fixed {
-  height: 450px;
+  height: 550px;
+}
+
+.todoapp .fixed li .view label {
+  padding-top: 5px;
+  padding-bottom: 0px;
 }
 
 .no-bottom-radius {
@@ -396,4 +400,42 @@ ul.scrollable {
 
 .history .small {
   padding: 5px 10px;
+}
+
+.knobber {
+  padding: 8px;
+  width: fit-content;
+}
+
+.knob {
+  max-width: 225px;
+  max-height: 225px;
+}
+
+@media (min-width: 576px) {
+  .knob {
+    max-width: 280px;
+    max-height: 280px;
+  }
+}
+
+@media (min-width: 768px) {
+  .knob {
+    max-width: 255px;
+    max-height: 255px;
+  }
+}
+
+@media (min-width: 992px) {
+  .knob {
+    max-width: 280px;
+    max-height: 280px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .knob {
+    max-width: 255px;
+    max-height: 255px;
+  }
 }
