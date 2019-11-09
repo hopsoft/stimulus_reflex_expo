@@ -1,9 +1,6 @@
 import { debounce } from 'lodash-es'
 import ApplicationController from './application_controller'
 
-/* This is the custom StimulusReflex controller for BookSearchReflex.
- * Learn more at: https://docs.stimulusreflex.com
- */
 export default class extends ApplicationController {
   static targets = ['query', 'activity', 'count', 'list']
 
