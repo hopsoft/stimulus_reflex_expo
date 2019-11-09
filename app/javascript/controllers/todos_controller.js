@@ -18,6 +18,14 @@ export default class extends ApplicationController {
     this.highlight(checkbox.closest('li'))
   }
 
+  afterEdit (element) {
+    const input = element.querySelector('input[type="text"]')
+    const value = input.value
+    input.focus()
+    input.value = ''
+    input.value = value
+  }
+
   afterUpdate (element) {
     this.highlight(this.listItem(element.dataset.id))
   }
