@@ -1,6 +1,7 @@
-<div id="<%= color %>" data-color="<%= color %>" data-controller="chat" data-action="chats:added@document->chat#reload cable-ready:after-morph@document->chat#scroll"
+<div id="<%= color %>" data-color="<%= color %>"
+  data-controller="chat" data-action="chats:added@document->chat#reload cable-ready:after-morph@document->chat#scroll"
   class="<%= css "tab-pane bg-white p-4 border border-top-0", "show active": active_chat?(color) %>">
-  <div data-target="chat.list" class="border rounded mb-2 p-3 <%= chat_border_css color %>" style="height:400px; max-width:800px; overflow-y:scroll;">
+  <div data-target="chat.list" class="bg-light border rounded mb-2 p-3" style="height:400px; max-width:800px; overflow-y:scroll;">
     <% @chats.select { |chat| chat[:color] == color }.each do |chat| %>
       <% if chat_author? chat %>
         <div class="<%= chat_css color %> rounded-lg border my-2 p-1 px-2 text-right w-75 float-right">
@@ -17,7 +18,7 @@
   </div>
   <form style="max-width:800px;">
     <div class="form-group">
-      <textarea data-target="chat.input" data-reflex-permanent class="form-control border <%= chat_border_css color %>" rows="3" placeholder="Type your message..."></textarea>
+      <textarea data-target="chat.input" class="form-control border <%= chat_border_css color %>" rows="3" placeholder="Type your message..."></textarea>
     </div>
     <button data-action="click->chat#post" type="submit" class="btn btn-primary">Submit</button>
   </form>

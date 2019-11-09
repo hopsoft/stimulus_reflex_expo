@@ -28,13 +28,12 @@ module DemosHelper
     render "/demos/gists", filepaths: filepaths, grouped_filepaths: filepaths.group_by { |filepath| language filepath }
   end
 
-  def gists_cache_key(*filepaths)
-    filepaths.map { |filepath| "#{filepath}/#{File.mtime(Rails.root.join(filepath)).iso8601}" }
-  end
-
   def file_lines(filepath)
     lines = File.open(Rails.root.join(filepath)).readlines
-    lines.reject { |line| line.to_s.strip =~ /\A(#|\/|\*|\<--)/ }
+    lines.reject! { |line| line.to_s.strip =~ /\A(#|\/|\*|\<--)/ }
+    lines.shift while lines.first.blank?
+    lines.pop while lines.last.blank?
+    lines
   end
 
   def language(filepath)

@@ -1,20 +1,22 @@
 # frozen_string_literal: true
 
 module TabularsHelper
-  def price_to_dollar_signs(price)
-    "$" * price
+  include Pagy::Frontend
+
+  def column_css(column_name)
+    "selected" if column_name.to_s == @order_by
   end
 
-  def stars_to_symbol(stars)
-    "★" * stars
+  def arrow(column_name)
+    return if column_name.to_s != @order_by
+    @direction == "desc" ? "↑" : "↓"
   end
 
-  def sort_css(sort)
-    "selected" if session[:sort] == sort
+  def direction
+    @direction == "asc" ? "desc" : "asc"
   end
 
-  def arrow(current_sort, sort, direction)
-    return unless current_sort == sort
-    direction == :reverse ? "↑" : "↓"
+  def pagy_get_params(params)
+    params.merge query: @query, order_by: @order_by, direction: @direction
   end
 end

@@ -1,5 +1,5 @@
 import Turbolinks from 'turbolinks'
-import debounce from 'lodash.debounce'
+import { debounce } from 'lodash-es'
 import ApplicationController from './application_controller'
 
 export default class extends ApplicationController {

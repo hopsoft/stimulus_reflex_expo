@@ -14,7 +14,9 @@
 #
 
 class Restaurant < ApplicationRecord
-  scope :filtered, ->(name) { where("lower(name) LIKE ?", "%#{name&.downcase}%") }
-  scope :sorted, ->(column, direction = :forward) { order(Arel.sql("#{column}#{" DESC" if direction == :reverse}")) }
-  FILTERS = %w[name stars price category].freeze
+  scope :search, ->(query) {
+    query = sanitize_sql_like(query)
+    where(arel_table[:name].matches("%#{query}%"))
+      .or(where(arel_table[:category].matches("%#{query}%")))
+  }
 end

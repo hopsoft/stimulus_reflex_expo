@@ -1,22 +1,16 @@
 # frozen_string_literal: true
 
-class TabularReflex < StimulusReflex::Reflex
-  def sort
-    session[:sort_order] = sort_order
-    session[:sort] = element.dataset[:sort]
+class TabularReflex < ApplicationReflex
+  def search
+    session[:query] = element[:value].strip
   end
 
-  def filter
-    session[:filter] = element[:value]
-    session[:page] = 1
+  def order
+    session[:order_by] = element.dataset["column-name"]
+    session[:direction] = element.dataset["direction"]
   end
 
-  def page
-    session[:page] = element.dataset[:page]
-  end
-
-  def sort_order
-    return :reverse if session[:sort] == element.dataset[:sort] && session[:sort_order] != :reverse
-    :forward
+  def paginate
+    session[:page] = element.dataset[:page].to_i
   end
 end
