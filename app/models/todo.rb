@@ -4,6 +4,7 @@ class Todo < ApplicationRecord
 
   scope :completed, -> { where completed: true }
   scope :active, -> { where completed: false }
+  scope :old, -> { where arel_table[:created_at].lt(1.month.ago) }
 
   def active?
     !completed?
