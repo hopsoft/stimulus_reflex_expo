@@ -1,11 +1,10 @@
 class BucketListsReflex < StimulusReflex::Reflex
   def create
-    PaperTrail.request.whodunnit = session.id
+    purge_old_versions
     @highlight_ids = []
     element.dataset[:step].to_i.times do
       @highlight_ids << Mission.create(session_id: session.id).id
     end
-    PaperTrail::Version.where(whodunnit: session.id, reified: true).destroy_all
   end
 
   def edit
@@ -17,27 +16,24 @@ class BucketListsReflex < StimulusReflex::Reflex
   end
 
   def update
+    purge_old_versions
     if mission = Mission.find_by(session_id: session.id, id: element.dataset[:id])
       mission.update title: element[:value]
       @highlight_ids = [mission.id]
     end
-    PaperTrail.request.whodunnit = session.id
-    PaperTrail::Version.where(whodunnit: session.id, reified: true).destroy_all
   end
 
   def toggle
+    purge_old_versions
     if mission = Mission.find_by(session_id: session.id, id: element.dataset[:id])
       mission.toggle! :completed
       @highlight_ids = [mission.id]
     end
-    PaperTrail.request.whodunnit = session.id
-    PaperTrail::Version.where(whodunnit: session.id, reified: true).destroy_all
   end
 
   def destroy
+    purge_old_versions
     Mission.find_by(session_id: session.id, id: element.dataset[:id])&.destroy
-    PaperTrail.request.whodunnit = session.id
-    PaperTrail::Version.where(whodunnit: session.id, reified: true).destroy_all
   end
 
   def filter
@@ -64,5 +60,10 @@ class BucketListsReflex < StimulusReflex::Reflex
 
   def versions(reified)
     PaperTrail::Version.where(whodunnit: session.id, reified: reified).order("versions.created_at DESC")
+  end
+
+  def purge_old_versions
+    PaperTrail.request.whodunnit = session.id
+    PaperTrail::Version.where(whodunnit: session.id, reified: true).destroy_all
   end
 end
