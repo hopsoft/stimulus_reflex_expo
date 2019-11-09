@@ -4,15 +4,9 @@
   </span>
 
   <ul class="filters">
-    <li>
-      <%= link_to "All", "#", class: filter_css(:all), data: { reflex: "click->TodosReflex#filter", room: session.id, filter: "all" } %>
-    </li>
-    <li>
-      <%= link_to "Active", "#", class: filter_css(:active), data: { reflex: "click->TodosReflex#filter", room: session.id, filter: "active" } %>
-    </li>
-    <li>
-      <%= link_to "Completed", "#", class: filter_css(:completed), data: { reflex: "click->TodosReflex#filter", room: session.id, filter: "completed" } %>
-    </li>
+    <%= tag.li link_to("All", "#", class: filter_css(:all), data: { reflex: "click->TodosReflex#filter", room: session.id, filter: "all" }) %>
+    <%= tag.li link_to("Active", "#", class: filter_css(:active), data: { reflex: "click->TodosReflex#filter", room: session.id, filter: "active" }) %>
+    <%= tag.li link_to("Completed", "#", class: filter_css(:completed), data: { reflex: "click->TodosReflex#filter", room: session.id, filter: "completed" }) %>
   </ul>
 
   <% if @all_todos.completed.any? %>

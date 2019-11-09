@@ -1,21 +1,22 @@
 <div class="col-md-10 col-lg-8 col-xl-7">
-<section class="todoapp" data-controller="todos" data-reflex-root=".todoapp">
-  <header class="header">
-    <input <%= "autofocus " unless @edit_id %> class="new-todo" placeholder="What needs to be done?" data-reflex-allow data-reflex="change->TodosReflex#create" data-room="<%= session.id %>">
-  </header>
+  <section id="todoapp" class="todoapp" data-controller="todos" data-reflex-root>
+    <header class="header">
+      <input <%= "autofocus " unless @edit_id %> class="new-todo" placeholder="What needs to be done?"
+        data-target="todos.input" data-reflex="change->TodosReflex#create">
+    </header>
 
-  <% if @all_todos.any? %>
-    <section class="main">
-      <input class="toggle-all" type="checkbox">
-      <label data-reflex="click->TodosReflex#toggle_all" data-room="<%= session.id %>">
-        Mark all as complete
-      </label>
-      <ul class="todo-list" data-target="todos.list">
-        <%= render partial: "todo", collection: @filtered_todos %>
-      </ul>
-    </section>
-  <% end %>
+    <% if @all_todos.any? %>
+      <section class="main">
+        <input class="toggle-all" type="checkbox">
+        <label data-reflex="click->TodosReflex#toggle_all">
+          Mark all as complete
+        </label>
+        <ul class="todo-list" data-target="todos.list">
+          <%= render partial: "todo", collection: @filtered_todos %>
+        </ul>
+      </section>
+    <% end %>
 
-  <%= render "/todos/filters" if @all_todos.any? %>
-</section>
+    <%= render "/todos/filters" if @all_todos.any? %>
+  </section>
 </div>
