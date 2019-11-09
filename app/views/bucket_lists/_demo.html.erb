@@ -24,12 +24,12 @@
       <% if @versions.any? %>
         <% @versions.each do | version | %>
           <% if version.reified? %>
-            <button ass type="button" data-reflex="click->BucketListsReflex#restore" data-command="redo" data-target="bucket-lists.version" data-room="<%= session.id %>" data-id="<%= version.id %>" class="list-group-item small list-group-item-action list-group-item-light"><%= local_time(version.created_at, "%I:%M:%S%P") %> <i><%= reified_event(version) %></i></button>
+            <button type="button" data-reflex="click->BucketListsReflex#restore" data-command="redo" data-target="bucket-lists.version" data-room="<%= session.id %>" data-id="<%= version.id %>" class="list-group-item small list-group-item-action list-group-item-light"><%= local_time(version.created_at, "%I:%M:%S%P") %> <i><%= reified_event(version) %></i></button>
           <% else %>
             <% if version == @current %>
-              <button bitch type="button" data-target="bucket-lists.version bucket-lists.current" class="list-group-item small list-group-item-action current" disabled><%= local_time(version.created_at, "%I:%M:%S%P") %> <b><%= nonreified_event(version) %></b></button>
+              <button type="button" data-target="bucket-lists.version bucket-lists.current" class="list-group-item small list-group-item-action current" disabled><%= local_time(version.created_at, "%I:%M:%S%P") %> <b><%= nonreified_event(version) %></b></button>
             <% else %>
-              <button cunt type="button" data-reflex="click->BucketListsReflex#restore" data-command="undo" data-target="bucket-lists.version" data-room="<%= session.id %>" data-id="<%= version.id %>" class="list-group-item small list-group-item-action"><%= local_time(version.created_at, "%I:%M:%S%P") %> <%= nonreified_event(version) %></button>
+              <button type="button" data-reflex="click->BucketListsReflex#restore" data-command="undo" data-target="bucket-lists.version" data-room="<%= session.id %>" data-id="<%= version.id %>" class="list-group-item small list-group-item-action"><%= local_time(version.created_at, "%I:%M:%S%P") %> <%= nonreified_event(version) %></button>
             <% end %>
           <% end %>
         <% end %>
