@@ -1,30 +1,8 @@
-import hljs from 'highlight.js'
-import { Controller } from 'stimulus'
-import StimulusReflex from 'stimulus_reflex'
 import Velocity from 'velocity-animate'
+import ApplicationController from './application_controller'
 
-export default class extends Controller {
-  static targets = ['list']
-
-  connect () {
-    StimulusReflex.register(this)
-  }
-
-  afterReflex () {
-    const focusElement = this.element.querySelector('[autofocus]')
-    if (focusElement) {
-      focusElement.focus()
-
-      // shenanigans to ensure that the cursor is placed at the end of the existing value
-      const value = focusElement.value
-      focusElement.value = ''
-      focusElement.value = value
-    }
-
-    document.querySelectorAll('pre code').forEach(block => {
-      hljs.highlightBlock(block)
-    })
-  }
+export default class extends ApplicationController {
+  static targets = ['input', 'list']
 
   cancelEdit (event) {
     if (event.type === 'keyup' && !['Escape', 'Esc'].includes(event.key)) return
@@ -32,7 +10,8 @@ export default class extends Controller {
   }
 
   afterCreate () {
-    this.highlight([...this.listItems].slice(-1))
+    this.highlight(this.lastListItem)
+    this.inputTarget.value = ''
   }
 
   afterToggle (checkbox) {
