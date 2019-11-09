@@ -22,8 +22,6 @@ gem "sidekiq", "~> 6.0"
 gem "stimulus_reflex", "~> 2.1"
 gem "valid_email", "~> 0.1"
 gem "webpacker", "~> 4.0"
-gem "pagy", "~> 3.6.0"
-gem "faker", "~> 2.6.0"
 gem "paper_trail", "~> 10.3.1"
 gem "local_time", "~> 2.1.0"
 
