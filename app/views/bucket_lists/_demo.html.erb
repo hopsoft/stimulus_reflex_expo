@@ -1,6 +1,6 @@
 <div id="bucket-lists" class="row" data-controller="bucket-lists" data-reflex-root>
   <div class="col-lg-7 col-xl-8">
-    <section class="todoapp">
+    <section class="todoapp<%= " undo" if @undo %><%= " redo" if @redo %>" data-target="bucket-lists.state">
       <header class="header">
         <ul class="filters">
           <li><%= link_to "Add 1", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 1 } %></li>
@@ -39,8 +39,8 @@
     </ul>
     <ul class="list-group <%= "panel" if @versions.any? %>">
       <li class="list-group-item d-flex w-100 justify-content-between no-top-radius small">
-        <button data-reflex="click->BucketListsReflex#restore" data-command="undo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= @current.present? ? "dark" : "secondary" %>" <%= "disabled" unless @current.present? %>>Undo</button>
-        <button data-reflex="click->BucketListsReflex#restore" data-command="redo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= (@versions&.last != @current) ? "dark" : "secondary" %>" <%= "disabled" if @versions&.last == @current %>>Redo</button>
+        <button data-reflex="click->BucketListsReflex#restore" data-command="undo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= @undo ? "dark" : "secondary" %>" <%= "disabled" unless @undo %>>Undo</button>
+        <button data-reflex="click->BucketListsReflex#restore" data-command="redo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= @redo ? "dark" : "secondary" %>" <%= "disabled" unless @redo %>>Redo</button>
       </li>
     </ul>
     <div class="mx-auto knobber d-none d-lg-block" data-reflex-permanent>

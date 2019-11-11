@@ -9,7 +9,7 @@ import { InertiaPlugin } from 'gsap/InertiaPlugin'
 gsap.registerPlugin(CSSPlugin, Draggable, InertiaPlugin)
 
 export default class extends Controller {
-  static targets = ['list', 'current', 'version', 'knob']
+  static targets = ['state', 'list', 'current', 'version', 'knob']
 
   connect () {
     StimulusReflex.register(this)
@@ -80,7 +80,12 @@ export default class extends Controller {
       onRepeat: () => {
         const r = ~~draggable.rotation
         timeline.repeatDelay(gsap.utils.mapRange(0, 180, 1.0, 0.1, Math.abs(r)))
-        this.stimulate('BucketListsReflex#restore', r > 0)
+        if (
+          (r < 0 && this.stateTarget.classList.contains('undo')) ||
+          (r > 0 && this.stateTarget.classList.contains('redo'))
+        ) {
+          this.stimulate('BucketListsReflex#restore', r > 0)
+        }
       }
     })
     timeline.pause()

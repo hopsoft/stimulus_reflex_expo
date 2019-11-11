@@ -7,6 +7,7 @@ class BucketListsController < ApplicationController
     @filtered_missions = @all_missions.public_send(session[:missions_filter]).order(created_at: :desc)
     @versions = PaperTrail::Version.where(whodunnit: session.id).order(:reified, :created_at)
     @current = @versions.where(reified: false).order(:created_at).last
+    @undo, @redo = @current.present?, @versions&.last != @current
   end
 
   private
