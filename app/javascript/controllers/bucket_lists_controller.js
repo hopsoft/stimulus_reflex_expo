@@ -4,9 +4,8 @@ import hotkeys from 'hotkeys-js'
 import LocalTime from 'local-time'
 import { gsap } from 'gsap'
 import { Draggable } from 'gsap/Draggable'
-import { CSSPlugin } from 'gsap/CSSPlugin'
 import { InertiaPlugin } from 'gsap/InertiaPlugin'
-gsap.registerPlugin(CSSPlugin, Draggable, InertiaPlugin)
+gsap.registerPlugin(Draggable, InertiaPlugin)
 
 export default class extends Controller {
   static targets = ['state', 'list', 'current', 'version', 'knob']
