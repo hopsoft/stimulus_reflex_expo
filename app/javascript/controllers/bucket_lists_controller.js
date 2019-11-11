@@ -25,9 +25,9 @@ export default class extends Controller {
 
     setTimeout(() => {
       if (this.hasCurrentTarget) this.currentTarget.scrollIntoViewIfNeeded()
-    }, 50)
+    }, 100)
 
-    this.knobTargets.forEach(knob => this.knobber(knob))
+    this.knobTargets.forEach(knob => this.scrubber(knob))
   }
 
   beforeReflex () {
@@ -74,7 +74,7 @@ export default class extends Controller {
     })
   }
 
-  knobber (element) {
+  scrubber (element) {
     const timeline = gsap.timeline({
       repeat: -1,
       onRepeat: () => {
@@ -89,7 +89,7 @@ export default class extends Controller {
       }
     })
     timeline.pause()
-    timeline.to({}, { duration: 0.1 })
+    timeline.to({}, { duration: 0.05 })
     const draggable = Draggable.create(element, {
       type: 'rotation',
       inertia: true,
