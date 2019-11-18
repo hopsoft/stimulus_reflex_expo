@@ -4,8 +4,12 @@ import hotkeys from 'hotkeys-js'
 import LocalTime from 'local-time'
 import { gsap } from 'gsap'
 import { Draggable } from 'gsap/Draggable'
-import { InertiaPlugin } from 'gsap/InertiaPlugin'
-gsap.registerPlugin(Draggable, InertiaPlugin)
+// uncomment if using paid GSAP https://greensock.com/club/
+// import { InertiaPlugin } from 'gsap/InertiaPlugin'
+const inertia = typeof InertiaPlugin === 'object'
+inertia
+  ? gsap.registerPlugin(Draggable, InertiaPlugin)
+  : gsap.registerPlugin(Draggable)
 
 export default class extends Controller {
   static targets = ['state', 'list', 'current', 'version', 'knob']
@@ -91,9 +95,16 @@ export default class extends Controller {
     timeline.to({}, { duration: 0.05 })
     const draggable = Draggable.create(element, {
       type: 'rotation',
-      inertia: true,
+      inertia,
       onDragStart: () => timeline.play(),
       onDragEnd: () => timeline.pause(),
+      onRelease: () => {
+        if (!inertia) {
+          draggable
+            .applyBounds({ minRotation: 0, maxRotation: 0 })
+            .applyBounds({ minRotation: -180, maxRotation: 180 })
+        }
+      },
       snap: () => {
         return 0
       }
