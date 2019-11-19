@@ -31,6 +31,8 @@ export default class extends Controller {
     }, 100)
 
     this.knobTargets.forEach(knob => this.scrubber(knob))
+
+    this.ready = true
   }
 
   beforeReflex () {
@@ -61,6 +63,8 @@ export default class extends Controller {
     })
 
     LocalTime.run()
+
+    this.ready = true
   }
 
   cancelEdit (event) {
@@ -84,10 +88,12 @@ export default class extends Controller {
         const r = ~~draggable.rotation
         timeline.repeatDelay(gsap.utils.mapRange(0, 180, 1.0, 0.1, Math.abs(r)))
         if (
-          (r < 0 && this.stateTarget.classList.contains('undo')) ||
-          (r > 0 && this.stateTarget.classList.contains('redo'))
+          ((r < 0 && this.stateTarget.classList.contains('undo')) ||
+            (r > 0 && this.stateTarget.classList.contains('redo'))) &&
+          this.ready
         ) {
           this.stimulate('BucketListsReflex#restore', r > 0)
+          this.ready = false
         }
       }
     })
