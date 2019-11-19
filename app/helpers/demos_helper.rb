@@ -4,6 +4,7 @@ module DemosHelper
   def demos
     %w[
       book_search
+      bucket_list
       chat
       geo_selector
       gravatar

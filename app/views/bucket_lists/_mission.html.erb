@@ -1,0 +1,19 @@
+<% if mission.id == @edit_id %>
+  <li class="editing">
+    <input autofocus type="text" class="edit" value="<%= mission.title %>"
+      data-action="keyup->bucket-lists#cancelEdit blur->bucket-lists#cancelEdit"
+      data-reflex="change->BucketListsReflex#update" data-id="<%= mission.id %>" data-room="<%= session.id %>">
+  </li>
+<% else %>
+  <li class="<%= "completed" if mission.completed? %> <%= "hilite" if @highlight_ids&.include?(mission.id) %>"
+      data-reflex="click->BucketListsReflex#edit"
+      data-id="<%= mission.id %>"
+      data-target="bucket-lists.list"
+      data-room="<%= session.id %>">
+    <div class="view">
+      <input <%= "checked" if mission.completed? %> type="checkbox" class="toggle" data-reflex="change->BucketListsReflex#toggle" data-id="<%= mission.id %>" data-room="<%= session.id %>">
+      <label><%= mission.title %></label>
+      <button name="button" type="button" class="destroy" data-reflex="click->BucketListsReflex#destroy" data-id="<%= mission.id %>" data-room="<%= session.id %>"/>
+    </div>
+  </li>
+<% end %>

@@ -1,0 +1,55 @@
+<div id="bucket-lists" class="row" data-controller="bucket-lists" data-reflex-root>
+  <div class="col-lg-7 col-xl-8">
+    <section class="todoapp<%= " undo" if @undo %><%= " redo" if @redo %>" data-target="bucket-lists.state">
+      <header class="header">
+        <ul class="filters">
+          <li><%= link_to "Add 1", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 1 } %></li>
+          <li><%= link_to "Add 5", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 5 } %></li>
+          <li><%= link_to "Add 10", "#", data: { reflex: "click->BucketListsReflex#create", room: session.id, step: 10 } %></li>
+        </ul>
+      </header>
+      <% if @all_missions.any? %>
+        <section class="main">
+          <ul class="todo-list scrollable fixed">
+            <%= render partial: "mission", collection: @filtered_missions %>
+          </ul>
+        </section>
+      <% end %>
+      <%= render "/bucket_lists/filters" if @all_missions.any? %>
+    </section>
+  </div>
+
+  <div class="col-md-6 col-lg-5 col-xl-4 history">
+    <ul class="list-group <%= "scrollable fixed" if @versions.any? %>">
+      <% if @versions.any? %>
+        <% @versions.each do | version | %>
+          <% if version.reified? %>
+            <button type="button" data-reflex="click->BucketListsReflex#restore" data-command="redo" data-target="bucket-lists.version" data-room="<%= session.id %>" data-id="<%= version.id %>" class="list-group-item small list-group-item-action list-group-item-light"><%= local_time(version.created_at, "%I:%M:%S%P") %> <i><%= reified_event(version) %></i></button>
+          <% else %>
+            <% if version == @current %>
+              <button type="button" data-target="bucket-lists.version bucket-lists.current" class="list-group-item small list-group-item-action current" disabled><%= local_time(version.created_at, "%I:%M:%S%P") %> <b><%= nonreified_event(version) %></b></button>
+            <% else %>
+              <button type="button" data-reflex="click->BucketListsReflex#restore" data-command="undo" data-target="bucket-lists.version" data-room="<%= session.id %>" data-id="<%= version.id %>" class="list-group-item small list-group-item-action"><%= local_time(version.created_at, "%I:%M:%S%P") %> <%= nonreified_event(version) %></button>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <li class="list-group-item small no-bottom-radius text-center">Let's make history.</li>
+      <% end %>
+    </ul>
+    <ul class="list-group <%= "panel" if @versions.any? %>">
+      <li class="list-group-item d-flex w-100 justify-content-between no-top-radius small">
+        <button data-reflex="click->BucketListsReflex#restore" data-command="undo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= @undo ? "dark" : "secondary" %>" <%= "disabled" unless @undo %>>Undo</button>
+        <button data-reflex="click->BucketListsReflex#restore" data-command="redo" data-room="<%= session.id %>" class="btn btn-sm btn-outline-<%= @redo ? "dark" : "secondary" %>" <%= "disabled" unless @redo %>>Redo</button>
+      </li>
+    </ul>
+    <div class="mx-auto knobber d-none d-lg-block" data-reflex-permanent>
+      <img class="knob" src="<%= asset_path "knob.png" %>" data-target="bucket-lists.knob">
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-5 col-xl-4 history d-lg-none">
+    <div class="mx-auto knobber" data-reflex-permanent>
+      <img class="knob" src="<%= asset_path "knob.png" %>" data-target="bucket-lists.knob">
+    </div>
+  </div>
+</div>

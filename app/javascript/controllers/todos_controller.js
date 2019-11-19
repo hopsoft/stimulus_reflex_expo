@@ -47,8 +47,4 @@ export default class extends ApplicationController {
   get listItems () {
     return this.listTarget.querySelectorAll('li')
   }
-
-  get lastListItem () {
-    return this.listItems[this.listItems.length - 1]
-  }
 }

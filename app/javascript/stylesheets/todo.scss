@@ -24,7 +24,7 @@
 
 .todoapp {
 	background: #fff;
-	margin: 20px 0 20px 0;
+	margin: 0px 0 20px 0;
 	position: relative;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
 	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
@@ -59,6 +59,16 @@
 	-webkit-text-rendering: optimizeLegibility;
 	-moz-text-rendering: optimizeLegibility;
 	text-rendering: optimizeLegibility;
+}
+
+.todoapp .header {
+  font-size: 15px;
+  text-align: center;
+  padding: 10px 15px;
+}
+
+.todoapp .header ul.filters {
+  position: static;
 }
 
 .todoapp .new-todo,
@@ -190,7 +200,7 @@
 }
 
 .todoapp .todo-list li label {
-	word-break: break-all;
+	// word-break: break-all;
 	padding: 15px 15px 15px 60px;
 	display: block;
 	line-height: 1.2;
@@ -215,7 +225,6 @@
 	margin: auto 0;
 	font-size: 30px;
 	color: #cc9a9a;
-	margin-bottom: 11px;
 	transition: color 0.2s ease-out;
 }
 
@@ -337,4 +346,96 @@ html .clear-completed:active {
 	.todoapp .filters {
 		bottom: 10px;
 	}
+}
+
+.rainbow-text {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   -webkit-background-clip: text;
+  color: transparent;
+}
+
+ul.scrollable {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.history .fixed {
+  height: 280px;
+  border-left-style: inset;
+  border-top-left-radius: 6px;
+}
+
+.history .panel {
+  border-left-style: inset;
+  border-bottom-style: ridge;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.history .list-group {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.history button.current {
+  color: #495057;
+}
+
+.todoapp .fixed {
+  height: 550px;
+}
+
+.todoapp .fixed li .view label {
+  padding-top: 5px;
+  padding-bottom: 0px;
+}
+
+.no-bottom-radius {
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+.no-top-radius {
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+
+.history .small {
+  padding: 5px 10px;
+}
+
+.knobber {
+  padding: 8px;
+  width: fit-content;
+}
+
+.knob {
+  max-width: 225px;
+  max-height: 225px;
+}
+
+@media (min-width: 576px) {
+  .knob {
+    max-width: 280px;
+    max-height: 280px;
+  }
+}
+
+@media (min-width: 768px) {
+  .knob {
+    max-width: 255px;
+    max-height: 255px;
+  }
+}
+
+@media (min-width: 992px) {
+  .knob {
+    max-width: 280px;
+    max-height: 280px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .knob {
+    max-width: 255px;
+    max-height: 255px;
+  }
 }
