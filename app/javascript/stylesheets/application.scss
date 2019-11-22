@@ -3,8 +3,18 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/brands';
-@import 'pygments-rouge-css/github';
+
+//$primary:#FF304F;
+//$secondary:#CACACA;
+//$success:#015668;
+//$danger:#06648C;
+//$info:#0F81C7;
+//$warning:#0DE2EA;
+//$light:#ececec;
+//$dark:#222222;
 @import 'bootstrap/scss/bootstrap';
+
+@import 'pygments-rouge-css/github';
 @import 'utilities';
 @import 'theme';
 @import 'snake';
