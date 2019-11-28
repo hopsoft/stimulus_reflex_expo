@@ -3,7 +3,7 @@
     <%= select_tag :region,
       options_for_select(regions.prepend("Select a region..."), @region),
       placeholder: "Select a region...",
-      class: "form-control",
+      class: "form-control form-control-lg",
       data: { reflex: "change->GeoSelectorReflex#select_region" } %>
   </div>
 
@@ -12,7 +12,7 @@
       <%= select_tag :subregion,
         options_for_select(subregions(@region).prepend("Select a sub-region..."), @subregion),
         placeholder: "Select a sub-region...",
-        class: "form-control",
+        class: "form-control form-control-lg",
         data: { reflex: "change->GeoSelectorReflex#select_subregion" } %>
     </div>
 
@@ -21,7 +21,7 @@
         <%= select_tag :country,
           options_for_select(countries(@region, @subregion).prepend("Select a country..."), @country),
           placeholder: "Select a country...",
-          class: "form-control",
+          class: "form-control form-control-lg",
           data: { reflex: "change->GeoSelectorReflex#select_country" } %>
       </div>
     <% end %>

@@ -1,5 +1,5 @@
-<div class="card bg-light border-primary mt-4 shadow rounded-0">
-  <div class="card-header border-primary bg-primary-light rounded-0">
+<div class="card bg-light border-primary mt-2 shadow rounded-0">
+  <div class="card-header border-primary border-bottom bg-primary-lighter bg-demo-header rounded-0">
     <div class="row">
       <div class="col-8">
         <h3 class="card-title"><%= content_for :demo_title %></h3>
@@ -7,15 +7,5 @@
       </div>
     </div>
   </div>
-  <div class="card-body"><%= yield %></div>
-  <div class="card-footer border bg-muted">
-    <div class="row">
-      <div class="col opacity-80 d-flex justify-content-end">
-        <%= link_to "https://github.com/hopsoft/stimulus_reflex", target: "_blank" do %>
-          <%= image_tag "stimulus-reflex-logo.svg", class: "mr-1", style: "height:18px" %>
-          <small>a Stimulus<strong>Reflex</strong> Demo</small>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <div class="card-body p-4"><%= yield %></div>
 </div>

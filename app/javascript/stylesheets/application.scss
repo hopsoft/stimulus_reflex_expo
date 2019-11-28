@@ -4,14 +4,9 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
-//$primary:#FF304F;
-//$secondary:#CACACA;
-//$success:#015668;
-//$danger:#06648C;
-//$info:#0F81C7;
-//$warning:#0DE2EA;
-//$light:#ececec;
-//$dark:#222222;
+$primary: #44449b;
+$success: #4fcb4a;
+$info: #1181b2;
 @import 'bootstrap/scss/bootstrap';
 
 @import 'pygments-rouge-css/github';

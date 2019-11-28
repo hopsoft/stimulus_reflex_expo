@@ -27,6 +27,10 @@ module DemosHelper
     render "/demos/gists", filepaths: filepaths, grouped_filepaths: filepaths.group_by { |filepath| language filepath }
   end
 
+  def file_timestamps(filepaths = [])
+    filepaths.map { |p| File.mtime(p).iso8601 }
+  end
+
   def file_lines(filepath)
     lines = File.open(Rails.root.join(filepath)).readlines
     lines.reject! { |line| line.to_s.strip =~ /\A(#|\/|\*|\<--)/ }

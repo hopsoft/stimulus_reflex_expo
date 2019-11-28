@@ -4,7 +4,8 @@ module TabularsHelper
   include Pagy::Frontend
 
   def column_css(column_name)
-    "selected" if column_name.to_s == @order_by
+    return "text-light selected" if column_name.to_s == @order_by
+    "text-light"
   end
 
   def arrow(column_name)

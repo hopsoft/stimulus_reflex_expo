@@ -32,13 +32,33 @@
   opacity: 1 !important;
 }
 
+.scale-up-micro {
+  transform: scale(1.005);
+}
+
 @each $color, $value in $theme-colors {
   .bg-#{$color}-light {
-    background-color: lighten($value, 40%) !important;
+    background-color: lighten($value, 35%) !important;
+  }
+
+  .bg-#{$color}-lighter {
+    background-color: lighten($value, 42%) !important;
   }
 
   .border-#{$color}-light {
     border-color: lighten($value, 20%) !important;
+  }
+
+  .border-#{$color}-lighter {
+    border-color: lighten($value, 30%) !important;
+  }
+
+  .border-#{$color}-dark {
+    border-color: darken($value, 20%) !important;
+  }
+
+  .bg-#{$color}-dark {
+    background-color: darken($value, 20%) !important;
   }
 
   .text-#{$color}-dark {
