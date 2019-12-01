@@ -35,8 +35,8 @@ export default class extends ApplicationController {
   }
 
   highlight (element) {
-    Velocity(element, { scale: 1.01, backgroundColor: '#ff9' }, 200).then(
-      Velocity(element, { scale: 1, backgroundColor: '#fff' }, 600)
+    Velocity(element, { scale: 1.01, backgroundColor: '#ff9' }, 50).then(
+      Velocity(element, { scale: 1, backgroundColor: '#fff' }, 100)
     )
   }
 
