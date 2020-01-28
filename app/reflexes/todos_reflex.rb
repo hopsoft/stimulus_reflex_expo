@@ -12,24 +12,24 @@ class TodosReflex < StimulusReflex::Reflex
   end
 
   def update
-    Todo.find_by(session_id: session.id, id: element.dataset[:id])&.update title: element[:value]
+    Todo.find_by(session_id: session.id.to_s, id: element.dataset[:id])&.update title: element[:value]
   end
 
   def toggle
-    Todo.find_by(session_id: session.id, id: element.dataset[:id])&.toggle! :completed
+    Todo.find_by(session_id: session.id.to_s, id: element.dataset[:id])&.toggle! :completed
   end
 
   def destroy
-    Todo.find_by(session_id: session.id, id: element.dataset[:id])&.destroy
+    Todo.find_by(session_id: session.id.to_s, id: element.dataset[:id])&.destroy
   end
 
   def toggle_all
-    todos = Todo.where(session_id: session.id)
+    todos = Todo.where(session_id: session.id.to_s)
     todos.update_all completed: todos.active.exists?
   end
 
   def destroy_completed
-    Todo.where(session_id: session.id, completed: true).destroy_all
+    Todo.where(session_id: session.id.to_s, completed: true).destroy_all
   end
 
   def filter
