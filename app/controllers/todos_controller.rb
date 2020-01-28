@@ -4,7 +4,7 @@ class TodosController < ApplicationController
 
   def show
     session[:todo_filter] = "all" unless filter_permitted?(session[:todo_filter])
-    @all_todos = Todo.where(session_id: session.id)
+    @all_todos = Todo.where(session_id: session.id.to_s)
     @filtered_todos = @all_todos.public_send(session[:todo_filter]).order(:created_at)
   end
 
