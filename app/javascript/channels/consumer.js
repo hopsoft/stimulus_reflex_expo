@@ -3,6 +3,4 @@
 
 import { createConsumer } from '@rails/actioncable'
 
-window.ActionCableConsumer = createConsumer()
-
-export default ActionCableConsumer
+export default createConsumer()
