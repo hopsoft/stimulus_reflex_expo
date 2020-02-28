@@ -8044,9 +8044,9 @@ stdout-stream@^1.4.0:
     "@stimulus/webpack-helpers" "^1.1.1"
 
 stimulus_reflex@^2.2:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/stimulus_reflex/-/stimulus_reflex-2.2.0.tgz#6a8f2cc402e0b8a3e857a314981017cc9a76959a"
-  integrity sha512-jEG1FQWEntJV6tm9XijsYf0Gi/Tx19dMUeDjeZOrEYWHwj4qWFh+34bnA0ohmXeruizzCnJiyUjdPE7LyXzWWg==
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/stimulus_reflex/-/stimulus_reflex-2.2.1.tgz#8070fc6d2fc5b8013ff8de5413eea56fda97675b"
+  integrity sha512-JwDsFe6euOjh/OOMhXrsDhLD5TUcgsuHZ5GP1V0NPMLNCQ4rMgEZYt7P2yQMhnDhomW3PYcCFYObSstSt9P5gg==
   dependencies:
     actioncable ">= 5.2"
     cable_ready ">= 4.0"
