@@ -93,7 +93,7 @@ class SnakeReflex < ApplicationReflex
           "args" => yield,
           "url" => url,
           "attrs" => element.attributes.to_h,
-          "selectors" => selectors,
+          "selectors" => selectors
         })
       end
     end

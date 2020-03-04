@@ -6,6 +6,6 @@ Restaurant.destroy_all
     name: Faker::Restaurant.name,
     stars: [1, 2, 3, 4, 5].sample,
     price: [1, 2, 3].sample,
-    category: Faker::Restaurant.type,
+    category: Faker::Restaurant.type
   )
 end

@@ -6,7 +6,7 @@ module GistsHelper
     html: Rouge::Lexers::HTML.new,
     javascript: Rouge::Lexers::Javascript.new,
     ruby: Rouge::Lexers::Ruby.new,
-    scss: Rouge::Lexers::Scss.new,
+    scss: Rouge::Lexers::Scss.new
   }
 
   def render_gist(language, source)

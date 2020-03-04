@@ -11,7 +11,7 @@ class ChatReflex < ApplicationReflex
       color: color,
       author: request.remote_ip,
       message: message,
-      created_at: Time.current.iso8601,
+      created_at: Time.current.iso8601
     }
     Rails.cache.write :chats, @chats
     cable_ready["chat"].dispatch_event name: "chats:added", detail: {message_id: message_id}
