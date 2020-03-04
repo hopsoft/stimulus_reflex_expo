@@ -57,6 +57,7 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   config.cache_store = :redis_cache_store, {url: ENV["REDIS_URL"]}
+  config.session_store :cache_store, key: "_stimulus_reflex_expo_production_session"
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque

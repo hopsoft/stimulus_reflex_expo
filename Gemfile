@@ -24,6 +24,7 @@ gem "valid_email", "~> 0.1"
 gem "webpacker", "~> 4.0"
 
 group :development, :test do
+  gem "awesome_print"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "dotenv"
   gem "pry-nav"
@@ -37,6 +38,7 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "standard"
+  gem "tmuxinator"
   gem "web-console", ">= 3.3.0"
 end
 
