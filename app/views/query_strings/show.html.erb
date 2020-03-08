@@ -1,0 +1,26 @@
+<%= content_for :demo_title, "Linkable Query String" %>
+<%= content_for :demo_summary, "With searching, sorting, and pagination" %>
+<%= render_demo "/query_strings/demo" %>
+
+<%= render_explanation do %>
+  <p>
+    Sophsticated management of tabular data using
+    <a href="https://docs.stimulusreflex.com/quickstart#look-mom-no-javascript">declarative StimulusReflex attributes</a>.
+    <strong>No custom JavaScript was written for this demo.</strong>
+  </p>
+  <p>
+    <ul>
+      <li>No need for expensive third party libraries.</li>
+      <li>No need to send heavy JavaScript payloads to the client.</li>
+      <li>No need to build an API layer that returns JSON.</li>
+      <li><strong>A little server-side HTML rendering and a <code>Reflex</code> is all it takes.</strong></li>
+    </ul>
+  </p>
+<% end %>
+
+<%= render_gists(
+  "app/views/query_strings/_demo.html.erb",
+  "app/models/restaurant.rb",
+  "app/controllers/query_strings_controller.rb",
+  "app/reflexes/query_string_reflex.rb"
+) %>
