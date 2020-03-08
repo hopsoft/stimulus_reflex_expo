@@ -9,10 +9,15 @@ export default class extends ApplicationController {
   }
 
   afterReflex (element, reflex, error) {
-    history.pushState(
-      {},
-      '',
-      `${window.location.pathname}?category=${element.value}`
-    )
+    if (!error) {
+      const params = new URLSearchParams(window.location.search.slice(1))
+      params.set('category', element.value)
+
+      history.pushState(
+        {},
+        '',
+        `${window.location.pathname}?${params.toString()}`
+      )
+    }
   }
 }
