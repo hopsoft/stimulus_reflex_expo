@@ -2,6 +2,6 @@
 
 class QueryStringReflex < ApplicationReflex
   def filter
-    @category = element[:value]
+    instance_variable_set(:"@#{element[:name]}", element[:value])
   end
 end
