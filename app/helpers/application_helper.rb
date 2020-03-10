@@ -9,4 +9,9 @@ module ApplicationHelper
   def active?(name)
     controller_name.include? name
   end
+
+  def permalink(query = {})
+    query = query.select { |_, val| val.present? }
+    "#{request.protocol}#{Rails.env.development? ? request.host_with_port : host}#{request.path}?#{query.to_query}"
+  end
 end

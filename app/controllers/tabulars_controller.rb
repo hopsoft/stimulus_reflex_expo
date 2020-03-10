@@ -13,7 +13,6 @@ class TabularsController < ApplicationController
     restaurants = restaurants.search(@query) if @query.present?
     pages = (restaurants.count / Pagy::VARS[:items].to_f).ceil
 
-    @permalink = permalink(query: @query, order_by: @order_by, direction: @direction, page: @page)
     @page = 1 if @page > pages
     @pagy, @restaurants = pagy(restaurants, page: @page)
   end
