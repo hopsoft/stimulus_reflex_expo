@@ -1,4 +1,5 @@
 globals:
   alert: readonly
+  history: readonly
   location: readonly
   performance: readonly

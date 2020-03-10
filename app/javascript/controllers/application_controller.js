@@ -1,7 +1,7 @@
 import { Controller } from 'stimulus'
 import StimulusReflex from 'stimulus_reflex'
 
-export default class extends Controller {
+export class ApplicationController extends Controller {
   connect () {
     StimulusReflex.register(this)
   }
@@ -19,5 +19,14 @@ export default class extends Controller {
       reflex,
       `${(performance.now() - this.benchmark).toFixed(0)}ms`
     )
+    if (this.permalink) history.pushState({}, '', this.permalink)
+  }
+
+  get permalink () {
+    const element = document.querySelector('[data-permalink]')
+    const url = (element ? element.dataset.permalink : '').trim()
+    return url.length ? url : null
   }
 }
+
+export default ApplicationController
