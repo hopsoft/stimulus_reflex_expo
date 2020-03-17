@@ -7,6 +7,8 @@ export default class extends ApplicationController {
   connect () {
     super.connect()
     this.perform = debounce(this._perform, 350).bind(this)
+    this.queryTarget.value = 'reflex'
+    this._perform()
   }
 
   beforePerform (element, reflex) {
@@ -15,7 +17,12 @@ export default class extends ApplicationController {
   }
 
   _perform (event) {
-    event.preventDefault()
+    if (event) event.preventDefault()
+    if (!this.connectionOpen) return setTimeout(() => this._perform(), 1)
     this.stimulate('BookSearchReflex#perform', this.queryTarget.value)
+  }
+
+  get connectionOpen () {
+    return this.StimulusReflex.subscription.consumer.connection.isOpen()
   }
 }
