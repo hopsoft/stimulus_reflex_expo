@@ -19,7 +19,7 @@ gem "redis", "~> 4.0"
 gem "rouge", "~> 3.16.0"
 gem "sass-rails", "~> 6"
 gem "sidekiq", "~> 6.0"
-gem "stimulus_reflex", "~> 2.2"
+gem "stimulus_reflex", "~> 3.0"
 gem "valid_email", "~> 0.1"
 gem "webpacker", "~> 4.0"
 
