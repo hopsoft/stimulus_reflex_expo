@@ -1,5 +1,5 @@
-<div class="form-row mb-4" data-controller="permalink" data-permalink-category=<%= @category %> data-permalink-rating=<%= @rating %>>
-  <div class="col-6">
+<div class="form-row mb-4" data-controller="permalink" data-permalink-category="<%= @category %>" data-permalink-rating="<%= @rating %>" data-permalink-price="<%= @price %>">
+  <div class="col-4">
     <%= label_tag "category" %>
     <%= select_tag "category",
             options_for_select(@categories, @category),
@@ -8,7 +8,7 @@
             data: { action: "change->permalink#filter",
                     reflex_root: "#search-results" } %>
   </div>
-  <div class="col-6">
+  <div class="col-4">
     <%= label_tag "rating" %>
     <%= select_tag "rating",
             options_for_select((0..5), @rating),
@@ -16,6 +16,18 @@
             class: "form-control",
             data: { action: "change->permalink#filter",
                     reflex_root: "#search-results" } %>
+  </div>
+  <div class="col-4">
+    <%= label_tag "price", "Price", class: "d-block" %>
+    <div class="btn-group btn-group-toggle" id="price-button-group">
+      <% {'$' => 1, '$$' => 2, '$$$' => 3}.each do |key, value| %>
+        <%= label_tag '', class: "btn btn-outline-primary #{'active' if @price&.include?(value.to_s)}" do %>
+          <%= check_box_tag 'price', value, false, class: "", data: { action: "click->permalink#filter",
+                                                                  reflex_root: "#search-results,#price-button-group"} %>
+          <%= key %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
