@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class QueryStringsController < ApplicationController
+class PermalinksController < ApplicationController
   def show
     @categories = Restaurant.select(:category).distinct.order(:category).map(&:category)
     @category ||= params[:category]

@@ -1,11 +1,11 @@
-<div class="form-row mb-4" data-controller="query-string" data-query-string-category=<%= @category %> data-query-string-rating=<%= @rating %>>
+<div class="form-row mb-4" data-controller="permalink" data-permalink-category=<%= @category %> data-permalink-rating=<%= @rating %>>
   <div class="col-6">
     <%= label_tag "category" %>
     <%= select_tag "category",
             options_for_select(@categories, @category),
             include_blank: true,
             class: "form-control",
-            data: { action: "change->query-string#filter",
+            data: { action: "change->permalink#filter",
                     reflex_root: "#search-results" } %>
   </div>
   <div class="col-6">
@@ -14,7 +14,7 @@
             options_for_select((0..5), @rating),
             include_blank: true,
             class: "form-control",
-            data: { action: "change->query-string#filter",
+            data: { action: "change->permalink#filter",
                     reflex_root: "#search-results" } %>
   </div>
 </div>

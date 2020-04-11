@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class QueryStringReflex < ApplicationReflex
+class PermalinkReflex < ApplicationReflex
   def filter
     instance_variable_set(:"@#{element[:name]}", element[:value])
   end

@@ -1,6 +1,6 @@
-<%= content_for :demo_title, "Linkable Query String" %>
+<%= content_for :demo_title, "Permalink" %>
 <%= content_for :demo_summary, "Update the browser URL after filtering" %>
-<%= render_demo "/query_strings/demo" %>
+<%= render_demo "/permalinks/demo" %>
 
 <%= render_explanation do %>
   <p>
@@ -17,8 +17,8 @@
 <% end %>
 
 <%= render_gists(
-  "app/views/query_strings/_demo.html.erb",
-  "app/javascript/controllers/query_string_controller.js",
-  "app/controllers/query_strings_controller.rb",
-  "app/reflexes/query_string_reflex.rb"
+  "app/views/permalinks/_demo.html.erb",
+  "app/javascript/controllers/permalink_controller.js",
+  "app/controllers/permalinks_controller.rb",
+  "app/reflexes/permalink_reflex.rb"
 ) %>

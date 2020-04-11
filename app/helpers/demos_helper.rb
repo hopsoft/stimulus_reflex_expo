@@ -8,7 +8,7 @@ module DemosHelper
       calendar
       geo_selector
       gravatar
-      query_string
+      permalink
       reverse_text
       tabular
       todo

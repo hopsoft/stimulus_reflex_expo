@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resource :chat, only: [:show]
     resource :geo_selector, only: [:show]
     resource :gravatar, only: [:show]
-    resource :query_string, only: [:show]
+    resource :permalink, only: [:show]
     resource :reverse_text, only: [:show]
     resource :snake, only: [:show]
     resource :tabular, only: [:show]
