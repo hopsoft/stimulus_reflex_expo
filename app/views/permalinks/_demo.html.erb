@@ -1,4 +1,4 @@
-<div class="form-row mb-4" data-controller="permalink" data-permalink-category="<%= @category %>" data-permalink-rating="<%= @rating %>" data-permalink-price="<%= @price.join(",") %>">
+<div class="form-row mb-4" data-controller="permalink" data-permalink-category="<%= @category %>" data-permalink-rating="<%= @rating %>" data-permalink-price="<%= @price&.join(",") %>">
   <div class="col-4">
     <%= label_tag "category" %>
     <%= select_tag "category",
@@ -22,7 +22,7 @@
     <div class="btn-group btn-group-toggle" id="price-button-group">
       <% {'$' => 1, '$$' => 2, '$$$' => 3}.each do |key, value| %>
         <%= label_tag '', class: "btn btn-outline-primary #{'active' if @price&.include?(value.to_s)}" do %>
-          <%= check_box_tag 'price', value, false, id: "price-#{value}", class: "", data: { action: "click->permalink#filter",
+          <%= check_box_tag 'price', value, @price&.include?(value.to_s), id: "price-#{value}", class: "", data: { action: "click->permalink#filter",
                                                                   reflex_root: "#search-results,#price-button-group"} %>
           <%= key %>
         <% end %>
