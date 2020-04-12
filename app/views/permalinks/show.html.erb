@@ -8,10 +8,10 @@
   </p>
   <p>
     <ul>
-      <li>No need for expensive third party libraries.</li>
-      <li>No need to send heavy JavaScript payloads to the client.</li>
+      <li>Uses stimulus' Data API for managing the client side state</li>
+      <li>Updates the browser <code>history</code> using <code>pushState</code> in an <code>afterReflex</code> - so you always have a permalink in the browser bar representing the current state</li>
       <li>No need to build an API layer that returns JSON.</li>
-      <li><strong>A little server-side HTML rendering and a <code>Reflex</code> is all it takes.</strong></li>
+      <li>The permalink is picked up when the controller is loaded in a non-stimulus-reflex request (i.e. <code>@stimulus_reflex</code> is false.</li>
     </ul>
   </p>
 <% end %>
