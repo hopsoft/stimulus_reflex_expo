@@ -1,16 +1,10 @@
+import { camelize } from "inflected";
+
 import ApplicationController from "./application_controller";
 
 /* This is the custom StimulusReflex controller for PermalinkReflex.
  * Learn more at: https://docs.stimulusreflex.com
  */
-
-const camelize = str => {
-  return str
-    .split(/[-_]/)
-    .map(w => w.replace(/./, m => m.toUpperCase()))
-    .join("")
-    .replace(/^\w/, c => c.toLowerCase());
-};
 
 export default class extends ApplicationController {
   filter(e) {
