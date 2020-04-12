@@ -3,16 +3,16 @@
 class PermalinkReflex < ApplicationReflex
   def filter
     if element[:type] == "checkbox"
-      options = instance_variable_get(:"@#{element[:name]}") || []
+      options = session[element[:name].to_sym] || []
       if options.include?(element[:value])
         options -= [element[:value]]
       else
         options += [element[:value]]
       end
 
-      instance_variable_set(:"@#{element[:name]}", options)
+      session[element[:name].to_sym] = options
     else
-      instance_variable_set(:"@#{element[:name]}", element[:value])
+      session[element[:name].to_sym] = element[:value]
     end
   end
 end

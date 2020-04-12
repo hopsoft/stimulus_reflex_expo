@@ -18,7 +18,17 @@ export default class extends ApplicationController {
   }
 
   beforeReflex(element) {
-    this.data.set(element.name, element.value);
+    if (element.type === "checkbox") {
+      this.data.set(
+        element.name,
+        Array.from(document.querySelectorAll(`input[name=${element.name}]`))
+          .filter(e => e.checked)
+          .map(e => e.value)
+          .join(",")
+      );
+    } else {
+      this.data.set(element.name, element.value);
+    }
   }
 
   afterReflex(element, reflex, error) {
