@@ -1,10 +1,17 @@
-<form class="m-4" style="max-width:600px">
+<form data-controller="geo-selector" class="m-4" style="max-width:600px">
   <div class="form-group">
     <%= select_tag :region,
       options_for_select(regions.prepend("Select a region..."), @region),
       placeholder: "Select a region...",
       class: "form-control form-control-lg",
       data: { reflex: "change->GeoSelectorReflex#select_region" } %>
+  </div>
+
+  <div data-target="geo-selector.subregionPlaceholder" class="form-group" hidden>
+    <div class="form-control form-control-lg">
+      <i class="fas fa-spinner fa-spin"></i>
+      Fetching subregions...
+    </div>
   </div>
 
   <% if @region %>
@@ -16,6 +23,13 @@
         data: { reflex: "change->GeoSelectorReflex#select_subregion" } %>
     </div>
 
+    <div data-target="geo-selector.countryPlaceholder" class="form-group" hidden>
+      <div class="form-control form-control-lg">
+        <i class="fas fa-spinner fa-spin"></i>
+        Fetching countries...
+      </div>
+    </div>
+
     <% if @subregion %>
       <div class="form-group">
         <%= select_tag :country,
@@ -24,14 +38,21 @@
           class: "form-control form-control-lg",
           data: { reflex: "change->GeoSelectorReflex#select_country" } %>
       </div>
-    <% end %>
-  <% end %>
 
-  <% if @country %>
-    <h3>
-      <%= @country_instance&.emoji_flag %>
-      <%= @country %>
-    </h3>
-    <%= link_to "Learn about this country", "https://en.wikipedia.org/wiki/#{@country}", target: "_blank" %>
+      <div data-target="geo-selector.detailPlaceholder" class="form-group" hidden>
+        <div class="form-control form-control-lg">
+          <i class="fas fa-spinner fa-spin"></i>
+          Fetching country details...
+        </div>
+      </div>
+
+      <% if @country %>
+        <h3>
+          <%= @country_instance&.emoji_flag %>
+          <%= @country %>
+        </h3>
+        <%= link_to "Learn about this country", "https://en.wikipedia.org/wiki/#{@country}", target: "_blank" %>
+      <% end %>
+    <% end %>
   <% end %>
 </form>
