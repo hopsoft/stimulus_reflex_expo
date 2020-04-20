@@ -2,19 +2,16 @@
   <li class="editing">
     <input type="text" class="edit" value="<%= todo.title %>"
       data-action="keyup->todos#cancelEdit blur->todos#cancelEdit"
-      data-reflex="change->TodosReflex#update" data-id="<%= todo.id %>" data-room="<%= session.id %>">
+      data-reflex="change->TodosReflex#update" data-id="<%= todo.id %>">
   </li>
 <% else %>
-  <li class="<%= "completed" if todo.completed? %>"
-      data-reflex="click->TodosReflex#edit"
-      data-id="<%= todo.id %>"
-      data-room="<%= session.id %>">
+  <li class="<%= "completed" if todo.completed? %>" data-reflex="click->TodosReflex#edit" data-id="<%= todo.id %>">
     <div class="view">
-      <input <%= "checked" if todo.completed? %> type="checkbox" class="toggle" data-reflex="change->TodosReflex#toggle" data-id="<%= todo.id %>" data-room="<%= session.id %>">
+      <input <%= "checked" if todo.completed? %> type="checkbox" class="toggle" data-reflex="change->TodosReflex#toggle" data-id="<%= todo.id %>">
       <label>
         <%= todo.title %>
       </label>
-      <button name="button" type="button" class="destroy" data-reflex="click->TodosReflex#destroy" data-id="<%= todo.id %>" data-room="<%= session.id %>"/>
+      <button name="button" type="button" class="destroy" data-reflex="click->TodosReflex#destroy" data-id="<%= todo.id %>" />
     </div>
   </li>
 <% end %>

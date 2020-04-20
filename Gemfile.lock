@@ -67,8 +67,8 @@ GEM
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     builder (3.2.4)
-    byebug (11.1.1)
-    cable_ready (4.1.0)
+    byebug (11.1.2)
+    cable_ready (4.1.1)
       rails (>= 5.2)
     capybara (3.32.1)
       addressable
@@ -209,7 +209,7 @@ GEM
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.2.1)
+    sassc (2.3.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -221,7 +221,7 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (2.3.0)
-    sidekiq (6.0.6)
+    sidekiq (6.0.7)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       rack-protection (>= 2.0.0)
@@ -241,7 +241,7 @@ GEM
     standard (0.2.3)
       rubocop (~> 0.80.1)
       rubocop-performance (~> 1.5.2)
-    stimulus_reflex (3.1.2)
+    stimulus_reflex (3.1.3)
       cable_ready (>= 4.1)
       nokogiri
       rack
@@ -272,7 +272,7 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
-    webpacker (5.0.1)
+    webpacker (5.1.0)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
@@ -293,7 +293,7 @@ DEPENDENCIES
   awesome_print
   bootsnap (>= 1.4)
   byebug
-  cable_ready (~> 4.0)
+  cable_ready (= 4.1.1)
   capybara (>= 2.15)
   countries (~> 3.0)
   dotenv
@@ -316,7 +316,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   standard
-  stimulus_reflex (= 3.1.2)
+  stimulus_reflex (= 3.1.3)
   tmuxinator
   tzinfo-data
   valid_email (~> 0.1)
