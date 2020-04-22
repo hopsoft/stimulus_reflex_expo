@@ -8,7 +8,6 @@ module DemosHelper
       geo_selector
       gravatar
       reverse_text
-      snake
       tabular
       todo
       validation
