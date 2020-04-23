@@ -1,0 +1,9 @@
+<%= content_for :demo_title, "Calendar" %>
+<%= content_for :demo_summary, "Basic calendar with events" %>
+<%= render_demo "/calendars/demo" %>
+
+<%= render_gists(
+  "app/views/calendars/_demo.html.erb",
+  "app/controllers/calendars_controller.rb",
+  "app/reflexes/calendar_reflex.rb"
+) %>

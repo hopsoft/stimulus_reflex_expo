@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h2><%= start_date.strftime("%B %Y") %></h2>
+  <div class="text-success" hidden data-activity-indicator>
+    <div class="spinner-border spinner-border-sm"></div>
+    <span>Loading...</span>
+  </div>
+  <div>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <%= link_to "#", title: "Previous", class: "btn btn-secondary", data: { reflex: "click->CalendarReflex#change_month", start_date: start_date.advance(months: -1).iso8601 } do %>
+        <i class="fas fa-chevron-left"></i>
+      <% end %>
+      <%= link_to "#", title: "Next", class: "btn btn-secondary", data: { reflex: "click->CalendarReflex#change_month", start_date: start_date.advance(months: 1).iso8601 } do %>
+        <i class="fas fa-chevron-right"></i>
+      <% end %>
+    </div>
+    <%= link_to "Today", "#", class: "btn btn-secondary", data: { reflex: "click->CalendarReflex#today" } %>
+  </div>
+</div>
+
+<table class="table table-bordered mt-2" style="min-height:50rem">
+  <thead class="thead-dark">
+    <tr class="text-center">
+      <% Date::DAYNAMES.each do |name| %>
+        <th style="width:14%" ><%= name %></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% dates.each_slice(7) do |week| %>
+      <tr>
+        <% week.each do |date| %>
+          <%= tag.td class: css("", "bg-warning-light": date.today?, "bg-light-dark": start_date.month != date.month) do %>
+            <%#block.call day, sorted_events.fetch(day, []) %>
+            <%= date.day %>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+  </tbody>
+</table>

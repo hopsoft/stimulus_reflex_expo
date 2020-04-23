@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   scope :demos do
     resource :book_search, only: [:show]
+    resource :calendar, only: [:show]
     resource :chat, only: [:show]
     resource :geo_selector, only: [:show]
     resource :gravatar, only: [:show]

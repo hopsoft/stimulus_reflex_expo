@@ -7,6 +7,9 @@ export default class extends Controller {
   }
 
   beforeReflex (element, reflex) {
+    document
+      .querySelectorAll('[data-activity-indicator]')
+      .forEach(el => (el.hidden = false))
     this.benchmark = performance.now()
   }
 
