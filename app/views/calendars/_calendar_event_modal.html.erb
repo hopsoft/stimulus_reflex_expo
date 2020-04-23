@@ -1,0 +1,37 @@
+<div class="modal" tabindex="-1" style="display:block">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= @calendar_event.new_record? ? "New" : "Edit" %> Calendar Event</h5>
+        <button type="button" class="close" data-reflex="click->CalendarReflex#change_month" data-start-date="<%= start_date.iso8601 %>">
+          <span>&times;</span>
+        </button>
+      </div>
+      <%= form_with model: @calendar_event do |f| %>
+        <div class="modal-body">
+          <div class="lead"><%= @calendar_event.occurs_at.strftime "%A %B, %e %Y" %></div>
+          <div class="btn-group mt-3" data-controller="button-group">
+            <% (1..12).each do |i| %>
+              <%= tag.button i, type: "button",
+                class: css("btn btn-light", "active": @calendar_event.occurs_at.strftime("%l") == i.to_s),
+                data: { action: "click->button-group#select" } %>
+            <% end %>
+          </div>
+          <div class="btn-group mt-2" data-controller="button-group">
+            <%= tag.button "AM", type: "button",
+              class: css("btn btn-light", "active": @calendar_event.occurs_at.strftime("%p") == "AM"),
+              data: { action: "click->button-group#select" } %>
+            <%= tag.button "PM", type: "button",
+              class: css("btn btn-light", "active": @calendar_event.occurs_at.strftime("%p") == "PM"),
+              data: { action: "click->button-group#select" } %>
+          </div>
+          <div class="form-group my-3">
+            <%= f.text_area :description, placeholder: "Description for this event...", class: "form-control", rows: 3 %>
+          </div>
+          <button type="button" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-link" data-reflex="click->CalendarReflex#change_month" data-start-date="<%= start_date.iso8601 %>">Cancel</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

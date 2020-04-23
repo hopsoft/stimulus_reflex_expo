@@ -6,14 +6,14 @@
   </div>
   <div>
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <%= link_to "#", title: "Previous", class: "btn btn-secondary", data: { reflex: "click->CalendarReflex#change_month", start_date: start_date.advance(months: -1).iso8601 } do %>
+      <%= link_to "#", title: "Previous", class: "btn btn-light", data: { reflex: "click->CalendarReflex#change_month", start_date: start_date.advance(months: -1).iso8601 } do %>
         <i class="fas fa-chevron-left"></i>
       <% end %>
-      <%= link_to "#", title: "Next", class: "btn btn-secondary", data: { reflex: "click->CalendarReflex#change_month", start_date: start_date.advance(months: 1).iso8601 } do %>
+      <%= link_to "#", title: "Next", class: "btn btn-light", data: { reflex: "click->CalendarReflex#change_month", start_date: start_date.advance(months: 1).iso8601 } do %>
         <i class="fas fa-chevron-right"></i>
       <% end %>
     </div>
-    <%= link_to "Today", "#", class: "btn btn-secondary", data: { reflex: "click->CalendarReflex#today" } %>
+    <%= link_to "Today", "#", class: "btn btn-light", data: { reflex: "click->CalendarReflex#today" } %>
   </div>
 </div>
 
@@ -30,7 +30,8 @@
     <% dates.each_slice(7) do |week| %>
       <tr>
         <% week.each do |date| %>
-          <%= tag.td class: css("", "bg-warning-light": date.today?, "bg-light-dark": start_date.month != date.month) do %>
+          <%= tag.td class: css("", "bg-warning-lighter": date.today?, "bg-secondary-lightest": start_date.month != date.month),
+            data: { reflex: "click->CalendarReflex#new_calendar_event", start_date: start_date.iso8601, date: date.iso8601 } do %>
             <%#block.call day, sorted_events.fetch(day, []) %>
             <%= date.day %>
           <% end %>
@@ -38,5 +39,6 @@
       </tr>
     <% end %>
   </tbody>
-  </tbody>
 </table>
+
+<%= render "/calendars/calendar_event_modal" if @calendar_event %>
