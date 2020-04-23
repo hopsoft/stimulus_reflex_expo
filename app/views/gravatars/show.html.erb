@@ -1,15 +1,16 @@
-<%= content_for :demo_title, "Gravatar" %>
-<%= content_for :demo_summary, "Displays Gravatar image for any email address" %>
-<%= render_demo "/gravatars/demo" %>
-
-<%= render_explanation do %>
-  <p>
-    <strong>No custom JavaScript was written for this demo.</strong>
-    It uses the <code>data-reflex</code> attribute to produce the behavior.
-  </p>
+<%= render(DemoComponent.new(
+      title: "Gravatar",
+      summary: "Displays Gravatar image for any email address",
+      demo: "/gravatars/demo",
+      gists: [
+        "app/views/gravatars/_demo.html.erb",
+        "app/reflexes/gravatar_reflex.rb"
+      ]
+    )) do |component| %>
+  <% component.with(:explanation) do %>
+    <p>
+      <strong>No custom JavaScript was written for this demo.</strong>
+      It uses the <code>data-reflex</code> attribute to produce the behavior.
+    </p>
+  <% end %>
 <% end %>
-
-<%= render_gists(
-  "app/views/gravatars/_demo.html.erb",
-  "app/reflexes/gravatar_reflex.rb"
-) %>

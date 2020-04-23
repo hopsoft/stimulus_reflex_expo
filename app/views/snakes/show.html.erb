@@ -1,22 +1,23 @@
-<%= content_for :demo_title, "Snake" %>
-<%= content_for :demo_summary, "Snakes need to eat, too!" %>
-<%= render_demo "/snakes/demo" %>
-
-<%= render_explanation do %>
-  <p>
-    However impractical it might seem, we wanted to demonstrate that StimulusReflex can
-    emit updates fast enough to manage 60fps on a local connection. While you probably
-    shouldn't port Doom, please consider yourself dared.
-  </p>
-  <p>
-    At this time, this is a <strong>desktop-only</strong> demo as it relies on the arrow keys to steer.
-  </p>
+<%= render(DemoComponent.new(
+      title: "Snake",
+      summary: "Snakes need to eat, too!",
+      demo: "/snakes/demo",
+      gists: [
+        "app/javascript/stylesheets/snake.scss",
+        "app/views/snakes/_demo.html.erb",
+        "app/javascript/controllers/snake_controller.js",
+        "app/controllers/snakes_controller.rb",
+        "app/reflexes/snake_reflex.rb"
+      ]
+    )) do |component| %>
+  <% component.with(:explanation) do %>
+    <p>
+      However impractical it might seem, we wanted to demonstrate that StimulusReflex can
+      emit updates fast enough to manage 60fps on a local connection. While you probably
+      shouldn't port Doom, please consider yourself dared.
+    </p>
+    <p>
+      At this time, this is a <strong>desktop-only</strong> demo as it relies on the arrow keys to steer.
+    </p>
+  <% end %>
 <% end %>
-
-<%= render_gists(
-  "app/javascript/stylesheets/snake.scss",
-  "app/views/snakes/_demo.html.erb",
-  "app/javascript/controllers/snake_controller.js",
-  "app/controllers/snakes_controller.rb",
-  "app/reflexes/snake_reflex.rb"
-) %>

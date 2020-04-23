@@ -1,12 +1,13 @@
-<%= content_for :demo_title, "Chat" %>
-<%= content_for :demo_summary, "Allows current site visitors to chat with each other" %>
-<%= render_demo "/chats/demo" %>
-
-<%= render_gists(
-  "app/views/chats/_demo.html.erb",
-  "app/views/chats/_color.html.erb",
-  "app/javascript/controllers/chat_controller.js",
-  "app/javascript/channels/chat_channel.js",
-  "app/controllers/chats_controller.rb",
-  "app/reflexes/chat_reflex.rb"
-) %>
+<%= render(DemoComponent.new(
+      title: "Chat",
+      summary: "Allows current site visitors to chat with each other",
+      demo: "/chats/demo",
+      gists: [
+        "app/views/chats/_demo.html.erb",
+        "app/views/chats/_color.html.erb",
+        "app/javascript/controllers/chat_controller.js",
+        "app/javascript/channels/chat_channel.js",
+        "app/controllers/chats_controller.rb",
+        "app/reflexes/chat_reflex.rb"
+      ]
+    )) %>

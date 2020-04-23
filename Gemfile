@@ -21,6 +21,7 @@ gem "sidekiq", "~> 6.0"
 gem "stimulus_reflex", "3.1.3"
 gem "valid_email", "~> 0.1"
 gem "webpacker", "~> 5.1.1"
+gem "view_component", "~> 2.5.1"
 
 group :development, :test do
   gem "awesome_print"

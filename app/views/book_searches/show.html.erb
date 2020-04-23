@@ -1,18 +1,19 @@
-<%= content_for :demo_title, "Book Search" %>
-<%= content_for :demo_summary, "<a href='https://openlibrary.org/developers/api'>https://openlibrary.org/developers/api</a>".html_safe %>
-<%= render_demo "/book_searches/demo" %>
-
-<%= render_explanation do %>
-  <p>
-    This demo illustrates the power of combining <a href="https://stimulusjs.org" target="_blank">Stimulus</a> with StimulusReflex.
-    It leverages Stimulus to <strong>debounce</strong> Reflex invocations
-    <em>(so we don't <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack" target="_blank">DOS</a> the API)</em>
-    <strong>and provide feedback</strong> so users are aware of backend activity.
-  </p>
+<%= render(DemoComponent.new(
+      title: "Book Search",
+      summary: "<a href='https://openlibrary.org/developers/api'>https://openlibrary.org/developers/api</a>".html_safe,
+      demo: "/book_searches/demo",
+      gists: [
+        "app/views/book_searches/_demo.html.erb",
+        "app/javascript/controllers/book_search_controller.js",
+        "app/reflexes/book_search_reflex.rb"
+      ]
+    )) do |component| %>
+  <% component.with(:explanation) do %>
+    <p>
+      This demo illustrates the power of combining <a href="https://stimulusjs.org" target="_blank">Stimulus</a> with StimulusReflex.
+      It leverages Stimulus to <strong>debounce</strong> Reflex invocations
+      <em>(so we don't <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack" target="_blank">DOS</a> the API)</em>
+      <strong>and provide feedback</strong> so users are aware of backend activity.
+    </p>
+  <% end %>
 <% end %>
-
-<%= render_gists(
-  "app/views/book_searches/_demo.html.erb",
-  "app/javascript/controllers/book_search_controller.js",
-  "app/reflexes/book_search_reflex.rb"
-) %>

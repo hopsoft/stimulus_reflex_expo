@@ -1,0 +1,22 @@
+<div class="card bg-light border-primary mt-2 shadow rounded-0">
+  <div class="card-header border-primary border-bottom bg-primary-lighter bg-demo-header rounded-0">
+    <div class="row">
+      <div class="col-8">
+        <h3 class="card-title"><%= title %></h3>
+        <%= summary if summary%>
+      </div>
+    </div>
+  </div>
+  <div class="card-body p-4">
+    <%= render_demo demo %>
+  </div>
+</div>
+
+<% if explanation %>
+  <h4 class="mt-5 mb-3">
+    <i class="fa-fw fas fa-info text-primary opacity-60"></i>
+    Explanation
+  </h4>
+  <%= explanation %>
+<% end %>
+<%= render "/demos/gists", filepaths: gists, grouped_filepaths: gists.group_by { |filepath| language filepath } %>

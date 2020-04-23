@@ -1,28 +1,29 @@
-<%= content_for :demo_title, "Tabular Data" %>
-<%= content_for :demo_summary, "With searching, sorting, and pagination" %>
-<%= render_demo "/tabulars/demo" %>
-
-<%= render_explanation do %>
-  <p>
-    Sophsticated management of tabular data using
-    <a href="https://docs.stimulusreflex.com/quickstart#look-mom-no-javascript">declarative StimulusReflex attributes</a>.
-    <strong>No custom JavaScript was written for this demo.</strong>
-  </p>
-  <p>
-    <ul>
-      <li>No need for expensive third party libraries.</li>
-      <li>No need to send heavy JavaScript payloads to the client.</li>
-      <li>No need to build an API layer that returns JSON.</li>
-      <li><strong>A little server-side HTML rendering and a <code>Reflex</code> is all it takes.</strong></li>
-    </ul>
-  </p>
+<%= render(DemoComponent.new(
+      title: "Tabular Data",
+      summary: "With searching, sorting, and pagination",
+      demo: "/tabulars/demo",
+      gists: [
+        "app/views/tabulars/_demo.html.erb",
+        "app/views/tabulars/_paginator.html.erb",
+        "app/helpers/tabulars_helper.rb",
+        "app/models/restaurant.rb",
+        "app/controllers/tabulars_controller.rb",
+        "app/reflexes/tabular_reflex.rb"
+      ]
+    )) do |component| %>
+  <% component.with(:explanation) do %>
+    <p>
+      Sophsticated management of tabular data using
+      <a href="https://docs.stimulusreflex.com/quickstart#look-mom-no-javascript">declarative StimulusReflex attributes</a>.
+      <strong>No custom JavaScript was written for this demo.</strong>
+    </p>
+    <p>
+      <ul>
+        <li>No need for expensive third party libraries.</li>
+        <li>No need to send heavy JavaScript payloads to the client.</li>
+        <li>No need to build an API layer that returns JSON.</li>
+        <li><strong>A little server-side HTML rendering and a <code>Reflex</code> is all it takes.</strong></li>
+      </ul>
+    </p>
+  <% end %>
 <% end %>
-
-<%= render_gists(
-  "app/views/tabulars/_demo.html.erb",
-  "app/views/tabulars/_paginator.html.erb",
-  "app/helpers/tabulars_helper.rb",
-  "app/models/restaurant.rb",
-  "app/controllers/tabulars_controller.rb",
-  "app/reflexes/tabular_reflex.rb"
-) %>
