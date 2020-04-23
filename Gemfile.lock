@@ -207,16 +207,6 @@ GEM
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.3.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -306,7 +296,6 @@ DEPENDENCIES
   rails (~> 6.0)
   redis (~> 4.0)
   rouge (~> 3.18.0)
-  sass-rails (~> 6)
   selenium-webdriver
   sidekiq (~> 6.0)
   standard
@@ -316,7 +305,7 @@ DEPENDENCIES
   valid_email (~> 0.1)
   web-console (>= 3.3.0)
   webdrivers
-  webpacker (~> 5.0)
+  webpacker (~> 5.1.1)
 
 RUBY VERSION
    ruby 2.6.6p146

@@ -10,8 +10,8 @@ $info: #1181b2;
 @import 'bootstrap/scss/bootstrap';
 
 @import 'pygments-rouge-css/github';
-@import 'utilities';
-@import 'theme';
-@import 'snake';
-@import 'validation';
-@import 'todo';
+@import '../stylesheets/utilities';
+@import '../stylesheets/theme';
+@import '../stylesheets/snake';
+@import '../stylesheets/validation';
+@import '../stylesheets/todo';

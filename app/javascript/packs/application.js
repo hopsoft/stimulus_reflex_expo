@@ -16,6 +16,7 @@ require('channels')
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+require.context('../images', true, /\.(?:png|jpg|gif|ico|svg)$/)
 import '@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot'
 import '@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg'
 import '@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf'
@@ -26,5 +27,4 @@ import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg'
 import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf'
 import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff'
 import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2'
-import 'stylesheets/application.scss'
 import 'controllers'
