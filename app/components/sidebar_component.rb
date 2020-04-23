@@ -1,5 +1,5 @@
 class SidebarComponent < ViewComponent::Base
-    def demos
+  def demos
     %w[
       book_search
       chat

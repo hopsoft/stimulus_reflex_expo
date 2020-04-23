@@ -1,5 +1,3 @@
 <nav class="nav flex-column">
-  <% demos.each do |name| %>
-    <%= render "/globals/sidenav_item", name: name %>
-  <% end %>
+  <%= render(Sidebar::DemoComponent.with_collection(demos)) %>
 </nav>
