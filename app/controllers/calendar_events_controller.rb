@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CalendarEventsController < ApplicationController
+  after_action :cleanup
+
   def create
     calendar_event = CalendarEvent.new(calendar_event_params)
     calendar_event.assign_hour hour_params
@@ -24,5 +26,9 @@ class CalendarEventsController < ApplicationController
 
   def hour_params
     params.require(:calendar_event).permit(:hour, :meridian)
+  end
+
+  def cleanup
+    CalendarEvent.old.delete_all
   end
 end

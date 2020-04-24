@@ -4,11 +4,11 @@
 #
 # Table name: restaurants
 #
-#  id         :integer          not null, primary key
-#  name       :string           not null
-#  stars      :integer          default("0"), not null
-#  price      :integer          default("1"), not null
+#  id         :bigint           not null, primary key
 #  category   :string           not null
+#  name       :string           not null
+#  price      :integer          default(1), not null
+#  stars      :integer          default(0), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
