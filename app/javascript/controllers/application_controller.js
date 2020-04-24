@@ -1,3 +1,4 @@
+import Turbolinks from 'turbolinks'
 import { Controller } from 'stimulus'
 import StimulusReflex from 'stimulus_reflex'
 
@@ -7,6 +8,9 @@ export default class extends Controller {
   }
 
   beforeReflex (element, reflex) {
+    document
+      .querySelectorAll('[data-activity-indicator]')
+      .forEach(el => (el.hidden = false))
     this.benchmark = performance.now()
   }
 
@@ -19,5 +23,14 @@ export default class extends Controller {
       reflex,
       `${(performance.now() - this.benchmark).toFixed(0)}ms`
     )
+  }
+
+  reload () {
+    Turbolinks.visit(location.href)
+  }
+
+  noop (event) {
+    event.preventDefault()
+    event.stopPropagation()
   }
 }

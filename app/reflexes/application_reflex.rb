@@ -9,4 +9,7 @@ class ApplicationReflex < StimulusReflex::Reflex
   #   delegate :current_user, to: :channel
   #
   # Learn more at: https://docs.stimulusreflex.com
+
+  def noop
+  end
 end

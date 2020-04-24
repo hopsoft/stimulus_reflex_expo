@@ -1,0 +1,40 @@
+<div class="modal" tabindex="-1" style="display:block">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= @calendar_event.occurs_at.strftime "%A %B, %e %Y" %></h5>
+        <button type="button" class="close" data-reflex="click->CalendarReflex#noop">
+          <span>&times;</span>
+        </button>
+      </div>
+      <%= form_with model: @calendar_event, html: { data: { controller: "application", action: "ajax:success->application#reload" } } do |f| %>
+        <%= f.hidden_field :occurs_at %>
+        <div class="modal-body">
+          <div class="btn-group mt-3" data-controller="button-group" data-reflex-permanent>
+            <%= f.hidden_field :hour, data: { target: "button-group.input" } %>
+            <% (1..12).each do |i| %>
+              <%= tag.button i, type: "button",
+                class: css("btn btn-light", "active": @calendar_event.occurs_at.strftime("%I").to_i == i),
+                data: { action: "click->button-group#select" } %>
+            <% end %>
+          </div>
+          <div class="btn-group mt-2" data-controller="button-group" data-reflex-permanent>
+            <%= f.hidden_field :meridian, data: { target: "button-group.input" } %>
+            <%= tag.button "AM", type: "button",
+              class: css("btn btn-light", "active": @calendar_event.occurs_at.strftime("%p") == "AM"),
+              data: { action: "click->button-group#select" } %>
+            <%= tag.button "PM", type: "button",
+              class: css("btn btn-light", "active": @calendar_event.occurs_at.strftime("%p") == "PM"),
+              data: { action: "click->button-group#select" } %>
+          </div>
+          <div class="form-group my-3">
+            <%= f.text_area :description, placeholder: "Description for this event...", class: "form-control", rows: 3,
+              data: { reflex: "input->CalendarReflex#validate_calendar_event", id: @calendar_event.id } %>
+          </div>
+          <%= f.submit @calendar_event.valid? ? "Save" : "Enter a desc...", class: "btn btn-primary", disabled: @calendar_event.invalid? %>
+          <button type="button" class="btn btn-link" data-reflex="click->CalendarReflex#noop">Cancel</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

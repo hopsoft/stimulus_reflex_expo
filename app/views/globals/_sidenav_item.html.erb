@@ -1,4 +1,5 @@
-<%= link_to send("#{name}_path"), class: css("nav-link text-nowrap px-1", "bg-white text-primary-dark border-top border-bottom border-primary-lighter font-weight-bold scale-up-micro opacity-100": active?(name), "text-primary-light font-weight-light opacity-70": !active?(name)) do %>
+<%= link_to send("#{name}_path", name == "calendar" ? Date.current.beginning_of_month.iso8601 : nil),
+  class: css("nav-link text-nowrap px-1", "bg-white text-primary-dark border-top border-bottom border-primary-lighter font-weight-bold scale-up-micro opacity-100": active?(name), "text-primary-light font-weight-light opacity-70": !active?(name)) do %>
   <%= tag.i class: css("fa-fw fas opacity-50", "fa-angle-double-right": active?(name), "fa-angle-right": !active?(name)) %>
   <%= name.to_s.titleize %>
 <% end %>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GistsHelper
   FORMATTER = Rouge::Formatters::HTMLPygments.new(Rouge::Formatters::HTMLLinewise.new(Rouge::Formatters::HTML.new))
 

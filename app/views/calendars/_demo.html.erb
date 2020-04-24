@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h2><%= @start_date.strftime("%B %Y") %></h2>
+  <div class="text-success" hidden data-activity-indicator>
+    <div class="spinner-border spinner-border-sm"></div>
+    <span>Loading...</span>
+  </div>
+  <div>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <%= link_to calendar_path(@start_date.advance(months: -1).iso8601), title: "Previous", class: "btn btn-light" do %>
+        <i class="fas fa-chevron-left"></i>
+      <% end %>
+      <%= link_to calendar_path(@start_date.advance(months: 1).iso8601), title: "Next", class: "btn btn-light" do %>
+        <i class="fas fa-chevron-right"></i>
+      <% end %>
+    </div>
+    <%= link_to "Today", calendar_path(Date.current.beginning_of_month.iso8601), class: "btn btn-light" %>
+  </div>
+</div>
+
+<table id="calendar-<%= @start_date.iso8601 %>" class="table table-bordered mt-2">
+  <thead class="thead-dark">
+    <tr class="text-center">
+      <% Date::DAYNAMES.each do |name| %>
+        <th style="width:14%" ><%= name %></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dates.each_slice(7) do |week| %>
+      <tr>
+        <% week.each do |date| %>
+          <%= tag.td class: css("", "bg-warning-lighter": date.today?, "bg-secondary-lightest": @start_date.month != date.month),
+            data: { reflex: "click->CalendarReflex#new_calendar_event", date: date.iso8601 } do %>
+            <%= tag.span date.day, class: "lead" %>
+            <div class="mt-2" style="height:125px; overflow-y:scroll">
+              <% (@calendar_events[date] || []).each do |calendar_event| %>
+                <div class="bg-white py-1 px-2 border mb-1" data-controller="application" data-action="click->application#noop">
+                  <%= link_to "#", class: "float-right text-danger", data: { reflex: "click->CalendarReflex#destroy_calendar_event", id: calendar_event.id} do %>
+                    <i class="fas fa-window-close"></i>
+                  <% end %>
+                  <small class="d-block text-secondary">
+                    <%= calendar_event.occurs_at.strftime "%l %p" %>
+                  </small>
+                  <div>
+                    <%= truncate calendar_event.description, length: 24 %>
+                    <small><%= link_to "Edit...", "#", class: "ml-2", data: { reflex: "click->CalendarReflex#edit_calendar_event", id: calendar_event.id } %></small>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render "/calendars/calendar_event_modal" if @calendar_event %>

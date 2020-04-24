@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class TodosController < ApplicationController
   FILTERS = %w[all active completed].freeze
-  after_action :delete_old_todos
+  after_action :cleanup
 
   def show
     session[:todo_filter] = "all" unless filter_permitted?(session[:todo_filter])
@@ -14,7 +16,7 @@ class TodosController < ApplicationController
     FILTERS.include? filter
   end
 
-  def delete_old_todos
+  def cleanup
     Todo.old.delete_all
   end
 end
