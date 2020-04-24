@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Todo < ApplicationRecord
   validates :session_id, presence: true
   validates :title, presence: true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TodosController < ApplicationController
   FILTERS = %w[all active completed].freeze
   after_action :delete_old_todos

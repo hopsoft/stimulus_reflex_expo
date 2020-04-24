@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TodosReflex < ApplicationReflex
   def create
     Todo.create session_id: session.id, title: element[:value]
