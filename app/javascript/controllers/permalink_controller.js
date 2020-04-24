@@ -27,7 +27,7 @@ export default class extends ApplicationController {
 
   afterReflex (element, reflex, error) {
     if (!error) {
-      const camelizedIdentifier = camelize(this.identifier)
+      const camelizedIdentifier = camelize(this.identifier, false)
       const params = new URLSearchParams(window.location.search.slice(1))
       Object.keys(Object.assign({}, this.element.dataset))
         .filter(attr => attr.startsWith(camelizedIdentifier))
