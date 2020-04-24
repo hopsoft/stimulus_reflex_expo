@@ -1,27 +1,21 @@
 # frozen_string_literal: true
 
 class CalendarsController < ApplicationController
+  after_action :cleanup
+
   def show
+    @start_date ||= session[:calendar_start_date].present? ? Date.parse(session[:calendar_start_date]) : Date.current
+    @start_date = @start_date.to_date.beginning_of_month
+    date_range = (@start_date..@start_date.end_of_month)
+    @dates = date_range.to_a
+    @dates.prepend(@dates.first - 1) until @dates.first.sunday?
+    @dates.append(@dates.last + 1) until @dates.last.saturday?
+    @calendar_events = CalendarEvent.where(occurs_at: date_range).order(:occurs_at).group_by(&:occurs_at_date)
   end
 
-  def start_date
-    @start_date = (@start_date || Date.current).to_date.beginning_of_month
-  end
-  helper_method :start_date
+  private
 
-  def end_date
-    @end_date = start_date.end_of_month
+  def cleanup
+    session.delete :calendar_start_date
   end
-
-  def date_range
-    start_date..end_date
-  end
-
-  def dates
-    list = date_range.to_a
-    list.prepend(list.first - 1) until list.first.sunday?
-    list.append(list.last + 1) until list.last.saturday?
-    list
-  end
-  helper_method :dates
 end

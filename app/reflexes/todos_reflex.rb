@@ -1,4 +1,4 @@
-class TodosReflex < StimulusReflex::Reflex
+class TodosReflex < ApplicationReflex
   def create
     Todo.create session_id: session.id, title: element[:value]
   end

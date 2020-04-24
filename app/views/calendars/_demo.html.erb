@@ -1,15 +1,15 @@
 <div class="d-flex justify-content-between align-items-center">
-  <h2><%= start_date.strftime("%B %Y") %></h2>
+  <h2><%= @start_date.strftime("%B %Y") %></h2>
   <div class="text-success" hidden data-activity-indicator>
     <div class="spinner-border spinner-border-sm"></div>
     <span>Loading...</span>
   </div>
   <div>
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <%= link_to "#", title: "Previous", class: "btn btn-light", data: { reflex: "click->CalendarReflex#change_month", start_date: start_date.advance(months: -1).iso8601 } do %>
+      <%= link_to "#", title: "Previous", class: "btn btn-light", data: { reflex: "click->CalendarReflex#change_month", start_date: @start_date.advance(months: -1).iso8601 } do %>
         <i class="fas fa-chevron-left"></i>
       <% end %>
-      <%= link_to "#", title: "Next", class: "btn btn-light", data: { reflex: "click->CalendarReflex#change_month", start_date: start_date.advance(months: 1).iso8601 } do %>
+      <%= link_to "#", title: "Next", class: "btn btn-light", data: { reflex: "click->CalendarReflex#change_month", start_date: @start_date.advance(months: 1).iso8601 } do %>
         <i class="fas fa-chevron-right"></i>
       <% end %>
     </div>
@@ -17,7 +17,7 @@
   </div>
 </div>
 
-<table class="table table-bordered mt-2" style="min-height:50rem">
+<table id="calendar-<%= @start_date.iso8601 %>" class="table table-bordered mt-2">
   <thead class="thead-dark">
     <tr class="text-center">
       <% Date::DAYNAMES.each do |name| %>
@@ -27,13 +27,23 @@
   </thead>
 
   <tbody>
-    <% dates.each_slice(7) do |week| %>
+    <% @dates.each_slice(7) do |week| %>
       <tr>
         <% week.each do |date| %>
-          <%= tag.td class: css("", "bg-warning-lighter": date.today?, "bg-secondary-lightest": start_date.month != date.month),
-            data: { reflex: "click->CalendarReflex#new_calendar_event", start_date: start_date.iso8601, date: date.iso8601 } do %>
-            <%#block.call day, sorted_events.fetch(day, []) %>
-            <%= date.day %>
+          <%= tag.td class: css("", "bg-warning-lighter": date.today?, "bg-secondary-lightest": @start_date.month != date.month),
+            data: { reflex: "click->CalendarReflex#new_calendar_event", start_date: @start_date.iso8601, date: date.iso8601 } do %>
+            <%= tag.span date.day, class: "lead" %>
+            <div class="mt-2" style="height:125px; overflow-y:scroll">
+              <% (@calendar_events[date] || []).each do |calendar_event| %>
+                <%= tag.div class: "bg-white py-1 px-2 border mb-1",
+                  data: { reflex: "click->CalendarReflex#edit_calendar_event", id: calendar_event.id, start_date: @start_date.iso8601 } do %>
+                  <%= link_to "&times;".html_safe, "#", class: "float-right",
+                    data: { reflex: "click->CalendarReflex#destroy_calendar_event", id: calendar_event.id, start_date: @start_date.iso8601} %>
+                  <small class="d-block text-secondary"><%= calendar_event.occurs_at.strftime "%l %p" %></small>
+                  <%= truncate calendar_event.description, length: 24 %>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
         <% end %>
       </tr>
