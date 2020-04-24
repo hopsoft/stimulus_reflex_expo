@@ -3,11 +3,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title"><%= @calendar_event.occurs_at.strftime "%A %B, %e %Y" %></h5>
-        <button type="button" class="close" data-reflex="click->CalendarReflex#change_month" data-start-date="<%= @start_date.iso8601 %>">
+        <button type="button" class="close" data-reflex="click->CalendarReflex#noop">
           <span>&times;</span>
         </button>
       </div>
-      <%= form_with model: @calendar_event, local: true do |f| %>
+      <%= form_with model: @calendar_event, html: { data: { controller: "application", action: "ajax:success->application#reload" } } do |f| %>
         <%= f.hidden_field :occurs_at %>
         <div class="modal-body">
           <div class="btn-group mt-3" data-controller="button-group" data-reflex-permanent>
@@ -29,10 +29,10 @@
           </div>
           <div class="form-group my-3">
             <%= f.text_area :description, placeholder: "Description for this event...", class: "form-control", rows: 3,
-              data: { reflex: "input->CalendarReflex#validate_calendar_event", start_date: @start_date.iso8601 } %>
+              data: { reflex: "input->CalendarReflex#validate_calendar_event", id: @calendar_event.id } %>
           </div>
           <%= f.submit @calendar_event.valid? ? "Save" : "Enter a desc...", class: "btn btn-primary", disabled: @calendar_event.invalid? %>
-          <button type="button" class="btn btn-link" data-reflex="click->CalendarReflex#change_month" data-start-date="<%= @start_date.iso8601 %>">Cancel</button>
+          <button type="button" class="btn btn-link" data-reflex="click->CalendarReflex#noop">Cancel</button>
         </div>
       <% end %>
     </div>

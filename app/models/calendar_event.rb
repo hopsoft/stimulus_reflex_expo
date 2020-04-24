@@ -18,6 +18,12 @@ class CalendarEvent < ApplicationRecord
     occurs_at.to_date
   end
 
+  def assign_hour(params)
+    hour = params[:hour].to_i
+    hour += 12 if params[:meridian] == "PM"
+    self.occurs_at = occurs_at.change(hour: hour)
+  end
+
   # protected instance methods ................................................
   # private instance methods ..................................................
 end

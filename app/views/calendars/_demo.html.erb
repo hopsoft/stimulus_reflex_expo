@@ -6,14 +6,14 @@
   </div>
   <div>
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <%= link_to "#", title: "Previous", class: "btn btn-light", data: { reflex: "click->CalendarReflex#change_month", start_date: @start_date.advance(months: -1).iso8601 } do %>
+      <%= link_to calendar_path(@start_date.advance(months: -1).iso8601), title: "Previous", class: "btn btn-light" do %>
         <i class="fas fa-chevron-left"></i>
       <% end %>
-      <%= link_to "#", title: "Next", class: "btn btn-light", data: { reflex: "click->CalendarReflex#change_month", start_date: @start_date.advance(months: 1).iso8601 } do %>
+      <%= link_to calendar_path(@start_date.advance(months: 1).iso8601), title: "Next", class: "btn btn-light" do %>
         <i class="fas fa-chevron-right"></i>
       <% end %>
     </div>
-    <%= link_to "Today", "#", class: "btn btn-light", data: { reflex: "click->CalendarReflex#today" } %>
+    <%= link_to "Today", calendar_path(Date.current.beginning_of_month.iso8601), class: "btn btn-light" %>
   </div>
 </div>
 
@@ -31,17 +31,22 @@
       <tr>
         <% week.each do |date| %>
           <%= tag.td class: css("", "bg-warning-lighter": date.today?, "bg-secondary-lightest": @start_date.month != date.month),
-            data: { reflex: "click->CalendarReflex#new_calendar_event", start_date: @start_date.iso8601, date: date.iso8601 } do %>
+            data: { reflex: "click->CalendarReflex#new_calendar_event", date: date.iso8601 } do %>
             <%= tag.span date.day, class: "lead" %>
             <div class="mt-2" style="height:125px; overflow-y:scroll">
               <% (@calendar_events[date] || []).each do |calendar_event| %>
-                <%= tag.div class: "bg-white py-1 px-2 border mb-1",
-                  data: { reflex: "click->CalendarReflex#edit_calendar_event", id: calendar_event.id, start_date: @start_date.iso8601 } do %>
-                  <%= link_to "&times;".html_safe, "#", class: "float-right",
-                    data: { reflex: "click->CalendarReflex#destroy_calendar_event", id: calendar_event.id, start_date: @start_date.iso8601} %>
-                  <small class="d-block text-secondary"><%= calendar_event.occurs_at.strftime "%l %p" %></small>
-                  <%= truncate calendar_event.description, length: 24 %>
-                <% end %>
+                <div class="bg-white py-1 px-2 border mb-1" data-controller="application" data-action="click->application#noop">
+                  <%= link_to "#", class: "float-right text-danger", data: { reflex: "click->CalendarReflex#destroy_calendar_event", id: calendar_event.id} do %>
+                    <i class="fas fa-window-close"></i>
+                  <% end %>
+                  <small class="d-block text-secondary">
+                    <%= calendar_event.occurs_at.strftime "%l %p" %>
+                  </small>
+                  <div>
+                    <%= truncate calendar_event.description, length: 24 %>
+                    <small><%= link_to "Edit...", "#", class: "ml-2", data: { reflex: "click->CalendarReflex#edit_calendar_event", id: calendar_event.id } %></small>
+                  </div>
+                </div>
               <% end %>
             </div>
           <% end %>
