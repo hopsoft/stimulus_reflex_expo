@@ -3,15 +3,8 @@
 class PermalinkReflex < ApplicationReflex
   def filter
     attribute = element[:name].to_sym
-    if element[:type] == "checkbox"
-      options = session[attribute] || request.params[attribute].split(",") || []
-      if options.include?(element[:value])
-        options -= [element[:value]]
-      else
-        options += [element[:value]]
-      end
-
-      session[attribute] = options
+    if element[:values].present?
+      session[attribute] = element[:values] || request.params[attribute].split(",") || []
     else
       session[attribute] = element[:value]
     end
