@@ -5,6 +5,7 @@ module DemosHelper
     %w[
       book_search
       chat
+      calendar
       geo_selector
       gravatar
       reverse_text

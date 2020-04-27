@@ -33,7 +33,7 @@
           <%= tag.td class: css("", "bg-warning-lighter": date.today?, "bg-secondary-lightest": @start_date.month != date.month),
             data: { reflex: "click->CalendarReflex#new_calendar_event", date: date.iso8601 } do %>
             <%= tag.span date.day, class: "lead" %>
-            <div class="mt-2" style="height:125px; overflow-y:scroll">
+            <div class="mt-2" style="height:65px; overflow-y:scroll">
               <% (@calendar_events[date] || []).each do |calendar_event| %>
                 <div class="bg-white py-1 px-2 border mb-1" data-controller="application" data-action="click->application#noop">
                   <%= link_to "#", class: "float-right text-danger", data: { reflex: "click->CalendarReflex#destroy_calendar_event", id: calendar_event.id} do %>

@@ -20,7 +20,6 @@ export default class extends ApplicationController {
   }
 
   validate (event) {
-    this.focusElement = event.target
     this.perform()
   }
 
