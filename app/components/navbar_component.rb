@@ -1,0 +1,2 @@
+class NavbarComponent < ApplicationComponent
+end

@@ -1,19 +1,26 @@
 {
   "name": "stimulus_reflex_expo",
   "private": true,
+  "scripts": {
+    "prettier:check": "prettier-standard -- --check \"app/**/*.js\" \"config/**/*.js\" \"app/**/*.scss\"",
+    "prettier:format": "prettier-standard -- \"app/**/*.js\" \"config/**/*.js\" \"app/**/*.scss\"",
+    "prettier:lint": "prettier-standard -- --lint \"app/**/*.js\" \"config/**/*.js\" \"app/**/*.scss\"",
+    "webpack:analyze": "mkdir -p public/packs && node_modules/.bin/webpack --config config/webpack/production.js --profile --json > public/packs/stats.json && node_modules/.bin/webpack-bundle-analyzer public/packs/stats.json"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
-    "@rails/actioncable": "^6.0.0-alpha",
-    "@rails/activestorage": "^6.0.0-alpha",
-    "@rails/ujs": "^6.0.0-alpha",
-    "@rails/webpacker": "^5.0.1",
-    "bootstrap": "^4.3.1",
+    "@rails/actioncable": "^6.0.3",
+    "@rails/activestorage": "^6.0.3",
+    "@rails/ujs": "^6.0.3",
+    "@rails/webpacker": "^5.1.1",
+    "@tailwindcss/custom-forms": "^0.2.1",
     "cable_ready": "4.1.2",
     "lodash-es": "^4.17.15",
-    "popper.js": "^1.16.0",
     "pygments-rouge-css": "^0.1.0",
     "stimulus": "^1.1.1",
     "stimulus_reflex": "^3.2.0-pre0",
+    "tailwindcss": "^1.4.5",
+    "tailwindcss-stimulus-components": "^1.0.2",
     "turbolinks": "^5.2.0",
     "velocity-animate": "^1.5.2"
   },

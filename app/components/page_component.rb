@@ -1,0 +1,2 @@
+class PageComponent < ApplicationComponent
+end

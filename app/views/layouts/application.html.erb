@@ -9,18 +9,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="min-vh-100 d-flex flex-column">
-    <%= render "/globals/navbar" %>
-    <main role="main" class="container-fluid main">
-      <div class="row">
-        <div class="col-3 col-md-2 px-0 py-4 bg-light border-right border-primary-lighter sidenav-height">
-          <%= render "/globals/sidenav" %>
-        </div>
-        <div class="col-9 col-md-10 py-4 pl-4">
-          <%= yield %>
-        </div>
-      </div>
-    </main>
-    <%= render "/globals/footer" %>
+  <body>
+    <header>
+      <%= render(NavbarComponent.new) %>
+    </header>
+    <%= render(PageComponent.new)  { yield } %>
+    <footer>
+      <%= render(FooterComponent.new) %>
+    </footer>
   </body>
 </html>

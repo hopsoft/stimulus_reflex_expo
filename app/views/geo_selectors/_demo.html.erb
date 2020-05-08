@@ -1,58 +1,60 @@
-<form data-controller="geo-selector" class="m-4" style="max-width:600px">
+<form data-controller="geo-selector" class="grid grid-cols-6 gap-6">
   <div class="form-group">
-    <%= select_tag :region,
-      options_for_select(regions.prepend("Select a region..."), @region),
-      placeholder: "Select a region...",
-      class: "form-control form-control-lg",
-      data: { reflex: "change->GeoSelectorReflex#select_region" } %>
-  </div>
-
-  <div data-target="geo-selector.subregionPlaceholder" class="form-group" hidden>
-    <div class="form-control form-control-lg">
-      <i class="fas fa-spinner fa-spin"></i>
-      Fetching subregions...
+    <div class="form-control">
+      <%= select_tag :region,
+        options_for_select(regions.prepend("Select a region..."), @region),
+        placeholder: "Select a region...",
+        class: "form-select",
+        data: { reflex: "change->GeoSelectorReflex#select_region" } %>
+    </div>
+    <div data-target="geo-selector.subregionPlaceholder" hidden>
+      <div class="form-control">
+        <i class="fas fa-spinner fa-spin"></i>
+        Fetching subregions...
+      </div>
     </div>
   </div>
-
   <% if @region %>
     <div class="form-group">
-      <%= select_tag :subregion,
-        options_for_select(subregions(@region).prepend("Select a sub-region..."), @subregion),
-        placeholder: "Select a sub-region...",
-        class: "form-control form-control-lg",
-        data: { reflex: "change->GeoSelectorReflex#select_subregion" } %>
-    </div>
-
-    <div data-target="geo-selector.countryPlaceholder" class="form-group" hidden>
-      <div class="form-control form-control-lg">
-        <i class="fas fa-spinner fa-spin"></i>
-        Fetching countries...
+      <div class="form-control">
+        <%= select_tag :subregion,
+          options_for_select(subregions(@region).prepend("Select a sub-region..."), @subregion),
+          placeholder: "Select a sub-region...",
+          class: "form-select",
+          data: { reflex: "change->GeoSelectorReflex#select_subregion" } %>
       </div>
-    </div>
-
-    <% if @subregion %>
-      <div class="form-group">
-        <%= select_tag :country,
-          options_for_select(countries(@region, @subregion).prepend("Select a country..."), @country),
-          placeholder: "Select a country...",
-          class: "form-control form-control-lg",
-          data: { reflex: "change->GeoSelectorReflex#select_country" } %>
-      </div>
-
-      <div data-target="geo-selector.detailPlaceholder" class="form-group" hidden>
-        <div class="form-control form-control-lg">
+      <div data-target="geo-selector.countryPlaceholder" hidden>
+        <div class="form-control">
           <i class="fas fa-spinner fa-spin"></i>
-          Fetching country details...
+          Fetching countries...
         </div>
       </div>
-
-      <% if @country %>
-        <h3>
-          <%= @country_instance&.emoji_flag %>
-          <%= @country %>
-        </h3>
-        <%= link_to "Learn about this country", "https://en.wikipedia.org/wiki/#{@country}", target: "_blank" %>
-      <% end %>
+    </div>
+    <% if @subregion %>
+      <div class="form-group">
+        <div class="form-control">
+          <%= select_tag :country,
+            options_for_select(countries(@region, @subregion).prepend("Select a country..."), @country),
+            placeholder: "Select a country...",
+            class: "form-select",
+            data: { reflex: "change->GeoSelectorReflex#select_country" } %>
+        </div>
+        <div data-target="geo-selector.detailPlaceholder" hidden>
+          <div class="form-control">
+            <i class="fas fa-spinner fa-spin"></i>
+            Fetching country details...
+          </div>
+        </div>
+      </div>
     <% end %>
   <% end %>
 </form>
+
+<% if @country %>
+  <h3 class="text-lg leading-6 font-medium text-gray-900">
+    <%= "#{@country_instance&.emoji_flag} #{@country}" %>
+  </h3>
+  <span class="ml-3 shadow-sm rounded-md">
+    <%= link_to "Learn about this country", "https://en.wikipedia.org/wiki/#{@country}", target: "_blank", class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out" %>
+  </span>
+<% end %>

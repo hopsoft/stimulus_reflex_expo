@@ -1,0 +1,10 @@
+<div class="card">
+  <%= content_tag("div", class: "card-header") do %>
+    <h3 class="card-title"><%= title %></h3>
+    <p class="card-subtitle"><%= subtitle %></p>
+  <% end if header? %>
+  <%= content_tag("h3", class: "card-title") { title } if !header? && title %>
+  <%= content_tag("p", class: "card-subtitle") { subtitle } if !header? && subtitle %>
+  <%= content_tag("div", class: "card-body") { body } if body %>
+  <%= content_tag("div", class: "card-footer") { footer } if footer %>
+</div>

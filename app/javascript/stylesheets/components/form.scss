@@ -1,0 +1,63 @@
+.form-control {
+  @apply relative rounded-md shadow-sm;
+}
+
+.form-select {
+  @apply w-full;
+}
+
+.form-input {
+  @apply w-full;
+}
+
+.form-group {
+  @apply col-span-12;
+}
+
+@screen sm {
+  .form-group {
+    @apply col-span-6;
+  }
+}
+// $color-light: #e2e8f0;
+// $color-core: #a0aec0;
+
+// $fallback-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+//   0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+// .field {
+//   border-color: var(--color-light);
+//   transition: box-shadow var(--field-shadow-transition-speed, 75ms) ease-out;
+//   box-shadow: $fallback-box-shadow;
+//   appearance: none;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+
+//   &[disabled] {
+//     cursor: not-allowed;
+//     background-color: var(--color-light);
+//     opacity: var(--field-disabled-opacity, 0.6);
+//   }
+
+//   &[readonly] {
+//     @apply select-all;
+//   }
+
+//   &:hover {
+//     box-shadow: var(--field-hover-box-shadow, 0 0 1px 1px var(--color-light)),
+//       var(--fallback-box-shadow);
+//   }
+
+//   &:focus {
+//     box-shadow: var(--field-focus-box-shadow, 0 0 0 2px var(--color-core)),
+//       var(--fallback-box-shadow);
+
+//     @apply outline-none;
+//   }
+
+//   @apply border rounded max-w-full w-full p-2 leading-tight bg-white inline-flex;
+// }
+
+// .input {
+//   @apply field;
+// }

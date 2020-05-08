@@ -1,0 +1,37 @@
+.card {
+  @apply bg-white text-gray-700 block p-4 rounded-lg shadow-lg overflow-hidden;
+}
+
+.card-header {
+  @apply bg-white px-4 py-5 border-b border-gray-200;
+}
+
+.card-title {
+  @apply text-lg leading-6 font-medium text-gray-900;
+}
+
+.card-subtitle {
+  @apply mt-1 text-sm leading-5 text-gray-500;
+}
+
+.card-body {
+  @apply px-4 py-5;
+}
+
+.card-footer {
+  @apply border-t border-gray-200 px-4 py-4;
+}
+
+@screen sm {
+  .card-header {
+    @apply px-6;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  .card-footer {
+    @apply p-6;
+  }
+}

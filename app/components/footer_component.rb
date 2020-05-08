@@ -1,0 +1,2 @@
+class FooterComponent < ApplicationComponent
+end

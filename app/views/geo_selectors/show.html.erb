@@ -1,9 +1,11 @@
-<%= content_for :demo_title, "Geo Selector" %>
-<%= content_for :demo_summary, "Refines GEO options based on user selections" %>
-<%= render_demo "/geo_selectors/demo" %>
-
-<%= render_gists(
-  "app/views/geo_selectors/_demo.html.erb",
-  "app/javascript/controllers/geo_selector_controller.js",
-  "app/reflexes/geo_selector_reflex.rb"
-) %>
+<%= render(CardComponent.new(gists: [
+    "app/views/geo_selectors/_demo.html.erb",
+    "app/javascript/controllers/geo_selector_controller.js",
+    "app/reflexes/geo_selector_reflex.rb"
+  ])) do |component| %>
+  <%= component.with(:title) { "Geo Selector" } %>
+  <%= component.with(:subtitle) { "Refines GEO options based on user selections" } %>
+  <% component.with(:body) do %>
+    <%= render "/geo_selectors/demo" %>
+  <% end %>
+<% end %>

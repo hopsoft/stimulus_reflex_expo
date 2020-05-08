@@ -21,7 +21,8 @@ gem "sass-rails", "~> 6"
 gem "sidekiq", "~> 6.0"
 gem "stimulus_reflex", "3.2.0.pre0"
 gem "valid_email", "~> 0.1"
-gem "webpacker", "~> 5.0"
+gem "view_component", "~> 2.5.1"
+gem "webpacker", "~> 5.1.1"
 
 group :development, :test do
   gem "awesome_print"

@@ -7,11 +7,17 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 $primary: #44449b;
 $success: #4fcb4a;
 $info: #1181b2;
-@import 'bootstrap/scss/bootstrap';
+
+// @import 'bootstrap/scss/bootstrap';
+// @import '../stylesheets/utilities';
+// @import '../stylesheets/theme';
+// @import '../stylesheets/snake';
+// @import '../stylesheets/validation';
+// @import '../stylesheets/todo';
 
 @import 'pygments-rouge-css/github';
-@import 'utilities';
-@import 'theme';
-@import 'snake';
-@import 'validation';
-@import 'todo';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import '../stylesheets/components/card';
+@import '../stylesheets/components/form';
+@import 'tailwindcss/utilities';
