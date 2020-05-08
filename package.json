@@ -12,8 +12,8 @@
     "lodash-es": "^4.17.15",
     "popper.js": "^1.16.0",
     "pygments-rouge-css": "^0.1.0",
-    "stimulus": "^1.1",
-    "stimulus_reflex": "3.1.4",
+    "stimulus": "^1.1.1",
+    "stimulus_reflex": "^3.2.0-pre0",
     "turbolinks": "^5.2.0",
     "velocity-animate": "^1.5.2"
   },
