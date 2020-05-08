@@ -8,6 +8,7 @@ require('@rails/ujs').start()
 require('turbolinks').start()
 require('@rails/activestorage').start()
 require('channels')
+
 require.context('../images', true, /\.(?:png|jpg|gif|ico|svg)$/)
 
 import '@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot'

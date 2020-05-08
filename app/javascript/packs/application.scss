@@ -7,8 +7,8 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 $primary: #44449b;
 $success: #4fcb4a;
 $info: #1181b2;
-@import 'bootstrap/scss/bootstrap';
 
+@import 'bootstrap/scss/bootstrap';
 @import 'pygments-rouge-css/github';
 @import '../stylesheets/utilities';
 @import '../stylesheets/theme';
