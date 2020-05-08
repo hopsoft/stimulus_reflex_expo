@@ -1,7 +1,10 @@
 <footer class="footer fixed-bottom p-3 bg-primary-dark">
-  <div class="d-flex justify-content-between text-light opacity-50">
-    <small>&copy; 2019 Nathan Hopkins, All Rights Reserved</small>
-    <small><a href="https://github.com/hopsoft/stimulus_reflex_expo" target="_blank" class="text-light"><i class="fab fa-github"></i> Fork this Project</a></small>
+  <div class="d-flex justify-content-between align-items-center text-light">
+    <small class="opacity-50">&copy; 2019 Nathan Hopkins, All Rights Reserved</small>
     <small class="opacity-70">Session ID: <%= session.id %></small>
+    <a class="text-white align-text-top" href="https://hatchbox.io/?via=stimulus-reflex" target="_blank">
+      <small class="opacity-50">Powered by</small>
+      <%= image_pack_tag "hatchbox-logo.svg", style: "height:20px" %>
+    </a>
   </div>
 </footer>
