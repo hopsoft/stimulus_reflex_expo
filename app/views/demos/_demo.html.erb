@@ -2,7 +2,9 @@
   <div class="card-header border-primary border-bottom bg-primary-lighter bg-demo-header rounded-0">
     <div class="row">
       <div class="col-8">
-        <h3 class="card-title"><%= content_for :demo_title %></h3>
+        <h3 class="card-title">
+        <%= title content_for :demo_title %>
+        </h3>
         <%= content_for :demo_summary %>
       </div>
     </div>

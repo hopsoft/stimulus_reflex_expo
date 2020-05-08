@@ -1,4 +1,8 @@
 #!/bin/bash
 
+echo "== Checking StandardRb =="
 bundle exec standardrb --fix --format progress
-yarn run prettier-standard --lint app/javascript/**/*.js
+echo "== Checking Prettier-Standard =="
+yarn run prettier:format
+echo "== Checking Zeitwerk =="
+bundle exec rails zeitwerk:check
