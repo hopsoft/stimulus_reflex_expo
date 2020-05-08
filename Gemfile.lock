@@ -137,7 +137,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    pagy (3.8.0)
+    pagy (3.8.1)
     parallel (1.19.1)
     parser (2.7.1.2)
       ast (~> 2.4.0)
@@ -234,10 +234,10 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    standard (0.3.0)
+    standard (0.4.0)
       rubocop (~> 0.82.0)
       rubocop-performance (~> 1.5.2)
-    stimulus_reflex (3.2.0.pre0)
+    stimulus_reflex (3.2.0.pre1)
       cable_ready (>= 4.1.2)
       nokogiri
       rack
@@ -310,7 +310,7 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq (~> 6.0)
   standard
-  stimulus_reflex (= 3.2.0.pre0)
+  stimulus_reflex (= 3.2.0.pre1)
   tmuxinator
   tzinfo-data
   valid_email (~> 0.1)
