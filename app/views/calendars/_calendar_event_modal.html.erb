@@ -29,11 +29,9 @@
           </div>
           <div class="form-group my-3">
             <%= f.text_area :description, placeholder: "Description for this event...", class: "form-control", rows: 3,
-              data: { reflex: "input->CalendarReflex#validate_calendar_event", reflex_root: "#nate", id: @calendar_event.id } %>
+              data: { reflex: "input->CalendarReflex#validate_calendar_event", id: @calendar_event.id } %>
           </div>
-          <span id="nate">
           <%= f.submit "Save", class: "btn btn-primary", disabled: @calendar_event.invalid? %>
-          </span>
           <button type="button" class="btn btn-link" data-reflex="click->CalendarReflex#noop">Cancel</button>
         </div>
       <% end %>

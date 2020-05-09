@@ -21,7 +21,8 @@ class CalendarEvent < ApplicationRecord
   # relationships .............................................................
 
   # validations ...............................................................
-  validates :description, length: {minimum: 6, maximum: 240, allow_blank: false}
+  validates :description, presence: true
+  validates :description, length: {maximum: 240}
   validates :occurs_at, presence: true
 
   # callbacks .................................................................

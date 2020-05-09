@@ -149,7 +149,7 @@ GEM
       pry (>= 0.9.10, < 0.13.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (4.0.4)
+    public_suffix (4.0.5)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -237,7 +237,7 @@ GEM
     standard (0.4.0)
       rubocop (~> 0.82.0)
       rubocop-performance (~> 1.5.2)
-    stimulus_reflex (3.2.0.pre1)
+    stimulus_reflex (3.2.1)
       cable_ready (>= 4.1.2)
       nokogiri
       rack
@@ -310,7 +310,7 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq (~> 6.0)
   standard
-  stimulus_reflex (= 3.2.0.pre1)
+  stimulus_reflex (= 3.2.1)
   tmuxinator
   tzinfo-data
   valid_email (~> 0.1)
