@@ -11,9 +11,7 @@ class TabularsController < ApplicationController
 
     restaurants = Restaurant.order(@order_by => @direction)
     restaurants = restaurants.search(@query) if @query.present?
-    pages = (restaurants.count / Pagy::VARS[:items].to_f).ceil
 
-    @page = 1 if @page > pages
     @pagy, @restaurants = pagy(restaurants, page: @page)
   end
 
