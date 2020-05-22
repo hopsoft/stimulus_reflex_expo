@@ -15,7 +15,7 @@ class CalendarReflex < ApplicationReflex
   end
 
   def validate_calendar_event
-    @calendar_event = CalendarEvent.where(id: element.dataset[:id]).first_or_initialize
+    @calendar_event = CalendarEvent.where(id: element.dataset[:id]).first_or_initialize(session_id: session.id, occurs_at: Date.parse(element.dataset["date"]))
     @calendar_event.description = element[:value]
     @calendar_event.validate
   end
