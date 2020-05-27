@@ -1631,9 +1631,9 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
 bootstrap@^4.3.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.4.1.tgz#8582960eea0c5cd2bede84d8b0baf3789c3e8b01"
-  integrity sha512-tbx5cHubwE6e2ZG7nqM3g/FZ5PQEDMWmMGNrCUBVRPHXTJaH7CBDdsLeu3eCh3B1tzAxTnAbtmrzvWEvT2NNEA==
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.5.0.tgz#97d9dbcb5a8972f8722c9962483543b907d9b9ec"
+  integrity sha512-Z93QoXvodoVslA+PWNdk23Hze4RBYIkpb5h8I2HY2Tu2h7A0LpAgLcyrhrSUyo2/Oxm2l1fRZPs1e5hnxnliXA==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -3568,6 +3568,11 @@ form-data@~2.3.2:
     asynckit "^0.4.0"
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
+
+"form-serialize@>= 0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/form-serialize/-/form-serialize-0.7.2.tgz#b0a2ff0c22026fb6d3d15c9d33f6de6a432e4732"
+  integrity sha1-sKL/DCICb7bT0VydM/beakMuRzI=
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -8084,13 +8089,14 @@ stdout-stream@^1.4.0:
     "@stimulus/core" "^1.1.1"
     "@stimulus/webpack-helpers" "^1.1.1"
 
-stimulus_reflex@3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/stimulus_reflex/-/stimulus_reflex-3.2.1.tgz#480b468ab59eb6605bda984cb8b10a6efecf5d85"
-  integrity sha512-oTlcu9ArZic1BZ7rWkTgDdYVWsdODv85dEKsAdcOLBarfOrosYkH1jfYfNXpFHuYj8alZcs+4URTNckLui1XuQ==
+stimulus_reflex@3.2.2-pre0:
+  version "3.2.2-pre0"
+  resolved "https://registry.yarnpkg.com/stimulus_reflex/-/stimulus_reflex-3.2.2-pre0.tgz#d5286eeacf942e939eed4483cf6afb7b618ed9f1"
+  integrity sha512-BV2sZiQ8PNXEiqHJF4eJK8b9osdeEbwaMsZ0Vj1th3uPcFfevKyWbgP8xEIs8Y0HiFRl1Ka13I/WpZFtKVB7oA==
   dependencies:
     "@rails/actioncable" ">= 6.0"
     cable_ready ">= 4.1.2"
+    form-serialize ">= 0.7.2"
     stimulus ">= 1.1"
 
 stream-browserify@^2.0.1:
@@ -8954,9 +8960,9 @@ webpack-assets-manifest@^3.1.1:
     webpack-sources "^1.0.0"
 
 webpack-bundle-analyzer@^3.6.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-3.7.0.tgz#84da434e89442899b884d9ad38e466d0db02a56f"
-  integrity sha512-mETdjZ30a3Yf+NTB/wqTgACK7rAYQl5uxKK0WVTNmF0sM3Uv8s3R58YZMW7Rhu0Lk2Rmuhdj5dcH5Q76zCDVdA==
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-3.8.0.tgz#ce6b3f908daf069fd1f7266f692cbb3bded9ba16"
+  integrity sha512-PODQhAYVEourCcOuU+NiYI7WdR8QyELZGgPvB1y2tjbUpbmcQOt5Q7jEK+ttd5se0KSBKD9SXHCEozS++Wllmw==
   dependencies:
     acorn "^7.1.1"
     acorn-walk "^7.1.1"
