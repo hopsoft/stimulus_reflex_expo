@@ -4,7 +4,7 @@ import ApplicationController from './application_controller'
 
 let lastMessageId
 const reload = controller => {
-  controller.stimulate('ChatReflex#reload')
+  controller.stimulate('ChatReflex#default_reflex')
 }
 const debouncedReload = debounce(reload, 100)
 
