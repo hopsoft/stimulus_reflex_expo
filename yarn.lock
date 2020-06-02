@@ -1780,7 +1780,14 @@ bytes@3.1.0:
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
   integrity sha512-zauLjrfCG+xvoyaqLoV8bLVXXNGC4JqlxFCutSDWA6fJrTo2ZuvLYTqZ7aHBLZSMOopbzwv8f+wZcVzfVTI2Dg==
 
-cable_ready@4.1.2, "cable_ready@>= 4.1.2":
+cable_ready@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-4.2.0.tgz#d2881cc19010730a7196027e35c9ae9d1348e015"
+  integrity sha512-6z83wgUyzmT04imXrBTIGyXkjV8Tx3NJBIMi0L3mRnxlw7F6/TG/+kP60v8pr1sSnffzyGYhf8GDxkgIlNHSgw==
+  dependencies:
+    morphdom "^2.6.1"
+
+"cable_ready@>= 4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-4.1.2.tgz#465eb1e5b851a5d1cec72726226c62c55261b616"
   integrity sha512-F6hJBSsEjN2voJiUZoM05cplB49AIaXk3oHVZptPG2bbw+HLbiR3jU3SSslnm4VIKSfPzfvPHlyU16kuiro6JA==
@@ -5432,7 +5439,7 @@ mixin-deep@^1.2.0:
   dependencies:
     minimist "^1.2.5"
 
-morphdom@^2.5.12:
+morphdom@^2.5.12, morphdom@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/morphdom/-/morphdom-2.6.1.tgz#e868e24f989fa3183004b159aed643e628b4306e"
   integrity sha512-Y8YRbAEP3eKykroIBWrjcfMw7mmwJfjhqdpSvoqinu8Y702nAwikpXcNFDiIkyvfCLxLM9Wu95RZqo4a9jFBaA==
