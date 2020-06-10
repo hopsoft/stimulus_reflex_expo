@@ -8,7 +8,6 @@ Restaurant.destroy_all
     price: [1, 2, 3].sample,
     category: Faker::Restaurant.type
   )
-
 end
 
 MetricsEntry.destroy_all
