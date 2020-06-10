@@ -21,8 +21,4 @@ class ChatReflex < ApplicationReflex
   def set_color
     session[:chat_color] = element[:href].delete("#")
   end
-
-  def reload
-    # noop: this method exists so we can update the page via StimulusReflex rather than Turbolinks
-  end
 end

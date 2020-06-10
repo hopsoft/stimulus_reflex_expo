@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title"><%= @calendar_event.occurs_at.strftime "%A %B, %e %Y" %></h5>
-        <button type="button" class="close" data-reflex="click->CalendarReflex#noop">
+        <button type="button" class="close" data-reflex="click->CalendarReflex#default_reflex">
           <span>&times;</span>
         </button>
       </div>
@@ -32,7 +32,7 @@
               data: { reflex: "input->CalendarReflex#validate_calendar_event", id: @calendar_event.id, date: @calendar_event.occurs_at.to_date.iso8601  } %>
           </div>
           <%= f.submit "Save", class: "btn btn-primary", disabled: @calendar_event.invalid? %>
-          <button type="button" class="btn btn-link" data-reflex="click->CalendarReflex#noop">Cancel</button>
+          <button type="button" class="btn btn-link" data-reflex="click->CalendarReflex#default_reflex">Cancel</button>
         </div>
       <% end %>
     </div>

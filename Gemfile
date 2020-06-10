@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.6"
 
 gem "bootsnap", ">= 1.4", require: false
-gem "cable_ready", "4.1.2"
+gem "cable_ready", "4.2.0"
 gem "countries", "~> 3.0"
 gem "faker", "~> 2.7"
 gem "http", "~> 4.1"
@@ -19,7 +19,7 @@ gem "redis", "~> 4.0"
 gem "rouge", "~> 3.19.0"
 gem "sass-rails", "~> 6"
 gem "sidekiq", "~> 6.0"
-gem "stimulus_reflex", "3.2.2.pre0"
+gem "stimulus_reflex", "3.2.2"
 gem "valid_email", "~> 0.1"
 gem "webpacker", "~> 5.0"
 

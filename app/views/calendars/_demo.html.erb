@@ -35,7 +35,7 @@
             <%= tag.span date.day, class: "lead" %>
             <div class="mt-2" style="height:65px; overflow-y:scroll">
               <% (@calendar_events[date] || []).each do |calendar_event| %>
-                <div class="bg-white py-1 px-2 border mb-1" data-controller="application" data-action="click->application#noop">
+                <div class="bg-white py-1 px-2 border mb-1" data-controller="application" data-action="click->application#default_reflex">
                   <%= link_to "#", class: "float-right text-danger", data: { reflex: "click->CalendarReflex#destroy_calendar_event", id: calendar_event.id} do %>
                     <i class="fas fa-window-close"></i>
                   <% end %>
