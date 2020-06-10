@@ -10,6 +10,7 @@ module DemosHelper
       gravatar
       reverse_text
       tabular
+      time_series
       todo
       validation
     ]

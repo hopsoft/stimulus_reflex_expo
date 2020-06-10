@@ -1,0 +1,26 @@
+<% chart_data = @metrics_entries.map { |entry| [entry.date, entry[@current_data_source]] } %>
+
+<div class="row" data-controller="time-series" data-time-series-chart-data="<%= chart_data.to_json %>">
+  <div class="col-9">
+    <%= column_chart chart_data, id: "chart" %>
+  </div>
+  <div class="col-3">
+    <div class="form-check">
+      <%= radio_button_tag "data_source", "response_time", @current_data_source == :response_time, class: "form-check-input", data: {reflex: "input->TimeSeriesReflex#set_data_source"} %>
+      <%= label_tag "data_source", "Response time", class: "form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= radio_button_tag "data_source", "requests_per_second", @current_data_source == :requests_per_second, class: "form-check-input", data: {reflex: "input->TimeSeriesReflex#set_data_source"} %>
+      <%= label_tag "data_source", "Requests per second", class: "form-check-label" %>
+    </div>
+
+    <div class="form-group mt-4">
+      <%= label_tag "start_date", "Start date" %>
+      <%= date_field_tag "start_date", @start_date, min: MetricsEntry.minimum(:date), max: @end_date, class: "form-control", data: {reflex: "input->TimeSeriesReflex#set_start_date"} %>
+    </div>
+    <div class="form-group">
+      <%= label_tag "end_date", "End date" %>
+      <%= date_field_tag "end_date", @end_date, min: @start_date, max: MetricsEntry.maximum(:date), class: "form-control", data: {reflex: "input->TimeSeriesReflex#set_end_date"} %>
+    </div>
+  </div> 
+</div>

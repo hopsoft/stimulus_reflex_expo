@@ -1,0 +1,23 @@
+<%= content_for :demo_title, "Time Series Chart" %>
+<%= content_for :demo_summary, "Create reactive graphs using reflexes and javascript sprinkles to control drawing behavior" %>
+<%= render_demo "/time_series/demo" %>
+
+<%= render_explanation do %>
+  <p>
+    Produce interactive graphs using your favorite charts library and reflexes for manipulating attributes like data sources, axis scopes etc.
+  </p>
+  <p>
+    <ul>
+      <li>Demonstrates the use of an <code>afterReflex</code> to trigger a custom JavaScript redraw</li>
+      <li>Chart data is serialized into a data attribute through the reflex, to be available for <code>Chartkick</code> to redraw</li>
+    </ul>
+  </p>
+<% end %>
+
+<%= render_gists(
+  "app/views/time_series/_demo.html.erb",
+  "app/javascript/controllers/time_series_controller.js",
+  "app/models/metrics_entry.rb",
+  "app/controllers/time_series_controller.rb",
+  "app/reflexes/time_series_reflex.rb"
+) %>

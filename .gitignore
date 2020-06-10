@@ -32,3 +32,4 @@ yarn-debug.log*
 .tmuxinator.yml
 .env
 .solargraph.yml
+*~
