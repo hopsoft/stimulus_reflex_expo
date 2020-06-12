@@ -58,9 +58,6 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    annotate (3.1.1)
-      activerecord (>= 3.2, < 7.0)
-      rake (>= 10.4, < 14.0)
     ast (2.4.0)
     awesome_print (1.8.0)
     bindex (0.8.1)
@@ -287,7 +284,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate
   awesome_print
   bootsnap (>= 1.4)
   byebug
@@ -314,7 +310,6 @@ DEPENDENCIES
   standard
   stimulus_reflex (= 3.2.2)
   tmuxinator
-  tzinfo-data
   valid_email (~> 0.1)
   web-console (>= 3.3.0)
   webdrivers
