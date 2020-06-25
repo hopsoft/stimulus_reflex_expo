@@ -20,4 +20,12 @@ module TabularsHelper
   def pagy_get_params(params)
     params.merge query: @query, order_by: @order_by, direction: @direction
   end
+
+  def prev_page
+    @pagy.prev || 1
+  end
+
+  def next_page
+    @pagy.next || @pagy.last
+  end
 end
