@@ -3,3 +3,4 @@ globals:
   location: readonly
   performance: readonly
   Chartkick: readonly
+  history: readonly
