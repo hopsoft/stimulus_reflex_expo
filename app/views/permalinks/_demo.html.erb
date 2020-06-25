@@ -1,4 +1,4 @@
-<div class="form-row mb-4" data-controller="permalink" data-permalink-category="<%= session[:category] %>" data-permalink-rating="<%= session[:rating] %>" data-permalink-price="<%= session[:price] %>">
+<div class="form-row mb-4" data-controller="permalink" data-permalink-category="<%= params[:category] %>" data-permalink-rating="<%= params[:rating] %>" data-permalink-price="<%= params[:price] %>">
   <div class="col-3 offset-3">
     <%= label_tag "rating" %>
     <%= select_tag "rating",
