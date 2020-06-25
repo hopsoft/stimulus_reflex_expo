@@ -2,12 +2,6 @@
 
 class PermalinkReflex < ApplicationReflex
   def filter
-    attribute = element[:name].to_sym
-
-    if attribute == :price
-      session[attribute] = element.values || request.params[attribute].split(",") || []
-    else
-      session[attribute] = element.value
-    end
+    session[element[:name].to_sym] = element.value
   end
 end

@@ -7,12 +7,9 @@ class PermalinksController < ApplicationController
     unless @stimulus_reflex
       session[:category] = params[:category] || ""
       session[:rating] = params[:rating] || ""
-      session[:price] = params[:price].empty? ? [] : params[:price].split(",") 
+      session[:price] = params[:price] || ""
     end
 
-    @restaurants = Restaurant.all
-    @restaurants = @restaurants.where(category: session[:category]) if session[:category].present?
-    @restaurants = @restaurants.where(stars: session[:rating]) if session[:rating].present?
-    @restaurants = @restaurants.where(price: session[:price]) if session[:price].present?
+    @restaurants = Restaurant.category(session[:category]).stars(session[:rating]).price(session[:price])
   end
 end

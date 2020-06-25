@@ -1,14 +1,5 @@
-<div class="form-row mb-4" data-controller="permalink" data-permalink-category="<%= session[:category] %>" data-permalink-rating="<%= session[:rating] %>" data-permalink-price="<%= session[:price].empty? ? "" : session[:price].join(",") %>">
-  <div class="col-4">
-    <%= label_tag "category" %>
-    <%= select_tag "category",
-            options_for_select(@categories, session[:category]),
-            include_blank: true,
-            class: "form-control",
-            data: { action: "change->permalink#filter",
-                    reflex_root: "#search-results" } %>
-  </div>
-  <div class="col-4">
+<div class="form-row mb-4" data-controller="permalink" data-permalink-category="<%= session[:category] %>" data-permalink-rating="<%= session[:rating] %>" data-permalink-price="<%= session[:price] %>">
+  <div class="col-3 offset-3">
     <%= label_tag "rating" %>
     <%= select_tag "rating",
             options_for_select((1..5), session[:rating]),
@@ -17,11 +8,20 @@
             data: { action: "change->permalink#filter",
                     reflex_root: "#search-results" } %>
   </div>
-  <div class="col-4">
+  <div class="col-3">
+    <%= label_tag "category" %>
+    <%= select_tag "category",
+            options_for_select(@categories, session[:category]),
+            include_blank: true,
+            class: "form-control",
+            data: { action: "change->permalink#filter",
+                    reflex_root: "#search-results" } %>
+  </div>
+  <div class="col-3">
     <%= label_tag "price", "Price", class: "d-block" %>
     <div class="btn-group btn-group-toggle" id="price-button-group">
       <% {'$' => 1, '$$' => 2, '$$$' => 3}.each do |key, value| %>
-        <%= label_tag '', class: "btn btn-outline-primary #{'active' if session[:price]&.include?(value.to_s)}" do %>
+        <%= label_tag '', class: "btn btn-outline-primary hover_white #{'active' if session[:price]&.include?(value.to_s)}" do %>
           <%= check_box_tag 'price', value, session[:price]&.include?(value.to_s), id: "price-#{value}", class: "", data: { action: "click->permalink#filter",
                                                                   reflex_root: "#search-results,#price-button-group"} %>
           <%= key %>
@@ -36,9 +36,9 @@
     <thead class="bg-primary">
       <tr>
         <th style="width:25%" class="text-white">Name</th>
-        <th style="width:25%" class="text-white">Stars </th>
-        <th style="width:25%" class="text-white">Price</th>
+        <th style="width:25%" class="text-white">Rating </th>
         <th style="width:25%" class="text-white">Category</th>
+        <th style="width:25%" class="text-white">Price</th>
       </tr>
     </thead>
 
@@ -47,8 +47,8 @@
         <tr>
           <td><%= restaurant.name %></td>
           <td><%= "★" * restaurant.stars %></td>
-          <td><%= "$" * restaurant.price %></td>
           <td><%= restaurant.category %></td>
+          <td><%= "$" * restaurant.price %></td>
         </tr>
       <% end %>
     </tbody>
