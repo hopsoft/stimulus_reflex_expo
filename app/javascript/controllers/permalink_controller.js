@@ -33,14 +33,18 @@ export default class extends ApplicationController {
         .filter(attr => attr.startsWith(camelizedIdentifier))
         .forEach(attr => {
           const paramName = attr.slice(camelizedIdentifier.length).toLowerCase()
-          params.set(paramName, this.data.get(paramName))
+          const paramValue = this.data.get(paramName)
+          paramValue.length
+            ? params.set(paramName, paramValue)
+            : params.delete(paramName)
         })
-
-      history.pushState(
-        {},
-        '',
-        `${window.location.pathname}?${params.toString()}`
-      )
+      const qs = params
+        .toString()
+        .replace(/%28/g, '(')
+        .replace(/%29/g, ')')
+        .replace(/%2C/g, ',')
+      const query = qs.length ? '?' : ''
+      history.pushState({}, '', `${window.location.pathname}${query}${qs}`)
     }
   }
 }

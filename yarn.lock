@@ -1826,7 +1826,14 @@ bytes@3.1.0:
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
   integrity sha512-zauLjrfCG+xvoyaqLoV8bLVXXNGC4JqlxFCutSDWA6fJrTo2ZuvLYTqZ7aHBLZSMOopbzwv8f+wZcVzfVTI2Dg==
 
-cable_ready@4.2.0, "cable_ready@>= 4.1.2":
+cable_ready@4.3.0-pre1:
+  version "4.3.0-pre1"
+  resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-4.3.0-pre1.tgz#c0d701548d79d67e294e8d921baf43f26000a565"
+  integrity sha512-xvITEahr8xcKh2Iqeob6zh4InG2ABms77UPPVnYj6Zn6aw8jkyjoyDjyHuPAKBUgz+yxT4StbdvnMF3LB6N1TA==
+  dependencies:
+    morphdom "^2.6.1"
+
+"cable_ready@>= 4.1.2":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-4.2.0.tgz#d2881cc19010730a7196027e35c9ae9d1348e015"
   integrity sha512-6z83wgUyzmT04imXrBTIGyXkjV8Tx3NJBIMi0L3mRnxlw7F6/TG/+kP60v8pr1sSnffzyGYhf8GDxkgIlNHSgw==
@@ -4298,7 +4305,7 @@ infer-owner@^1.0.3, infer-owner@^1.0.4:
   resolved "https://registry.yarnpkg.com/infer-owner/-/infer-owner-1.0.4.tgz#c4cefcaa8e51051c2a40ba2ce8a3d27295af9467"
   integrity sha512-IClj+Xz94+d7irH5qRyfJonOdfTzuDaifE6ZPWfx0N0+/ATZCbuTPq2prFl526urkQd90WyUKIh1DfBQ2hMz9A==
 
-"inflected@>= 2.0", inflected@^2.0.4:
+inflected@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/inflected/-/inflected-2.0.4.tgz#323770961ccbe992a98ea930512e9a82d3d3ef77"
   integrity sha512-HQPzFLTTUvwfeUH6RAGjD8cHS069mBqXG5n4qaxX7sJXBhVQrsGgF+0ZJGkSuN6a8pcUWB/GXStta11kKi/WvA==
@@ -8177,10 +8184,10 @@ stdout-stream@^1.4.0:
     "@stimulus/core" "^1.1.1"
     "@stimulus/webpack-helpers" "^1.1.1"
 
-stimulus_reflex@3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/stimulus_reflex/-/stimulus_reflex-3.2.2.tgz#0fbb5ba63a2b492593b15597bdf136727523d31f"
-  integrity sha512-mtnYTh/aBvfDBnrKb0wU8OaJVjVlH8QT0W9c0QVIR2ee0/0wk9V7wVwQvxGUX/1chbZ1ytv4E0DI3vZTWQVZpA==
+stimulus_reflex@3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/stimulus_reflex/-/stimulus_reflex-3.2.3.tgz#9e303c9c5b8724e5004ccf5abd28517c5a9177ae"
+  integrity sha512-w/8qpiazhSg8vYY032EEP1ZUY4hOOTkMH/YsNNQlA5pAOZ/PYAGlzKXr7d6yfn/fy9HCbai8YAOI9dhlbi3cpw==
   dependencies:
     "@rails/actioncable" ">= 6.0"
     cable_ready ">= 4.1.2"
