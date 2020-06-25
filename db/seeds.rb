@@ -9,3 +9,12 @@ Restaurant.destroy_all
     category: Faker::Restaurant.type
   )
 end
+
+MetricsEntry.destroy_all
+(Date.parse("2020-05-01")..Date.parse("2020-05-31")).each do |date|
+  MetricsEntry.create(
+    date: date,
+    response_time: Random.new.rand(150..2500),
+    requests_per_second: Random.new.rand(20.0)
+  )
+end

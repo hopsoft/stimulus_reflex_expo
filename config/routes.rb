@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resource :reverse_text, only: [:show]
     resource :snake, only: [:show]
     resource :tabular, only: [:show]
+    resource :time_series, only: [:show]
     resource :todo, only: [:show]
     resource :validation, only: [:show]
   end

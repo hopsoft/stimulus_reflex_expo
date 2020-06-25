@@ -11,6 +11,7 @@ module DemosHelper
       permalink
       reverse_text
       tabular
+      time_series
       todo
       validation
     ]

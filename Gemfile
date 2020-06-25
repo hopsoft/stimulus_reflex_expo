@@ -23,6 +23,8 @@ gem "stimulus_reflex", "3.2.3"
 gem "valid_email", "~> 0.1"
 gem "webpacker", "~> 5.0"
 
+gem "chartkick"
+
 group :development, :test do
   gem "awesome_print"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

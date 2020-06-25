@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_144432) do
+ActiveRecord::Schema.define(version: 2020_06_08_144304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2020_04_23_144432) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["session_id", "occurs_at"], name: "index_calendar_events_on_session_id_and_occurs_at"
+  end
+
+  create_table "metrics_entries", force: :cascade do |t|
+    t.float "requests_per_second"
+    t.integer "response_time"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "restaurants", force: :cascade do |t|
