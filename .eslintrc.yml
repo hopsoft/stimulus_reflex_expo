@@ -2,3 +2,4 @@ globals:
   alert: readonly
   location: readonly
   performance: readonly
+  history: readonly

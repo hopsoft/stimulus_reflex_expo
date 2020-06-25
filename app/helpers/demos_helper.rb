@@ -8,6 +8,7 @@ module DemosHelper
       calendar
       geo_selector
       gravatar
+      permalink
       reverse_text
       tabular
       todo
@@ -33,7 +34,7 @@ module DemosHelper
 
   def file_lines(filepath)
     lines = File.open(Rails.root.join(filepath)).readlines
-    lines.reject! { |line| line.to_s.strip =~ /\A(#|\/|\*|\<--)/ }
+    lines.reject! { |line| line.to_s.strip =~ /\A(#|\/|\*|<--)/ }
     lines.shift while lines.first.blank?
     lines.pop while lines.last.blank?
     lines

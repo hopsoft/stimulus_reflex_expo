@@ -19,4 +19,7 @@ class Restaurant < ApplicationRecord
     where(arel_table[:name].matches("%#{query}%"))
       .or(where(arel_table[:category].matches("%#{query}%")))
   }
+  scope :category, ->(category) { where(category: category) if category.present? }
+  scope :stars, ->(stars) { where(stars: stars..) if stars.present? }
+  scope :price, ->(price) { where(price: price.split(",")) if price.present? }
 end
