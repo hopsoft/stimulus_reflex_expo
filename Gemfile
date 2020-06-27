@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.6"
 
 gem "bootsnap", ">= 1.4", require: false
-gem "cable_ready", "4.3.0.pre1"
+gem "cable_ready", "4.3.0.pre2"
 gem "countries", "~> 3.0"
 gem "faker", "~> 2.7"
 gem "http", "~> 4.1"
@@ -15,7 +15,7 @@ gem "pagy", "~> 3.7"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.3"
 gem "rails", "~> 6.0"
-gem "redis", ">= 4.0", :require => ["redis", "redis/connection/hiredis"]
+gem "redis", ">= 4.0", require: ["redis", "redis/connection/hiredis"]
 gem "hiredis"
 gem "rouge", "~> 3.19.0"
 gem "sass-rails", "~> 6"

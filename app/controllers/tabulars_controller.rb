@@ -7,11 +7,13 @@ class TabularsController < ApplicationController
     @query = session[:query]
     @order_by = permitted_column_name(session[:order_by])
     @direction = permitted_direction(session[:direction])
-    @page = (session[:page] || 1).to_i
 
     restaurants = Restaurant.order(@order_by => @direction)
     restaurants = restaurants.search(@query) if @query.present?
+    page_count = (restaurants.count / Pagy::VARS[:items].to_f).ceil
 
+    @page = (session[:page] || 1).to_i
+    @page = page_count if @page > page_count
     @pagy, @restaurants = pagy(restaurants, page: @page)
   end
 
