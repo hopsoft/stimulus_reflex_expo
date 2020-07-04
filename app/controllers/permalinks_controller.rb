@@ -3,13 +3,6 @@
 class PermalinksController < ApplicationController
   def show
     @categories = Restaurant.select(:category).distinct.order(:category).map(&:category)
-
-    unless @stimulus_reflex
-      session[:category] = params[:category] || ""
-      session[:rating] = params[:rating] || ""
-      session[:price] = params[:price] || ""
-    end
-
-    @restaurants = Restaurant.category(session[:category]).stars(session[:rating]).price(session[:price])
+    @restaurants = Restaurant.category(params[:category]).stars(params[:rating]).price(params[:price])
   end
 end

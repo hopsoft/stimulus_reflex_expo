@@ -1,8 +1,8 @@
-<div class="form-row mb-4" data-controller="permalink" data-permalink-category="<%= session[:category] %>" data-permalink-rating="<%= session[:rating] %>" data-permalink-price="<%= session[:price] %>">
+<div class="form-row mb-4" data-controller="permalink" data-permalink-category="<%= params[:category] %>" data-permalink-rating="<%= params[:rating] %>" data-permalink-price="<%= params[:price] %>">
   <div class="col-3 offset-3">
     <%= label_tag "rating" %>
     <%= select_tag "rating",
-            options_for_select((1..5), session[:rating]),
+            options_for_select((1..5), params[:rating]),
             include_blank: true,
             class: "form-control",
             data: { action: "change->permalink#filter",
@@ -11,7 +11,7 @@
   <div class="col-3">
     <%= label_tag "category" %>
     <%= select_tag "category",
-            options_for_select(@categories, session[:category]),
+            options_for_select(@categories, params[:category]),
             include_blank: true,
             class: "form-control",
             data: { action: "change->permalink#filter",
@@ -21,8 +21,8 @@
     <%= label_tag "price", "Price", class: "d-block" %>
     <div class="btn-group btn-group-toggle" id="price-button-group">
       <% {'$' => 1, '$$' => 2, '$$$' => 3}.each do |key, value| %>
-        <%= label_tag '', class: "btn btn-outline-primary hover_white #{'active' if session[:price]&.include?(value.to_s)}" do %>
-          <%= check_box_tag 'price', value, session[:price]&.include?(value.to_s), id: "price-#{value}", class: "", data: { action: "click->permalink#filter",
+        <%= label_tag '', class: "btn btn-outline-primary hover_white #{'active' if params[:price]&.include?(value.to_s)}" do %>
+          <%= check_box_tag 'price', value, params[:price]&.include?(value.to_s), id: "price-#{value}", class: "", data: { action: "click->permalink#filter",
                                                                   reflex_root: "#search-results,#price-button-group"} %>
           <%= key %>
         <% end %>
