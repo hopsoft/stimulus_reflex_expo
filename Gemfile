@@ -20,7 +20,7 @@ gem "hiredis"
 gem "rouge", "~> 3.19.0"
 gem "sass-rails", "~> 6"
 gem "sidekiq", "~> 6.0"
-gem "stimulus_reflex", "3.2.3"
+gem "stimulus_reflex", "3.3.0pre1"
 gem "valid_email", "~> 0.1"
 gem "webpacker", "~> 5.0"
 

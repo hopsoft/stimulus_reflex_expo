@@ -2706,6 +2706,11 @@ date-fns@^1.27.2:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
+debounced@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/debounced/-/debounced-0.0.4.tgz#356d86f33bf9a2f7f05ee9c2b6ddd2da0337d503"
+  integrity sha512-2gb7/KyAwuZviYmlUE0ppShQ/jl5EZhjczLv68I28jQBe/ymMbyfHrHOu6/rqu0IaIJDcgZFEv+AP5qK/AGZdA==
+
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"

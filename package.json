@@ -11,6 +11,7 @@
     "cable_ready": "4.3.0-pre2",
     "chart.js": "^2.9.3",
     "chartkick": "^3.2.0",
+    "debounced": "^0.0.4",
     "inflected": "^2.0.4",
     "lodash-es": "^4.17.15",
     "popper.js": "^1.16.0",

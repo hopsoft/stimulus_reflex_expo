@@ -4,6 +4,10 @@
 
 <%= render_explanation do %>
   <p>Validates user input as it's entered using standard <%= link_to "ActiveRecord validations", "https://guides.rubyonrails.org/active_record_validations.html", target: "_blank" %>.</p>
+  <p>
+    We <%= link_to "debounce", "https://github.com/hopsoft/debounced" %>,
+    then <%= link_to "request a refresh", "https://docs.stimulusreflex.com/reflexes#requesting-a-refresh" %>,
+    which will render the form with the new params.</p>
 <% end %>
 
 <%= render_gists(
