@@ -1,6 +1,6 @@
 <div data-controller="book-search" data-reflex-root="#morph">
   <input type="text" placeholder="Search for a book..." class="form-control form-control-lg d-inline-block col-4"
-    data-target="book-search.query" data-action="input->book-search#perform">
+    data-target="book-search.query" data-action="debounced:input->book-search#perform">
 
   <div id="morph" class="mt-4">
     <span data-target="book-search.activity" class="text-danger" hidden>
