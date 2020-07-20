@@ -1,12 +1,12 @@
 import Rails from '@rails/ujs'
-import { debounce } from 'lodash-es'
+import { debounce } from 'debounced'
 import ApplicationController from './application_controller'
 
 let lastMessageId
 const reload = controller => {
   controller.stimulate('ChatReflex#default_reflex')
 }
-const debouncedReload = debounce(reload, 100)
+const debouncedReload = debounce(reload, { wait: 100 })
 
 export default class extends ApplicationController {
   static targets = ['list', 'input']
