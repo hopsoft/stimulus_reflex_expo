@@ -7,7 +7,7 @@ ruby "2.6.6"
 
 gem "bootsnap", ">= 1.4", require: false
 gem "cable_ready", "4.3.0"
-gem "chartkick", "~> 3.3.1"
+gem "chartkick", "~> 3.4.0"
 gem "countries", "~> 3.0"
 gem "faker", "~> 2.7"
 gem "hiredis", "~> 0.6.3"
