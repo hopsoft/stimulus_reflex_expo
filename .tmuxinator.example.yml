@@ -1,7 +1,7 @@
 name: stimulus_reflex_expo
 
 on_project_start: lsof -t -i tcp:3000 | xargs kill -KILL && lsof -t -i tcp:3035 | xargs kill -KILL
-pre_window: asdf local ruby 2.6.6; asdf local nodejs 13.11.0
+pre_window: asdf local ruby 2.7.1; asdf local nodejs 12.18.3
 
 windows:
   - editor: nvim

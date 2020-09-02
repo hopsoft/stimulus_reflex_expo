@@ -3,11 +3,11 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.6"
+ruby "2.7.1"
 
 gem "bootsnap", ">= 1.4", require: false
-gem "cable_ready", "4.3.0"
-gem "chartkick", "~> 3.3.1"
+gem "cable_ready", "4.4.0.pre0"
+gem "chartkick", "~> 3.4.0"
 gem "countries", "~> 3.0"
 gem "faker", "~> 2.7"
 gem "hiredis", "~> 0.6.3"
@@ -18,10 +18,10 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.3"
 gem "rails", "~> 6.0"
 gem "redis", ">= 4.0", require: ["redis", "redis/connection/hiredis"]
-gem "rouge", "~> 3.21.0"
+gem "rouge", "~> 3.22.0"
 gem "sass-rails", "~> 6"
 gem "sidekiq", "~> 6.0"
-gem "stimulus_reflex", "3.3.0.pre2"
+gem "stimulus_reflex", "3.3.0.pre3"
 gem "valid_email", "~> 0.1"
 gem "webpacker", "~> 5.0"
 
@@ -34,11 +34,12 @@ group :development, :test do
 end
 
 group :development do
-  gem "annotate"
-  gem "listen", ">= 3.0.5", "< 3.2"
-  gem "model_probe"
   # gem "spring"
   # gem "spring-watcher-listen", "~> 2.0.0"
+  gem "annotate"
+  gem "listen", ">= 3.0.5", "< 3.2"
+  gem "magic_frozen_string_literal"
+  gem "model_probe"
   gem "standard"
   gem "tmuxinator"
   gem "web-console", ">= 3.3.0"
