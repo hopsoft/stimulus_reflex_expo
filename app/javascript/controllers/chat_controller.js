@@ -17,6 +17,8 @@ export default class extends ApplicationController {
   }
 
   post (event) {
+    if (this.inputTarget.value === '') { return }
+
     Rails.stopEverything(event)
     lastMessageId = Math.random()
     this.stimulate(
@@ -27,7 +29,19 @@ export default class extends ApplicationController {
     )
   }
 
+  postOnEnterKeydown(event) {
+    if (event.code === 'Enter') {
+      event.preventDefault();
+      this.post(event);
+      this.clearMessages();
+    }
+  }
+
   afterPost () {
+    this.clearMessages();
+  }
+
+  clearMessages() {
     this.inputTarget.value = ''
     this.inputTarget.focus()
     this.scroll(1)
