@@ -10,6 +10,7 @@ module DemosHelper
       gravatar
       permalink
       reverse_text
+      route_info
       tabular
       time_series
       todo

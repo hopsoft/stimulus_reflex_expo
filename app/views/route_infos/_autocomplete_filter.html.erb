@@ -1,0 +1,13 @@
+<div id=<%= "#{filter_name}_selector" %>>
+  <input id=<%= "#{filter_name}_input" %> 
+         type="text" 
+         data-reflex="change->RouteInfo#filter" 
+         data-filter-key=<%= filter_name %> 
+         list=<%= "#{filter_name}_data" %> >
+
+  <datalist id=<%= "#{filter_name}_data" %>>
+    <% datalist.each do |match| %>
+      <option value="<%= match %>"><%= match %></option>
+    <% end %>
+  </datalist>
+</div>

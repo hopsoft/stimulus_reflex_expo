@@ -1,0 +1,19 @@
+<% if @routes.count.positive? %>
+  <tr>
+    <td><%= 'INT' if route.internal %></td>
+    <td><%= route.name %></td>
+    <td><%= route.controller %></td>
+    <td><%= route.action %></td>
+    <td><%= route.verb %></td>
+    <td><%= route.path %></td>
+  </tr>
+<% else %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>No Routes</td>
+    <td>To Show</td>
+    <td></td>
+    <td></td>
+  </tr>
+<% end %>

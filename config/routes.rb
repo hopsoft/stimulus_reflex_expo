@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resource :time_series, only: [:show]
     resource :todo, only: [:show]
     resource :validation, only: [:show]
+    resource :route_info, only: [:show, :controllers]
   end
 
   resources :demos, only: [:index]
