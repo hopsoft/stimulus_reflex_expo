@@ -1,8 +1,3 @@
-<select class="form-control" id=<%= "#{filter_name}-select" %> 
-        data-reflex="change->RouteInfo#filter"
-        data-filter-key= <%= filter_name %> 
-  
-  <% choices.each do |choice| %>
-    <option><%= choice %></option>
-  <% end %>
-</select>
+<%= select_tag filter_name, options_for_select(choices.sort),
+    class: "form control", style: "width: 100%", data: { reflex: "change->RouteInfo#filter", filter_key: filter_name }
+%>

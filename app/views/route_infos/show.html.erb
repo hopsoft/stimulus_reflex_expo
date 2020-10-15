@@ -1,71 +1,23 @@
 <%= content_for :demo_title, "Route Infos" %>
 <%= content_for :demo_summary, "With an abstract model, searching and filtering" %>
-
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>External?</th>
-      <th>Route Name</th>
-      <th>Controller</th>
-      <th>Action</th>
-      <th>Verb</th>
-      <th>Path</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-      <% if @external_toggle %>
-          <%= render partial: 'filter_badge', locals: { filter_key: :external_only, filter_value: 'External Routes Only' } %>
-        <% else %>
-        <div id="external-toggle">
-          <input type="checkbox" <%= "checked" if @external_toggle %> data-reflex="change->RouteInfo#filter"
-            data-filter-key='external_only'>
-        </div>
-        <% end %>
-      </td>
-      <td>
-        <% if @name_filter %>
-          <%= render partial: 'filter_badge', locals: { filter_key: :name, filter_value: @name_filter } %>
-        <% else %>
-          <%= render partial: 'autocomplete_filter', locals: { filter_name: :name, datalist: route_name_info } %>
-        <% end %>
-      </td>
-      <td> 
-        <% if @controller_filter %>
-          <%= render partial: 'filter_badge', locals: { filter_key: :controller, filter_value: @controller_filter } %>
-        <% else %>
-          <%= render partial: 'autocomplete_filter', locals: { filter_name: :controller, datalist: route_controller_info } %>
-        <% end %>
-      </td>
-      <td> 
-        <% if @action_filter %>
-          <%= render partial: 'filter_badge', locals: { filter_key: :action, filter_value: @action_filter } %>
-        <% else %>
-          <%= render partial: 'select_filter', locals: { filter_name: :action, choices: route_action_info } %>
-        <% end %> 
-      </td>
-      <td>
-        <% if @verb_filter %>
-          <%= render partial: 'filter_badge', locals: { filter_key: :verb, filter_value: @verb_filter } %>
-        <% else %>
-          <%= render partial: 'select_filter', locals: { filter_name: :verb, choices: route_verb_info } %>
-        <% end %> 
-      </td>
-      <td>
-        <% if @path_filter %>
-          <%= render partial: 'filter_badge', locals: { filter_key: :path, filter_value: @path_filter } %>
-        <% else %>
-          <%= render partial: 'autocomplete_filter' , locals: { filter_name: :path, datalist: route_path_info } %>
-        <% end %>
-      </td>
-    </tr>
-      <% if @routes.count.positive? %>
-        <%= render partial: "route", collection: @routes %>
-      <% else %>
-        <p>
-          Try a different search!
-        </p>
-      <% end %>
-  </tbody>
-</table>
+<%= render_demo "/route_infos/demo" %>
+<%= render_explanation do %>
+  <p>
+    A practical demo that lets you explore the routes on this site.
+  </p>
+  <p>
+    No JS needed!
+  </p>
+<% end %>
+<%= render_gists(
+  "app/views/route_infos/_demo.html.erb",
+  "app/views/route_infos/_autocomplete_filter.html.erb",
+  "app/views/route_infos/_filter_badge.html.erb",
+  "app/views/route_infos/_route.html.erb",
+  "app/views/route_infos/_select_filter.html.erb",
+  "app/reflexes/route_info_reflex.rb",
+  "app/controllers/route_infos_controller.rb",
+  "app/models/route_info/routes_collection.rb",
+  "app/models/route_info/route_filter.rb",
+  "app/models/route_info/decorated_route.rb"
+) %>

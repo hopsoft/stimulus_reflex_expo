@@ -39,6 +39,10 @@ module RouteInfo
       @filter_routes.select! { |route| route.name&.include? name }
     end
 
+    def filter_by_path(path)
+      @filter_routes.select! { |route| route.path&.include? path }
+    end
+
     def filter_by_external_only(choice)
       return unless %w[true checked on].include? choice.downcase
 
