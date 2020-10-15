@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row bg-secondary mb-2">
+    <div class="col-3 border-right">
+      <h4>Route Name</h4>
+    </div>
+    <div class="col-2 border-right">
+      <h4>Controller</h4>
+    </div>
+    <div class="col-2 border-right">
+      <h4>Action</h4>
+    </div>
+    <div class="col-2 border-right">
+      <h4>Verb</h4>
+    </div>
+    <div class="col-3 border-right">
+      <h4>Path</h4>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-3 border-right">
+      <% if @name_filter %>
+        <%= render partial: 'filter_badge', locals: { filter_key: :name, filter_value: @name_filter } %>
+      <% else %>
+        <%= render partial: 'autocomplete_filter', locals: { filter_name: :name, datalist: route_name_info } %>
+      <% end %></div>
+    <div class="col-2 border-right">
+      <% if @controller_filter %>
+        <%= render partial: 'filter_badge', locals: { filter_key: :controller, filter_value: @controller_filter } %>
+      <% else %>
+        <%= render partial: 'autocomplete_filter', locals: { filter_name: :controller, datalist: route_controller_info } %>
+      <% end %></div>
+    <div class="col-2 border-right">
+      <% if @action_filter %>
+        <%= render partial: 'filter_badge', locals: { filter_key: :action, filter_value: @action_filter } %>
+      <% else %>
+        <%= render partial: 'select_filter', locals: { filter_name: :action, choices: route_action_info } %>
+      <% end %></div>
+    <div class="col-2 border-right"> <% if @verb_filter %>
+        <%= render partial: 'filter_badge', locals: { filter_key: :verb, filter_value: @verb_filter } %>
+      <% else %>
+        <%= render partial: 'select_filter', locals: { filter_name: :verb, choices: route_verb_info } %>
+      <% end %></div>
+    <div class="col-3 border-right"> <% if @path_filter %>
+        <%= render partial: 'filter_badge', locals: { filter_key: :path, filter_value: @path_filter } %>
+      <% else %>
+        <%= render partial: 'autocomplete_filter' , locals: { filter_name: :path, datalist: route_path_info } %>
+      <% end %></div>
+  </div>
+  <div class="row">
+    <% if @routes.count.positive? %>
+      <%= render partial: "route", collection: @routes %>
+    <% else %>
+      <div class="col-9">
+        <p>Try a different search!</p>
+      </div>
+    <% end %>
+  </div>
+</div>

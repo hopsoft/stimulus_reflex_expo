@@ -1,0 +1,3 @@
+<%= select_tag filter_name, options_for_select(choices.sort),
+    class: "form control", style: "width: 100%", data: { reflex: "change->RouteInfo#filter", filter_key: filter_name }
+%>

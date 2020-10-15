@@ -1,0 +1,23 @@
+<%= content_for :demo_title, "Route Infos" %>
+<%= content_for :demo_summary, "With an abstract model, searching and filtering" %>
+<%= render_demo "/route_infos/demo" %>
+<%= render_explanation do %>
+  <p>
+    A practical demo that lets you explore the routes on this site.
+  </p>
+  <p>
+    No JS needed!
+  </p>
+<% end %>
+<%= render_gists(
+  "app/views/route_infos/_demo.html.erb",
+  "app/views/route_infos/_autocomplete_filter.html.erb",
+  "app/views/route_infos/_filter_badge.html.erb",
+  "app/views/route_infos/_route.html.erb",
+  "app/views/route_infos/_select_filter.html.erb",
+  "app/reflexes/route_info_reflex.rb",
+  "app/controllers/route_infos_controller.rb",
+  "app/models/route_info/routes_collection.rb",
+  "app/models/route_info/route_filter.rb",
+  "app/models/route_info/decorated_route.rb"
+) %>

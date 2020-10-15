@@ -1,0 +1,11 @@
+<div class="col-3 mb-2 border-bottom border-right"><%= route.name %></div>
+<div class="col-2 mb-2 border-bottom border-right"><%= route.controller %></div>
+<div class="col-2 mb-2 border-bottom border-right"><%= route.action %></div>
+<div class="col-2 mb-2 border-bottom border-right"><%= route.verb %></div>
+<div class="col-3 mb-2 border-bottom border-right">
+  <% if route.verb&.upcase == 'GET' %>
+    <%= link_to route.path, route.path.gsub('(.:format)','') %>
+  <% else %>
+    <%= route.path %>
+  <% end %>
+</div>
