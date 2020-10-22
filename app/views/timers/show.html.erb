@@ -1,0 +1,18 @@
+<%= content_for :demo_title, "Timers" %>
+<%= render_demo "/timers/demo" %>
+
+<%= render_explanation do %>
+  <p>
+    Everyone can have a timer and keep things in sync on the frontend and backend!
+  </p>
+<% end %>
+
+<%= render_gists(
+  "app/javascript/controllers/timer_controller.js",
+  "app/views/timers/_demo.html.erb",
+  "app/views/timers/_timer.html.erb",
+  "app/controllers/timers_controller.rb",
+  "app/helpers/timers_helper.rb",
+  "app/models/timer.rb",
+  "app/reflexes/timer_reflex.rb"
+) %>

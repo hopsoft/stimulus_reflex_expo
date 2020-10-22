@@ -1,0 +1,44 @@
+<div class="col-sm-3">
+  <div class="timer" id=<%= dom_id(timer)%>>
+    <% data = data_for_timer(timer: timer) %>
+    <% data = data.merge(data_for_reflex(name: 'timer', method: 'toggle')) %>
+
+    <%= content_tag(:div, data: data) do %>
+      <svg class="timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+
+        <%# reset button %>
+        <% unless timer.active? %>
+          <% data = data_for_reflex(name: 'timer', method: 'reset', attrs: { timer_id: timer.id }) %>
+          <%= content_tag(:text, id: dom_id(timer, :reset),
+                          x: "50%", y: "20%", "text-anchor": "middle",
+                          class: "timer__reset fas #{timer.status}",
+                          data: data) do %>
+            &#xf829
+          <% end %>
+        <% end %>
+
+        <%# timer circle %>
+        <circle class="timer__path <%= timer.status %>" cx="50" cy="50" r="45" fill="none">
+        </circle>
+
+        <%# name %>
+        <text x="50%" y="40%" text-anchor="middle" class="timer__text">
+          <%= timer.ended? ? "All done!" : timer.name %>
+        </text>
+
+        <%# value %>
+        <text x="50%" y="70%"
+              text-anchor="middle" class="timer__display-time"
+              data-target="timer.time"
+        >
+          <%= Time.at(timer.display_time).utc.strftime("%M:%S") %>
+        </text>
+
+        <%# status icon %>
+        <text x="50%" y="85%" text-anchor="middle" class="timer__control fas <%= timer.status %>">
+          <%= raw(icon_for_timer(timer)) %>
+        </text>
+      </svg>
+    <% end %>
+  </div>
+</div>

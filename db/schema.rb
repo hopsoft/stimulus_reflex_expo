@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_144304) do
+ActiveRecord::Schema.define(version: 2020_10_20_052312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,20 @@ ActiveRecord::Schema.define(version: 2020_06_08_144304) do
     t.string "category", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "timers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "started_at"
+    t.datetime "paused_at"
+    t.datetime "ended_at"
+    t.integer "duration_in_seconds", default: 0, null: false
+    t.integer "value_in_seconds", default: 0, null: false
+    t.boolean "countdown", default: false, null: false
+    t.string "session_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["session_id"], name: "index_timers_on_session_id"
   end
 
   create_table "todos", force: :cascade do |t|

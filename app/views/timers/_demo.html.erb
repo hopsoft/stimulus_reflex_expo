@@ -1,0 +1,5 @@
+<div class="row">
+  <% @timers.each do |timer| %>
+    <%= render partial: 'timer', locals: { timer: timer } %>
+  <% end %>
+</div>
