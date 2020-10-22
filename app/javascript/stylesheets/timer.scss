@@ -1,0 +1,78 @@
+
+$timerColor: black;
+$activeColor: darkgreen;
+$pausedColor: gray;
+$endedColor: lightgray;
+$warnColor: maroon;
+
+$textColor: cornflowerblue;
+
+.timer {
+  font-family: 'Roboto mono', monospace;
+}
+
+.timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+.timer__path {
+  stroke-width: 7px;
+  stroke: $timerColor;
+}
+
+.timer__path.active {
+  stroke-width: 7px;
+  stroke: $activeColor;
+}
+
+.timer__path.paused {
+  stroke-width: 7px;
+  stroke: $pausedColor;
+}
+
+.timer__path.ended {
+  stroke-width: 7px;
+  stroke: $endedColor;
+}
+
+text.timer__text {
+  font-size: 0.65em;
+  fill: $textColor;
+}
+
+.timer text {
+  transition: fill 300ms
+}
+
+text.timer__display-time {
+  font-weight: 100;
+  font-size: 1.2em;
+  fill: darkgreen;
+}
+
+text.timer__control {
+  font-size: 0.75em;
+  fill: $timerColor;
+
+  &.paused {
+    fill: $pausedColor;
+  }
+
+  &.ended {
+    fill: $endedColor
+  }
+
+  &.active {
+    fill: $activeColor
+  }
+}
+
+text.timer__reset {
+  font-size: 0.5em;
+  fill: $timerColor;
+
+  &:hover {
+    fill: $warnColor
+  }
+}

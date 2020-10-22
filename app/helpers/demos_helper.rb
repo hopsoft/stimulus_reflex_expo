@@ -12,21 +12,22 @@ module DemosHelper
       reverse_text
       tabular
       time_series
+      timers
       todo
       validation
     ]
   end
 
   def render_demo(demo)
-    render("/demos/demo") { render demo }
+    render('/demos/demo') { render demo }
   end
 
   def render_explanation(&block)
-    render "/demos/explanation", &block
+    render '/demos/explanation', &block
   end
 
   def render_gists(*filepaths)
-    render "/demos/gists", filepaths: filepaths, grouped_filepaths: filepaths.group_by { |filepath| language filepath }
+    render '/demos/gists', filepaths: filepaths, grouped_filepaths: filepaths.group_by { |filepath| language filepath }
   end
 
   def file_timestamps(filepaths = [])
@@ -35,7 +36,7 @@ module DemosHelper
 
   def file_lines(filepath)
     lines = File.open(Rails.root.join(filepath)).readlines
-    lines.reject! { |line| line.to_s.strip =~ /\A(#|\/|\*|<--)/ }
+    lines.reject! { |line| line.to_s.strip =~ %r{\A(#|/|\*|<--)} }
     lines.shift while lines.first.blank?
     lines.pop while lines.last.blank?
     lines
@@ -43,21 +44,21 @@ module DemosHelper
 
   def language(filepath)
     case File.extname(filepath)
-    when ".scss" then "scss"
-    when ".html" then "html"
-    when ".erb" then "erb"
-    when ".js" then "javascript"
-    when ".rb" then "ruby"
+    when '.scss' then 'scss'
+    when '.html' then 'html'
+    when '.erb' then 'erb'
+    when '.js' then 'javascript'
+    when '.rb' then 'ruby'
     end
   end
 
   def language_title(language)
     case language
-    when "scss" then "CSS"
-    when "html" then "HTML"
-    when "erb" then "ERB"
-    when "javascript" then "JavaScript"
-    when "ruby" then "Ruby"
+    when 'scss' then 'CSS'
+    when 'html' then 'HTML'
+    when 'erb' then 'ERB'
+    when 'javascript' then 'JavaScript'
+    when 'ruby' then 'Ruby'
     end
   end
 
@@ -82,17 +83,17 @@ module DemosHelper
 
   def chat_css(color)
     case color.to_sym
-    when :red then "bg-danger-light border-danger-light text-danger"
-    when :yellow then "bg-warning-light border-warning-light text-warning-dark"
-    when :blue then "bg-primary-light border-primary-light text-primary"
+    when :red then 'bg-danger-light border-danger-light text-danger'
+    when :yellow then 'bg-warning-light border-warning-light text-warning-dark'
+    when :blue then 'bg-primary-light border-primary-light text-primary'
     end
   end
 
   def chat_border_css(color)
     case color.to_sym
-    when :red then "border-danger-light"
-    when :yellow then "border-warning-light"
-    when :blue then "border-primary-light"
+    when :red then 'border-danger-light'
+    when :yellow then 'border-warning-light'
+    when :blue then 'border-primary-light'
     end
   end
 
