@@ -1,0 +1,11 @@
+<% if chat_author? chat %>
+  <div class="<%= chat_css color %> rounded-lg border my-2 p-1 px-2 text-right w-75 float-right">
+    <%= chat[:message] %>
+    <small class="opacity-30 d-block">~me <%= distance_of_time_in_words_to_now Time.parse(chat[:created_at]) %> ago</small>
+  </div>
+<% else %>
+  <div class="bg-light rounded-lg border my-2 p-1 px-2 text-left w-75 float-left">
+    <%= chat[:message] %>
+    <small class="opacity-30 d-block">~<%= chat[:author] %> <%= distance_of_time_in_words_to_now Time.parse(chat[:created_at]) %> ago</small>
+  </div>
+<% end %>
