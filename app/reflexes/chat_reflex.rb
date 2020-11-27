@@ -14,11 +14,11 @@ class ChatReflex < ApplicationReflex
     input_selector = "##{color} textarea"
 
     # broadcast to the user that triggered the reflex
-    cable_ready.set_value(selector: input_selector, value: "").broadcast
+    cable_ready.set_value(selector: input_selector, value: "", focus_selector: "##{color} textarea").broadcast
 
     # global broadcast to everyone
     cable_ready["chat"]
-      .insert_adjacent_html(selector: list_selector, html: chat_html, focus_selector: "##{color} textarea")
+      .insert_adjacent_html(selector: list_selector, html: chat_html)
       .dispatch_event(name: "chats:added")
       .broadcast
 
