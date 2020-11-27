@@ -9,6 +9,8 @@ class ChatReflex < ApplicationReflex
       created_at: Time.current.iso8601
     }
 
+    morph :nothing
+
     chat_html = ChatsController.render(partial: "chats/chat", locals: {chat: chat, color: color})
     list_selector = "##{color} [data-target='chat.list']"
     input_selector = "##{color} textarea"
@@ -22,8 +24,7 @@ class ChatReflex < ApplicationReflex
       .dispatch_event(name: "chats:added")
       .broadcast
 
-    morph :nothing
-
+    # persist data
     chats = Rails.cache.read(:chats) || []
     chats << chat
     Rails.cache.write :chats, chats
