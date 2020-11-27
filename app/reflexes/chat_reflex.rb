@@ -14,7 +14,7 @@ class ChatReflex < ApplicationReflex
     input_selector = "##{color} textarea"
 
     # broadcast to the user that triggered the reflex
-    cable_ready.set_value(selector: input_selector, value: "", focus_selector: "##{color} textarea").broadcast
+    cable_ready.set_value(selector: input_selector, value: "", focus_selector: input_selector).broadcast
 
     # global broadcast to everyone
     cable_ready["chat"]
