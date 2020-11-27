@@ -1,5 +1,5 @@
 <div id="<%= color %>" data-color="<%= color %>"
-  data-controller="chat" data-action="chats:added@document->chat#reload cable-ready:after-morph@document->chat#scroll"
+  data-controller="chat" data-action="chats:added@document->chat#scroll"
   class="<%= css "tab-pane bg-white p-4 border border-top-0", "show active": active_chat?(color) %>">
   <div data-target="chat.list" class="bg-light border rounded mb-2 p-3" style="height:400px; max-width:800px; overflow-y:scroll;">
     <%= render partial: "chats/chat", collection: @chats.select { |chat| chat[:color] == color }, locals: { color: color } %>

@@ -1,12 +1,5 @@
 import Rails from '@rails/ujs'
-import { debounce } from 'debounced'
 import ApplicationController from './application_controller'
-
-let lastMessageId
-const reload = controller => {
-  controller.stimulate('ChatReflex#default_reflex')
-}
-const debouncedReload = debounce(reload, { wait: 100 })
 
 export default class extends ApplicationController {
   static targets = ['list', 'input']
@@ -18,19 +11,11 @@ export default class extends ApplicationController {
 
   post (event) {
     Rails.stopEverything(event)
-    lastMessageId = Math.random()
     this.stimulate(
       'ChatReflex#post',
       this.element.dataset.color,
-      this.inputTarget.value,
-      lastMessageId
+      this.inputTarget.value
     )
-  }
-
-  afterPost () {
-    this.inputTarget.value = ''
-    this.inputTarget.focus()
-    this.scroll(1)
   }
 
   scroll (delay = 10) {
@@ -38,11 +23,5 @@ export default class extends ApplicationController {
     setTimeout(() => {
       lists.forEach(e => (e.scrollTop = e.scrollHeight))
     }, delay)
-  }
-
-  reload (event) {
-    const { messageId } = event.detail
-    if (messageId === lastMessageId) return
-    debouncedReload(this)
   }
 }
