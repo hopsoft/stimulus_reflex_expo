@@ -2,14 +2,14 @@
 
 class ChatReflex < ApplicationReflex
   def post(color, message)
+    morph :nothing
+
     chat = {
       color: color,
       author: request.remote_ip,
       message: message[0, 100],
       created_at: Time.current.iso8601
     }
-
-    morph :nothing
 
     chat_html = ChatsController.render(partial: "chats/chat", locals: {chat: chat, color: color})
     list_selector = "##{color} [data-target='chat.list']"
