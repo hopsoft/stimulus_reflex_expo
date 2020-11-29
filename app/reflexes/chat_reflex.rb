@@ -1,13 +1,18 @@
 # frozen_string_literal: true
 
 class ChatReflex < ApplicationReflex
+  include ActionView::Helpers::SanitizeHelper
+
   def post(color, message)
     morph :nothing
+
+    message = strip_tags(message[0, 100])
+    return if message.blank?
 
     chat = {
       color: color,
       author: request.remote_ip,
-      message: message[0, 100],
+      message: message,
       created_at: Time.current.iso8601
     }
 
