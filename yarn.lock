@@ -1873,17 +1873,10 @@ bytes@3.1.0:
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
   integrity sha512-zauLjrfCG+xvoyaqLoV8bLVXXNGC4JqlxFCutSDWA6fJrTo2ZuvLYTqZ7aHBLZSMOopbzwv8f+wZcVzfVTI2Dg==
 
-cable_ready@4.4.0-pre0:
-  version "4.4.0-pre0"
-  resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-4.4.0-pre0.tgz#ed3fb4733c4632982c3fc3f8e7d2ba19fb902793"
-  integrity sha512-tG6oBgoTCaPinsbH0xJm9VBIJjXe3V9ocv+BlE1N6TKJf0uaBwRIMVvKzPs5t3QT5bTXhR1w+NL34kgAsg133g==
-  dependencies:
-    morphdom "^2.6.1"
-
-"cable_ready@>= 4.1.2":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-4.3.0.tgz#69c6c6963a60d7891f43c7530e343007a00a50b3"
-  integrity sha512-/hjwgdwMoe2hE5KKunsuWXDTr26GzwR7CovdFKHdSHD/yZTFFIv/eY27slMiXUEb57X12GHdliSM59rftTKpoQ==
+cable_ready@4.4.1, "cable_ready@>= 4.4":
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-4.4.1.tgz#b97564fb9347b2ad9ad21519956f1a5e5fa3690d"
+  integrity sha512-dB8W2JVQMuSW3YYyl321mZOrkdCt+10KVAeL+51/o6dC5H/QTWSZPj//POYEFynVL8hShYU9joC5Qrw0B5lxLw==
   dependencies:
     morphdom "^2.6.1"
 
@@ -3719,11 +3712,6 @@ form-data@~2.3.2:
     asynckit "^0.4.0"
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
-
-"form-serialize@>= 0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/form-serialize/-/form-serialize-0.7.2.tgz#b0a2ff0c22026fb6d3d15c9d33f6de6a432e4732"
-  integrity sha1-sKL/DCICb7bT0VydM/beakMuRzI=
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -8213,7 +8201,7 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
-"stimulus@>= 1.1", stimulus@^1.1.1:
+stimulus@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-1.1.1.tgz#53c2fded6849e7b85eed3ed8dd76e33abd74bec5"
   integrity sha512-R0mBqKp48YnRDZOxZ8hiOH4Ilph3Yj78CIFTBkCwyHs4iGCpe7xlEdQ7cjIxb+7qVCSxFKgxO+mAQbsNgt/5XQ==
@@ -8221,15 +8209,13 @@ stdout-stream@^1.4.0:
     "@stimulus/core" "^1.1.1"
     "@stimulus/webpack-helpers" "^1.1.1"
 
-stimulus_reflex@3.3.0-pre3:
-  version "3.3.0-pre3"
-  resolved "https://registry.yarnpkg.com/stimulus_reflex/-/stimulus_reflex-3.3.0-pre3.tgz#6e553ad5ac9aa0c79189842b8eadcde2974f0561"
-  integrity sha512-Rad1wQQLjP2y+LXatSuDLS2puCST+uozCJMXkvzc91Zo2IE88UunW2OJkXeA+s/BwbHEwGT2eg18VJ4TSK8Ouw==
+stimulus_reflex@3.4.0-pre6:
+  version "3.4.0-pre6"
+  resolved "https://registry.yarnpkg.com/stimulus_reflex/-/stimulus_reflex-3.4.0-pre6.tgz#157712db82e68f6219c6c678d70e7847953018ad"
+  integrity sha512-TI6Zp5c4+oaNQ4pzGcGcVpq9ACRcsgUksIwrSfkDIaSfMVufgqzWDEDq658aKxczTgpIzSqcpwAkUM6+aw/enw==
   dependencies:
     "@rails/actioncable" ">= 6.0"
-    cable_ready ">= 4.1.2"
-    form-serialize ">= 0.7.2"
-    stimulus ">= 1.1"
+    cable_ready ">= 4.4"
 
 stream-browserify@^2.0.1:
   version "2.0.2"
