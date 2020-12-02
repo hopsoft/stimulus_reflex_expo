@@ -1,0 +1,40 @@
+<div id="search-results">
+  <p class="lead"><%= @pagy.count %> results found</p>
+  <% if @pagy.count > 0 %>
+    <table class="table table-striped table-bordered">
+      <thead class="bg-primary">
+        <tr>
+          <th style="width:25%">
+            <%= link_to "Name #{arrow :name}", "#", class: column_css(:name),
+              data: { reflex: "click->TabularReflex#order", column_name: :name, direction: direction } %>
+          </th>
+          <th style="width:25%">
+            <%= link_to "Stars #{arrow :stars}", "#", class: column_css(:stars),
+              data: { reflex: "click->TabularReflex#order", column_name: :stars, direction: direction } %>
+          </th>
+          <th style="width:25%">
+            <%= link_to "Price #{arrow :price}", "#", class: column_css(:price),
+              data: { reflex: "click->TabularReflex#order", column_name: :price, direction: direction } %>
+          </th>
+          <th style="width:25%">
+            <%= link_to "Category #{arrow :category}", "#", class: column_css(:category),
+              data: { reflex: "click->TabularReflex#order", column_name: :category, direction: direction } %>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @restaurants.each do |restaurant| %>
+          <tr>
+            <td><%= restaurant.name %></td>
+            <td><%= "★" * restaurant.stars %></td>
+            <td><%= "$" * restaurant.price %></td>
+            <td><%= restaurant.category %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= render "/tabulars/paginator" if @pagy.pages > 1 %>
+  <% end %>
+</div>

@@ -2,6 +2,9 @@
 
 class ReverseTextReflex < ApplicationReflex
   def perform
-    @value = element[:value].reverse
+    morph :nothing
+    cable_ready
+      .text_content(selector: "#reversed-text", text: element[:value].reverse)
+      .broadcast
   end
 end

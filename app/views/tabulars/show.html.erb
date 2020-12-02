@@ -20,9 +20,11 @@
 
 <%= render_gists(
   "app/views/tabulars/_demo.html.erb",
+  "app/views/tabulars/_search_results.html.erb",
   "app/views/tabulars/_paginator.html.erb",
   "app/helpers/tabulars_helper.rb",
   "app/models/restaurant.rb",
   "app/controllers/tabulars_controller.rb",
-  "app/reflexes/tabular_reflex.rb"
+  "app/reflexes/tabular_reflex.rb",
+  "app/controllers/concerns/tabular.rb"
 ) %>

@@ -7,14 +7,16 @@ export default class extends Controller {
     StimulusReflex.register(this)
   }
 
-  beforeReflex (element, reflex) {
+  beforeReflex () {
     document
       .querySelectorAll('[data-activity-indicator]')
       .forEach(el => (el.hidden = false))
   }
 
-  reflexError (element, reflex, error) {
-    alert(`Error invoking a Reflex! ${error}`)
+  finalizeReflex () {
+    document
+      .querySelectorAll('[data-activity-indicator]')
+      .forEach(el => (el.hidden = true))
   }
 
   reload () {

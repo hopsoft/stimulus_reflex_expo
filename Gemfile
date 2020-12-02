@@ -21,7 +21,7 @@ gem "redis", ">= 4.0", require: ["redis", "redis/connection/hiredis"]
 gem "rouge", "~> 3.25"
 gem "sass-rails", "~> 6"
 gem "sidekiq", "~> 6.0"
-gem "stimulus_reflex", "3.4.0.pre6"
+gem "stimulus_reflex", "3.4.0.pre7"
 gem "valid_email", "~> 0.1"
 gem "webpacker", "~> 5.0"
 
