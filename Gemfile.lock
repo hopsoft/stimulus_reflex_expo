@@ -68,7 +68,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
-    cable_ready (4.4.2)
+    cable_ready (4.4.3)
       rails (>= 5.2)
     capybara (3.34.0)
       addressable
@@ -203,7 +203,7 @@ GEM
       rubocop-ast (>= 1.1.1)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (1.2.0)
+    rubocop-ast (1.3.0)
       parser (>= 2.7.1.5)
     rubocop-performance (1.9.1)
       rubocop (>= 0.90.0, < 2.0)
@@ -240,7 +240,7 @@ GEM
     standard (0.10.1)
       rubocop (= 1.4.2)
       rubocop-performance (= 1.9.1)
-    stimulus_reflex (3.4.0.pre6)
+    stimulus_reflex (3.4.0.pre8)
       cable_ready (>= 4.4)
       nokogiri
       rack
@@ -293,7 +293,7 @@ DEPENDENCIES
   awesome_print
   bootsnap (>= 1.4)
   byebug
-  cable_ready (~> 4.4)
+  cable_ready (~> 4.4.3)
   capybara (>= 2.15)
   chartkick (~> 3.4.0)
   countries (~> 3.0)
@@ -317,7 +317,7 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq (~> 6.0)
   standard
-  stimulus_reflex (= 3.4.0.pre6)
+  stimulus_reflex (= 3.4.0.pre8)
   tmuxinator
   valid_email (~> 0.1)
   web-console (>= 3.3.0)
