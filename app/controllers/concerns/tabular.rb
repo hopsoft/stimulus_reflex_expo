@@ -15,6 +15,7 @@ module Tabular
 
     @page = (params[:page] || 1).to_i
     @page = page_count if @page > page_count
+    @page = 1 if @page < 1
     @pagy, @restaurants = pagy(restaurants, page: @page)
   end
 

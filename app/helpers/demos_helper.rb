@@ -8,7 +8,6 @@ module DemosHelper
       calendar
       geo_selector
       gravatar
-      permalink
       reverse_text
       tabular
       time_series
