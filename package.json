@@ -8,7 +8,7 @@
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^5.0.1",
     "bootstrap": "^4.3.1",
-    "cable_ready": "^4.4.3",
+    "cable_ready": "^4.4.6",
     "chart.js": "^2.9.3",
     "chartkick": "^3.2.0",
     "debounced": "^0.0.5",
@@ -16,7 +16,7 @@
     "popper.js": "^1.16.0",
     "pygments-rouge-css": "^0.1.0",
     "stimulus": "^1.1.1",
-    "stimulus_reflex": "3.4.0-pre8",
+    "stimulus_reflex": "3.4.0",
     "turbolinks": "^5.2.0",
     "velocity-animate": "^1.5.2"
   },
