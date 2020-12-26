@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resource :time_series, only: [:show]
     resource :todo, only: [:show]
     resource :validation, only: [:show]
+    resource :world_game, only: [:show]
   end
 
   resources :demos, only: [:index]
