@@ -1,0 +1,26 @@
+<%= render partial: 'styles' %>
+
+<div data-controller="world-game" id="world-game">
+  <form data-reflex="WorldGame#check" class="row">
+    <div class="map col-md-9">
+      <input name="guess" type="text" class="form-control form-control-lg mb-4" placeholder="Enter country name" data-target="world-game.input" />
+      <%= render partial: 'message' %>
+      <%= inline_svg_tag "world", width: "100%", height: "600px" %>
+    </div>
+
+    <div class="map col-md-3">
+      <button class="btn btn-lg btn-primary" data-reflex="click->WorldGame#check">Check</button>
+      <button class="btn btn-default" data-reflex="click->WorldGame#reset">Reset</button>
+
+      <h4 class="mt-5">Score</h4>
+      <div id="score"><%= pluralize(@countries.count, 'point') %></div>
+
+      <h5 class="mt-5">You've guessed these countries:</h5>
+      <ol id="countries" class="mt-4">
+        <% @countries.each do |country| %>
+          <li><%= country.name %></li>
+        <% end %>
+      </ol>
+    </div>
+  </form>
+</div>

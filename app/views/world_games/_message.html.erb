@@ -1,0 +1,6 @@
+<% type ||= :info %>
+<% text ||= '&nbsp;'.html_safe %>
+
+<h5>
+  <%= content_tag :span, text, id: "message", class: world_game_message_css(type), data: { 'world-game-target': 'message', target: 'world-game.message' } %>
+</h5>

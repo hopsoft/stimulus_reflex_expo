@@ -1,0 +1,18 @@
+<%= content_for :demo_title, "World Game" %>
+<%= content_for :demo_summary, "Can you name the countries of the world?" %>
+<%= render_demo "/world_games/demo" %>
+
+<%= render_explanation do %>
+  <p>
+    <strong>TODO</strong>
+  </p>
+<% end %>
+
+<%= render_gists(
+  "app/views/world_games/_demo.html.erb",
+  "app/views/world_games/_message.html.erb",
+  "app/views/world_games/_styles.html.erb",
+  "app/reflexes/world_game_reflex.rb",
+  "app/controllers/world_games_controller.rb",
+  "app/javascript/controllers/world_game_controller.js"
+) %>

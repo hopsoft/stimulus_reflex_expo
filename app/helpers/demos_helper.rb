@@ -13,6 +13,7 @@ module DemosHelper
       time_series
       todo
       validation
+      world_game
     ]
   end
 
@@ -97,5 +98,13 @@ module DemosHelper
 
   def chat_author?(chat)
     chat[:author] == request.remote_ip
+  end
+
+  def world_game_message_css(color = :info)
+    case color.to_sym
+    when :error then "text-danger"
+    when :success then "text-success"
+    when :info then "text-info"
+    end
   end
 end
