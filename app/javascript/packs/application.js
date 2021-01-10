@@ -29,4 +29,11 @@ import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf'
 import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff'
 import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2'
 import 'stylesheets/application.scss'
+
 import 'controllers'
+
+import CableReady from 'cable_ready'
+CableReady.DOMOperations['customMagic'] = config => {
+  const { message } = config
+  console.log('customMagic', message)
+}
