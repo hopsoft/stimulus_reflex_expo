@@ -33,7 +33,7 @@ import 'stylesheets/application.scss'
 import 'controllers'
 
 import CableReady from 'cable_ready'
-CableReady.DOMOperations['customMagic'] = config => {
+CableReady.DOMOperations.customMagic = config => {
   const { message } = config
   console.log('customMagic', message)
 }
