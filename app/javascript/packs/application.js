@@ -30,3 +30,5 @@ import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff'
 import '@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2'
 import 'stylesheets/application.scss'
 import 'controllers'
+
+console.log('application pack loaded')
