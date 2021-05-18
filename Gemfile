@@ -15,7 +15,7 @@ gem "http", "~> 4.1"
 gem "jbuilder", "~> 2.7"
 gem "pagy", "~> 3.7"
 gem "pg", ">= 0.18", "< 2.0"
-gem "puma", "~> 5.0"
+gem "puma", "~> 5.3"
 gem "rails", "~> 6.0"
 gem "redis", ">= 4.0", require: ["redis", "redis/connection/hiredis"]
 gem "rouge", "~> 3.25"
